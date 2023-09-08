@@ -1,0 +1,10 @@
+# Preface {.unnumbered}
+
+This is an R-manual that accompanies the textbook @triola22 for the courses STAT 2670: Elementary Statistics offered at Auburn University at Montgomery.
+
+Credits:
+
+-   Jerome Goddard (Chapters 2 and 3)
+-   Yi Wang (chapters 4 and 5; Overall editing)
+-   Wen Tang (chapters 6 and 7)
+-   Jieun Park (chapters 7, 8 and 10)

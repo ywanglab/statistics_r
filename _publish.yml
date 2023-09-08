@@ -1,0 +1,4 @@
+- source: project
+  quarto-pub:
+    - id: 848d816e-593e-4673-a2b6-bd35b6b1487c
+      url: 'https://ywang.quarto.pub/elementary-statistics-with-r-stat-2670'
