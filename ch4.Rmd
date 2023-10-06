@@ -6,6 +6,7 @@ author: "Yi Wang"
 # - \usepackage{pdflscape}
 # - \newcommand{\blandscape}{\begin{landscape}}
 # - \newcommand{\elandscape}{\end{landscape}}
+
 # output:
 #   pdf_document:
 #     #latex_engine: pdflatex
@@ -17,16 +18,19 @@ author: "Yi Wang"
 #   html_document:
 #     fig_caption: yes
 #     number_sections: true
-format:
-  html: 
-    code-fold: true
-    html-math-method: katex
-  pdf:
-    geometry: 
-      - top=30mm
-      - left=30mm
-  docx: default
-urlcolor: blue
+
+# format:
+#   html:
+#     code-fold: true
+#     html-math-method: katex
+#   pdf:
+#     geometry:
+#       - top=30mm
+#       - left=30mm
+#   docx: default
+#     # reference-doc: custom-reference-doc.docx
+# urlcolor: blue
+#downloads: [pdf, docx]
 ---
 
 ```{r setup, include=FALSE}

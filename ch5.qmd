@@ -1,12 +1,12 @@
 ---
 # title: "Chapter 5: Discrete Probability Distribution"
 author: "Yi Wang"
-# format: html
-format:
-  html:
-    theme: cosmo
-  pdf:
-    documentclass: scrreprt
+
+# format:
+#   html:
+#     theme: cosmo
+#   pdf:
+#     documentclass: scrreprt
         
         
 editor: visual
@@ -161,6 +161,7 @@ pbinom(q, size, prob, lower.tail = TRUE)
 The `pbinom()` function returns the cumulative probability for the specified value `q` based on the given parameters.
 
 Here's an example of how to use `pbinom()`:
+
 ```{r}
 # Calculate the cumulative probability that X is less than or equal to 3
 cumulative_prob <- pbinom(3, size = 10, prob = 0.3)

@@ -1,0 +1,300 @@
+---
+# title: 'STAT 2670: Elementary Statistics with R'
+# subtitle: "Fall 2023"
+author: "Jieun Park"
+# date: "2023-09-30"
+# header-includes:
+# - \usepackage{pdflscape}
+# - \newcommand{\blandscape}{\begin{landscape}}
+# - \newcommand{\elandscape}{\end{landscape}}
+# output:
+#   html_document:
+#     fig_caption: yes
+#     number_sections: yes
+#   word_document: default
+#   pdf_document:
+#     fig_caption: yes
+#     number_sections: yes
+#     toc: true
+#     toc_depth: 2
+# urlcolor: blue
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
+```
+## Hypothesis Testing
+
+
+### Basic of Hypothesis Testing
+We will use the following functions to perform hypothesis tests.
+```{r, message=FALSE}
+library(BSDA)
+# prop.test(x, n, p = NULL,
+#           alternative = c("two.sided", "less", "greater"),
+#           conf.level = 0.95, correct = TRUE)
+
+# t.test(x, y = NULL,
+#       alternative = c("two.sided", "less", "greater"),
+#       mu = 0, paired = FALSE, var.equal = FALSE,
+#       conf.level = 0.95, ...)
+
+# z.test(
+#   x, y = NULL,
+#   alternative = "two.sided",
+#   mu = 0, sigma.x = NULL, sigma.y = NULL,
+#   conf.level = 0.95)
+
+```
+
+
+We use `qnorm()` and `qt()` functions to calculate critical values. For example, we can obtain $z_{0.05}$ using the `qnorm(0.95)` for a normal distribution, and the critical value $t_{0.05, 5}$ using `qt(0.95, 5)` for a t-distribution with 5 degree of freedom with $\alpha=0.05$ as below. 
+```{r}
+qnorm(0.95)
+qt(0.95, 5)
+```
+
+
+
+### Testing a Claim About a Proportion
+
+`mtcars` dataset has data for 32 automobiles in 1973-1974 with 11 variables. Among these variable, we are interested to check if the proportion of V-shaped engine (`vs = 0`) is 0.5. That is, $H_0: p = 0.5$. We set the null hypothesis as follows: the population proportion of cars with a V-shaped engine (vs = 0) among all automobiles in 1973-1974 is equal to 0.5.
+We first check if we can use a normal approximation to perform a proportion test. With a sample size of $n=32$ and a proportion of interest $p=0.5$, both the expected number of successes and failures are  $np= n(1-p) = 32\cdot 0.5 = 16$. Since they are greater than 5, we can apply the proportion test using a normal approximation. In our sample, the number of success (`vs=0`) is 18 and the sample proportion is 0.56.
+```{r, message=FALSE}
+data(mtcars)
+attach(mtcars)
+table(vs)
+prop.table(table(vs))
+```
+
+
+
+We use one sample proportion test with `prop.test()` function if $np \ge 5$ and $n(1-p) \ge 5$  where $p$ is the null hypothesized proportion and $n$ is the sample size. The syntax is below if we want to test with a sample vector (categorical variable with two levels) for $H_0: p = p_0$ with $\alpha = 0.05$. `x` is the number of success, `n`is the sample size, and `p_0` is the null hypothesized proportion.
+```{r}
+# prop.test(x, n, p = p_0, conf.level=0.95, alternative=c("two.sided", "less", "greater"))
+
+```
+Depending on the alternative hypothesis $H_1$, we can choose one among `two.sided`, `less`, and `greater`.
+Under $H_0: p = p_0$, we can use each `alternative` option for `prop.test()` function.\
+
+1. $H_1: p = p_0$: `alternative = "two.sided"`\
+2. $H_1: p = p_0$ :`alternative = "less"`\
+3. $H_1: p = p_0$: `alternative = "less"`\
+
+For the proportion of `vs` , we test for the proportion of `vs = 0` with $H_0: p = 0.5$ and $\alpha = 0.05$.
+
+#### Two-sided Proportion Test
+$$H_0: p = 0.5 \quad \textrm{ vs }\quad H_1: p \ne 0.5$$
+```{r}
+res <- prop.test(x=18, n=32, p = 0.50, alternative = "two.sided", conf.level = 0.95)
+res
+```
+**Decision:**
+
+* **P-Value**: we fail to reject the null hypothesis since p-value `r round(res$p.value, 3)` is greater than $\alpha=0.05$.\
+* **Critical Value**: the z-test statistic $z=$ `r round(sqrt(res$statistic), 3)` is closer to 0 than the critical values. Thus, we fail to reject the null hypothesis. \
+```{r}
+# the critical value can be calculated by the following code.
+c(qnorm(0.025), qnorm(0.975))
+```
+* **Confidence Interval**: the claimed proportion 0.5 falls within the confidence interval of (`r round(res$conf.int[1],3)`, `r round(res$conf.int[2],3)`). Thus we fail to reject the null hypothesis.\
+
+
+#### One-sided Proportion Test
+$$H_0: p = 0.5 \quad \textrm{ vs }\quad H_1: p > 0.5$$
+```{r}
+res <- prop.test(x=18, n=32, p = 0.50, alternative = "greater", conf.level = 0.95)
+res
+```
+**Decision:**
+
+* **P-Value**: we fail to reject the null hypothesis since p-value `r round(res$p.value, 3)` is greater than $\alpha=0.05$.\
+* **Critical Value**: the test statistic $z=$ `r round(sqrt(res$statistic), 3)` does not fall in the critical region which is greater than $z_{0.05}$ = `r round(qnorm(0.95),3)`. Thus, we fail to reject the null hypothesis. \
+```{r}
+# the critical value can be calculated by the following code.
+qnorm(0.95)
+```
+* **Confidence Interval**: the claimed proportion 0.5 falls within the confidence interval of (`r round(res$conf.int[1],3)`, `r round(res$conf.int[2],3)`). Thus we fail to reject the null hypothesis.\
+
+
+
+### Tesing a Claim About a Mean
+
+#### Unknown $\sigma$ with Normality Assumption
+
+We use one sample t-test with `t.test()` function when we assume normality for population or the sample size is large enough. The syntax is below if we want to test with a sample vector (variable) `x` for $H_0: \mu = m$ with $\alpha = 0.05$. 
+```{r}
+# t.test(x, mu= m, conf.level=0.95, alternative=c("two.sided", "less", "greater"))
+
+```
+Depending on the alternative hypothesis $H_1$, we can choose one among `two.sided`, `less`, and `greater`.
+Under $H_0: \mu = m$, use each `alternative` option for `t.test()` function.\
+
+1. $H_1: \mu \ne m$: `alternative = "two.sided"`\
+2. $H_1: \mu < m$ :`alternative = "less"`\
+3. $H_1: \mu > m$: `alternative = "less"`\
+
+As an example, we test for `mpg` with $H_0: \mu = 22$. That is, we test if the population mean of `mpg` is equal to 22. `mtcars` cars have 32 samples and we can understand that we have a large enough sample to use t-test with $\alpha = 0.05$.
+
+##### Two-sided t-test
+$$H_0: \mu = 22 \quad \textrm{ vs }\quad H_1: \mu \ne 22$$
+```{r}
+res <- t.test(mpg, mu=22, alternative = "two.sided", conf.level = 0.95)
+res
+```
+**Decision:**
+
+* **P-Value**: we fail to reject the null hypothesis since p-value `r round(res$p.value, 3)` is greater than $\alpha=0.05$.\
+* **Critical Value**: the test statistic $t=$ `r round(res$statistic, 3)` is closer to 0 than the critical values. Thus, we fail to reject the null hypothesis. \
+```{r}
+# the critical value can be calculated by the following code.
+c(qt(0.025, df=31), qt(0.975, df=31))
+```
+* **Confidence Interval**: the claimed mean 22 falls within the confidence interval of (`r round(res$conf.int[1],3)`, `r round(res$conf.int[2],3)`). Thus we fail to reject the null hypothesis.\
+
+##### One-sided t-test $H_1: \mu < m$
+$$H_0: \mu = 22 \quad \textrm{ vs }\quad H_1: \mu < 22$$
+```{r}
+res <- t.test(mpg, mu=22, alternative = "less", conf.level = 0.95)
+res
+```
+**Decision:**
+
+* **P-Value**: we reject the null hypothesis since p-value `r round(res$p.value, 3)` is less than $\alpha=0.05$.\
+* **Critical Value**: the test statistic $t=$ `r round(res$statistic, 3)` falls in the critical region which is less than $t_{0.05, 31}$ = `r round(qt(0.05, df=31),3)`. Thus, we reject the null hypothesis. \
+```{r}
+# the critical value can be calculated by the following code.
+qt(0.05, df=31)
+```
+* **Confidence Interval**: the claimed mean does not fall within the confidence interval of ($-\infty$, `r round(res$conf.int[2],3)`). Thus we reject the null hypothesis.\
+
+
+
+#### Known $\sigma$ with Normality Assumption
+
+We use one sample z-test or normal test with `z.test()` function when we assume normality for population with known population standard deviation $\sigma$. The syntax is below if we want to test with a sample vector (variable) `x` for $H_0: \mu = m$ with $\alpha = 0.05$ and known `sigma`. 
+```{r}
+#library(BSDA)
+# z.test(x, mu = m, sigma.x = sigma, conf.level = 0.95, alternative = c("two.sided", "less", "greater"))
+
+```
+Depending on the alternative hypothesis $H_1$, we can choose one among `two.sided`, `less`, and `greater`.
+Under $H_0: \mu = m$, use each `alternative` option for `t.test()` function.\
+
+1. $H_1: \mu \ne m$: `alternative = "two.sided"`\
+2. $H_1: \mu < m$ :`alternative = "less"`\
+3. $H_1: \mu > m$: `alternative = "less"`\
+
+For example, we test for `mpg` with $H_0: \mu = 22$. Assume `mpg` follows a normal distribution with $\sigma = 6$, then we can use z-test with $\alpha = 0.05$.
+
+##### Two-sided z-test
+$$H_0: \mu = 22 \quad \textrm{ vs }\quad H_1: \mu \ne 22$$
+```{r}
+library(BSDA)
+res <- z.test(mpg, mu=22, sigma.x = 6, alternative = "two.sided", conf.level = 0.95)
+res
+```
+**Decision:**
+
+* **P-Value**: we fail to reject the null hypothesis since p-value `r round(res$p.value, 3)` is greater than $\alpha=0.05$.\
+* **Critical Value**: the test statistic $z=$ `r round(res$statistic, 3)` is closer to 0 than the critical values. Thus, we fail to reject the null hypothesis. \
+```{r}
+# the critical value can be calculated by the following code.
+c(qnorm(0.025), qnorm(0.975))
+```
+* **Confidence Interval**: the claimed mean 22 falls within the confidence interval of (`r round(res$conf.int[1],3)`, `r round(res$conf.int[2],3)`). Thus we fail to reject the null hypothesis.\
+
+##### One-sided z-test $H_1: \mu < m$
+$$H_0: \mu_{mpg} = 22 \quad \textrm{ vs }\quad H_1: \mu_{mpg} < 22$$
+```{r}
+res <- z.test(mpg, mu=22, sigma.x = 6, alternative = "less", conf.level = 0.95)
+res
+```
+**Decision:**
+
+* **P-Value**: we reject the null hypothesis since p-value `r round(res$p.value, 3)` is less than $\alpha=0.05$.\
+* **Critical Value**: the test statistic $z=$ `r round(res$statistic, 3)` falls in the critical region which is less than $z_{0.05}$ = `r round(qnorm(0.05),3)`. Thus, we reject the null hypothesis. \
+```{r}
+# the critical value can be calculated by the following code.
+qnorm(0.05)
+```
+* **Confidence Interval**: the claimed mean does not fall within the confidence interval of ($-\infty$, `r round(res$conf.int[2],3)`). Thus we reject the null hypothesis.\
+
+
+
+
+
+## Correlation and Regression
+
+### Correlation
+We check if a linear correlation exists between two variables using `cor()` function.
+
+```{r}
+# We can calculate the correlation coefficient between x and y with the following code.
+# cor(x, y)
+```
+
+
+```{r}
+library(tidyverse)
+library(patchwork)
+data("mtcars")
+names(mtcars)
+```
+
+
+
+```{r, message = FALSE}
+attach(mtcars)
+# positive correlation
+qplot(wt, disp, data = mtcars) +
+  geom_text(aes(x=2, y=400, label="r = 0.888"))
+cor(wt, disp)
+# negative correlation
+qplot(mpg, wt, data = mtcars)  +
+  geom_text(aes(x=30, y=5, label="r = - 0.868"))
+cor(mpg, wt)
+# no correlation
+qplot(drat, qsec, data = mtcars)  +
+  geom_text(aes(x=4.5, y=22, label="r = 0.091"))
+cor(drat, qsec)
+```
+
+* `wt` and `disp` have a positive correlation with r =`r round(cor(wt, disp), 3)`. 
+* `wt` and `disp` have a negative correlation with r = `r round(cor(mpg, wt), 3)`. 
+* `wt` and `disp` does not have a significant correlation with r = `r round(cor(wt, qsec), 3)`. 
+
+### Regression
+Assume we have a data set `data` with `x` and `y` variables and we check their linear relationship. We can find the slope and the intercept of the estimated regression line using the following code.
+```{r}
+# res <- lm(y ~ x, data)
+# summary(res)
+```
+
+For example, we can find the regression line equation between `disp`(x, predictor) and `wt`(y, response) as below.
+```{r}
+library(tidyverse)
+data("mtcars")
+
+res <- lm(wt ~ disp, mtcars)
+summary(res)
+```
+The estimated regression line is $\textrm{wt} = 1.600 + 0.007\textrm{disp}$ since the intercept is `r round(summary(res)$coef[1],3)` and the slope is `r round(summary(res)$coef[2],3)`. Both of them are significantly different from 0 with a significance level $\alpha = 0.05$. It means that one inch increase in `disp` (displacement) makes 7 lbs increase in `wt` (weight). On average, if a car has a one-inch longer displacement, it is 7 pounds heavier.
+
+If a car has 200 inches displacement, then its estimated weight can be calculated as
+$$ 1.600 + 0.007\cdot200 = 3000 \textrm{ lbs} $$ 
+
+
+
+```{r, echo =FALSE, message=FALSE}
+ggplot(mtcars, aes(x=disp, y=wt)) + 
+  geom_point()+
+  geom_smooth(method=lm, se=FALSE) +
+  geom_text(aes(x = 150, y = 4.5, label = "wt = 1.600 + 0.007disp"))
+
+```
+
+
+
+
+
