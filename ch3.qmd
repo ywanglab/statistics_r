@@ -2,8 +2,8 @@
 author: "Jerome Goddard II"
 ---
 
-\renewcommand{\thesection}{\arabic{section}}
-\setcounter{section}{2}
+<!-- \renewcommand{\thesection}{\arabic{section}} -->
+<!-- \setcounter{section}{2} -->
 
 # Describing, Exploring, and Comparing Data
 
@@ -325,21 +325,22 @@ Let's also compare the boxplots of each of the four datasets for which we explor
 # Create histogram/boxplot of normal data
 # Sample normal distribution
 normalData <- rnorm(100)
-par(mfrow = c(2,1))
+# par(mfrow = c(2,1))
 hist(normalData, main = "Normal distribution")
+
 boxplot(normalData, main = "Normal Distribution", horizontal = TRUE)
 
 # Create histogram/boxplot of uniform data
 # Sample uniform distribution using the command runif
 uniformData <- runif(50000, min = 10, max = 11)
-par(mfrow = c(2,1))
+# par(mfrow = c(2,1))
 hist(uniformData, main = "Uniform distribution")
 boxplot(uniformData, main = "Uniform Distribution", horizontal = TRUE)
 
 # Sample of a distribution that is skewed right
 skewedRightData <- rexp(1000, 0.4)
 # Create histogram/boxplot of skewed right data
-par(mfrow = c(2,1))
+# par(mfrow = c(2,1))
 hist(skewedRightData, main = "Distribution that is skewed right")
 boxplot(skewedRightData, main = "Distribution that is skewed right", horizontal = TRUE)
 
@@ -347,7 +348,7 @@ boxplot(skewedRightData, main = "Distribution that is skewed right", horizontal 
 # Sample of a distribution that is skewed left
 skewedLeftData <- 1 - rexp(1000, 0.2)
 # Create histogram/boxplot of skewed left data
-par(mfrow = c(2,1))
+# par(mfrow = c(2,1))
 hist(skewedLeftData, main = "Distribution that is skewed left")
 boxplot(skewedLeftData, main = "Distribution that is skewed left", horizontal = TRUE)
 
@@ -394,7 +395,7 @@ Finally, let's create boxplots for both datasets and show them on the same plot 
 ```{r }
 
 # Generate boxplot for both
-par(mfrow = c(2,1))
+# par(mfrow = c(2,1))
 boxplot(scores, main = "Boxplot of test scores #1", horizontal = TRUE, xlab = "Scores")
 boxplot(scores2, main = "Boxplot of test scores #2", horizontal = TRUE, xlab = "Scores")
 

@@ -26,8 +26,8 @@ knitr::opts_chunk$set(tidy.opts = list(width.cutoff = 75), tidy = TRUE)
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-\renewcommand{\thesection}{\arabic{section}}
-\setcounter{section}{1}
+<!-- \renewcommand{\thesection}{\arabic{section}} -->
+<!-- \setcounter{section}{1} -->
 <!-- Chapter 2 -->
 # Exploring Data with Tables and Graphs
 
