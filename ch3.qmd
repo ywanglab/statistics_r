@@ -3,16 +3,20 @@ author: "Jerome Goddard II"
 ---
 
 <!-- \renewcommand{\thesection}{\arabic{section}} -->
+
 <!-- \setcounter{section}{2} -->
 
 # Describing, Exploring, and Comparing Data
 
 <!-- Section 3.1 -->
+
 ## Measures of center
+
 Measures of center, such as the mean and median, provide a central value that summarizes a dataset, helping to understand its typical or central tendency, which is crucial for making data-driven decisions and drawing inferences.
 
 ### Mean
-The mean, also known as the average, is a measure of center in a dataset that calculates the sum of all values divided by the total number of values, providing a representative value for the dataset.  We will employ the R command `mean()` to calculate the mean of several datasets.  First, let's use the test scores from Section 2.1.1 which should be stored in `scores`.
+
+The mean, also known as the average, is a measure of center in a dataset that calculates the sum of all values divided by the total number of values, providing a representative value for the dataset. We will employ the R command `mean()` to calculate the mean of several datasets. First, let's use the test scores from Section 2.1.1 which should be stored in `scores`.
 
 ```{r }
 # Load test data into a variable names scores
@@ -24,7 +28,8 @@ meanScore <- mean(scores)
 cat("Mean test score is: ", meanScore, "\n")
 
 ```
-The mean is very sensitive to outliers.  Let's see what happens when we take the same `scores` list and add some really low grades to the list.
+
+The mean is very sensitive to outliers. Let's see what happens when we take the same `scores` list and add some really low grades to the list.
 
 ```{r }
 
@@ -38,10 +43,12 @@ meanScore2 <- mean(scores2)
 cat("Mean test score is from original is: ", meanScore, ", while from scores2 is: ", meanScore2)
 
 ```
-This sensitivity to outliers is the notion of <u>resistance</u>.  The mean is not a resistant measure of middle.
+
+This sensitivity to outliers is the notion of <u>resistance</u>. The mean is not a resistant measure of middle.
 
 ### Median
-The median is a measure of center in a dataset that represents the middle value when all values are ordered, and it is resistant to extreme outliers, making it a robust statistic for summarizing data.  Let's return to the scores data and see the difference between mean and median of the two datasets `scores` and `scores2` using the R commands `median()`.
+
+The median is a measure of center in a dataset that represents the middle value when all values are ordered, and it is resistant to extreme outliers, making it a robust statistic for summarizing data. Let's return to the scores data and see the difference between mean and median of the two datasets `scores` and `scores2` using the R commands `median()`.
 
 ```{r }
 
@@ -56,10 +63,12 @@ cat("Mean test score from original is: ", meanScore, ", while from scores2 is: "
 cat("Median test score from original is: ", medianScore, ", while from scores2 is: ", medianScore2, "\n")
 
 ```
-### Mode
-The mode is a statistical measure that represents the value or values that occur most frequently in a dataset, making it a useful indicator of the most common observation(s); however, it is not necessarily resistant to outliers, meaning extreme values can heavily influence the mode.  There is no bulit-in R command for mode, so we will have to employ the package `DescTools`.
 
-**The first time you run this code, you will need to install the following package.  After this initial run, you can skip running this code:**
+### Mode
+
+The mode is a statistical measure that represents the value or values that occur most frequently in a dataset, making it a useful indicator of the most common observation(s); however, it is not necessarily resistant to outliers, meaning extreme values can heavily influence the mode. There is no bulit-in R command for mode, so we will have to employ the package `DescTools`.
+
+**The first time you run this code, you will need to install the following package. After this initial run, you can skip running this code:**
 
 ```{r eval = FALSE}
 
@@ -68,8 +77,8 @@ install.packages('DescTools')
 
 ```
 
-
 Once this package is installed, then we can load the library `DescTools` in order to use the R command `Mode()`.
+
 ```{r }
 
 # Load the DescTools package
@@ -88,7 +97,8 @@ cat("Mode test score from original is: ", modeScore, ", while from scores2 is: "
 ```
 
 ### Midrange
-The midrange is a measure of center in a dataset that represents the arithmetic mean of the maximum and minimum values, and it is not resistant to extreme outliers, making it sensitive to extreme values.  There is no built-in R command for midrange, thus we will use the following code to calculate the midrange of our `scores` and `scores2` data.
+
+The midrange is a measure of center in a dataset that represents the arithmetic mean of the maximum and minimum values, and it is not resistant to extreme outliers, making it sensitive to extreme values. There is no built-in R command for midrange, thus we will use the following code to calculate the midrange of our `scores` and `scores2` data.
 
 ```{r }
 
@@ -104,7 +114,8 @@ cat("Midrange test score from original is: ", midrangeScore, ", while from score
 ```
 
 ### Let's put it all togeher!
-Consider the built-in dataset `mtcars` which contains several aspects and performance of several 1973 - 1974 model cars which we studied in Section 2.4.  We will calculate mean, meidan, mode, and midrange of the miles per gallon of tthe cars in the dataset.  using the R commands illustrated in the previous sections, as well as compute the so-called 5-number summary using the R command `summary()`.  First, let's plot a histogram of the data.
+
+Consider the built-in dataset `mtcars` which contains several aspects and performance of several 1973 - 1974 model cars which we studied in Section 2.4. We will calculate mean, meidan, mode, and midrange of the miles per gallon of tthe cars in the dataset. using the R commands illustrated in the previous sections, as well as compute the so-called 5-number summary using the R command `summary()`. First, let's plot a histogram of the data.
 
 ```{r }
 
@@ -135,14 +146,18 @@ cat(meanMPG, " \t ", medianMPG, " \t ", modeMPG, " \t ", midrangeMPG, "\n\n")
 cat("5-Number Summary \n")
 summary(carsMPG)
 ```
-Notice that there are 7 elements in the mode.  That's because there are 7 most frequent elements, each which appear twice.  Which of these central measures best describes what you visually see as the "center" of data using the histogram?  What does it "mean" that the mean and median are close to each other?  Does the 5-number summary give us any additional information regarding the measure of "center" in the data?
+
+Notice that there are 7 elements in the mode. That's because there are 7 most frequent elements, each which appear twice. Which of these central measures best describes what you visually see as the "center" of data using the histogram? What does it "mean" that the mean and median are close to each other? Does the 5-number summary give us any additional information regarding the measure of "center" in the data?
 
 <!-- Section 3.2 -->
+
 ## Measures of variation
+
 Measures of variation, such as the range, variance, and standard deviation, provide insights into the spread or dispersion of data points within a dataset, helping us understand how much individual values deviate from the central tendency measures like the mean or median. These measures are essential because they quantify the degree of variability in data, allowing us to assess data quality, make more accurate predictions, and draw meaningful conclusions in statistical analysis.
 
 ### Visualizing variation
-Histograms can visually represent the variation in a dataset by displaying the distribution of values across different bins or intervals, highlighting the frequency and pattern of data points, and revealing the shape and spread of the distribution.  Let's compare histograms for our `scores2` and `carsMPG` datasets.
+
+Histograms can visually represent the variation in a dataset by displaying the distribution of values across different bins or intervals, highlighting the frequency and pattern of data points, and revealing the shape and spread of the distribution. Let's compare histograms for our `scores2` and `carsMPG` datasets.
 
 ```{r }
 
@@ -156,7 +171,8 @@ hist(carsMPG, main = "MPG for cars", xlab = "MPG")
 ```
 
 ### Range
-The range is a measure of variation that represents the difference between the maximum and minimum values in a dataset, but it is not resistant to outliers, meaning extreme values can substantially affect the range.  Let's compare the ranges of our `carsMPG` and `scores2` datasets using the R command `range()`.
+
+The range is a measure of variation that represents the difference between the maximum and minimum values in a dataset, but it is not resistant to outliers, meaning extreme values can substantially affect the range. Let's compare the ranges of our `carsMPG` and `scores2` datasets using the R command `range()`.
 
 ```{r }
 
@@ -173,7 +189,8 @@ cat("Range for MPG from carsMPG is: (", rangeMPG[1], ", ", rangeMPG[2], ") \n")
 ```
 
 ### Standard deviation
-Standard deviation is a measure of the dispersion or spread of data points in a dataset, with a higher value indicating greater variability, and it's calculated differently for **populations** (*$\sigma$*) and **samples** (*s*), where the **sample** standard deviation (*s*) is often used for practical data analysis. However, standard deviation is not resistant to extreme outliers, making it sensitive to the influence of extreme values on its magnitude.  There is a built-in R command for **sample** standard deviation, but no such command for **population** standard deviation.  Recall our test scores dataset `scores2`.  Since this data represents the entire population (every student in the class), we will calculate **population** standard deviation for that dataset.  However, the MPG data in `carsMPG` is only a <u>sample</u> of all the cars on the market in 1973 - 1974.  Thus, we will employ the R command `sd()` to calculate **sample** standard deviation.
+
+Standard deviation is a measure of the dispersion or spread of data points in a dataset, with a higher value indicating greater variability, and it's calculated differently for **populations** ($\sigma$) and **samples** (*s*), where the **sample** standard deviation (*s*) is often used for practical data analysis. However, standard deviation is not resistant to extreme outliers, making it sensitive to the influence of extreme values on its magnitude. There is a built-in R command for **sample** standard deviation, but no such command for **population** standard deviation. Recall our test scores dataset `scores2`. Since this data represents the entire population (every student in the class), we will calculate **population** standard deviation for that dataset. However, the MPG data in `carsMPG` is only a <u>sample</u> of all the cars on the market in 1973 - 1974. Thus, we will employ the R command `sd()` to calculate **sample** standard deviation.
 
 ```{r }
 
@@ -190,7 +207,8 @@ cat("Sample standard deviation for MPG from carsMPG is: ", samSDMPG, " \n")
 ```
 
 ### Variance
-Variance measures the average of the squared differences between each data point and the mean of a dataset, providing a measure of data dispersion, but it is not resistant to extreme outliers, making it sensitive to the influence of extreme values on its magnitude. Variance is calculated differently for **populations** (*$\sigma^2$*) and **samples** (*$s^2$*), with the **sample** variance (*$s^2$*) being used for practical data analysis to account for bias when working with a subset of a larger population.  Let's compare **population** variance for our `scores2` dataset and **sample** variance for our `carsMPG` dataset.  As with standard deviation, although there is a built-in R command for **sample** variance, there is not a built-in command for **population** variance, so we will have to improvise.
+
+Variance measures the average of the squared differences between each data point and the mean of a dataset, providing a measure of data dispersion, but it is not resistant to extreme outliers, making it sensitive to the influence of extreme values on its magnitude. Variance is calculated differently for **populations** ($\sigma^2$) and **samples** ($s^2$), with the **sample** variance ($s^2$) being used for practical data analysis to account for bias when working with a subset of a larger population. Let's compare **population** variance for our `scores2` dataset and **sample** variance for our `carsMPG` dataset. As with standard deviation, although there is a built-in R command for **sample** variance, there is not a built-in command for **population** variance, so we will have to improvise.
 
 ```{r }
 
@@ -207,7 +225,8 @@ cat("Sample variance for MPG from carsMPG is: ", samVarMPG, " \n")
 ```
 
 ### Let's put it all togeher!
-Consider the built-in dataset `mtcars` which contains several aspects and performance of several 1973 - 1974 model cars which we studied in Section 2.4.  We will first calculate mean and median of the horse power (HP) of the cars in the dataset.  To calculate measures of variation, we note that since this is just a **sample** of all possible cars on the market during 1973 - 1974, we will employ **sample** variance and standard deviation using the R commands illustrated in the previous sections, along with a histogram to visually explore the data.
+
+Consider the built-in dataset `mtcars` which contains several aspects and performance of several 1973 - 1974 model cars which we studied in Section 2.4. We will first calculate mean and median of the horse power (HP) of the cars in the dataset. To calculate measures of variation, we note that since this is just a **sample** of all possible cars on the market during 1973 - 1974, we will employ **sample** variance and standard deviation using the R commands illustrated in the previous sections, along with a histogram to visually explore the data.
 
 ```{r }
 
@@ -235,14 +254,17 @@ cat(meanHP, " \t ", medianHP, " \t ", varHP, " \t ", sdHP, "\n\n")
 
 ```
 
-Now, compare the MPG and HP data from the `mtcars` dataset.  For MPG, we calculated a standard deviation around *36* and for HP of around *69*.  Does this mean that the MPG data is less spread out that the HP data?  Is your answer to this question consistent with the histograms we produced?  Can we compare standard deviations from two totally different datasets in a meaningful way?
+Now, compare the MPG and HP data from the `mtcars` dataset. For MPG, we calculated a standard deviation around *36* and for HP of around *69*. Does this mean that the MPG data is less spread out that the HP data? Is your answer to this question consistent with the histograms we produced? Can we compare standard deviations from two totally different datasets in a meaningful way?
 
 <!-- Section 3.3 -->
+
 ## Measures of relative standing and boxplots
+
 Measures of relative standing, such as percentiles and quartiles, provide information about where specific data points fall within a dataset, offering insights into the relative position of values. Boxplots are graphical representations that display the distribution of data, highlighting the median, quartiles, and potential outliers, making them valuable tools for comparing different datasets by visually assessing their central tendency, spread, and skewness.
 
 ### z-Scores
-Z-scores, also known as standard scores, standardize individual data points by expressing how many standard deviations they are from the mean, enabling meaningful comparisons and assessments of data points' relative positions within a distribution, regardless of the original scale of the data. Z-scores are valuable for identifying outliers, understanding data distributions, and making statistical inferences, as they provide a common framework for measuring deviations from the mean across different datasets.  Let's explore z-scores using the built-in dataset `mtcars` which contains several aspects and performance of several 1973 - 1974 model cars which we studied in the last section.  Particularly, let's employ the built-in R command `scale()` to convert our dataset to z-scores which can be plotted in a histogram.  Once the two datasets (MPG and HP) are normalized, we will be able to get a better picture of their spread away from the respective means.
+
+Z-scores, also known as standard scores, standardize individual data points by expressing how many standard deviations they are from the mean, enabling meaningful comparisons and assessments of data points' relative positions within a distribution, regardless of the original scale of the data. Z-scores are valuable for identifying outliers, understanding data distributions, and making statistical inferences, as they provide a common framework for measuring deviations from the mean across different datasets. Let's explore z-scores using the built-in dataset `mtcars` which contains several aspects and performance of several 1973 - 1974 model cars which we studied in the last section. Particularly, let's employ the built-in R command `scale()` to convert our dataset to z-scores which can be plotted in a histogram. Once the two datasets (MPG and HP) are normalized, we will be able to get a better picture of their spread away from the respective means.
 
 ```{r }
 
@@ -262,7 +284,7 @@ hist(zcarsMPG, main = "Normalized miles per gallon (MPG) for cars", xlab = "Z-sc
 
 Visually, the normalized MPG data is more concentrated around the transformed mean of 0, while the HP data is much more spread out.
 
-Any data point that has a z-score of less than -2 or higher than 2 is considered to be significantly lower or higher, respectively.  Let's view our transformed data sets MPG and HP to identify data points that are significantly higher.
+Any data point that has a z-score of less than -2 or higher than 2 is considered to be significantly lower or higher, respectively. Let's view our transformed data sets MPG and HP to identify data points that are significantly higher.
 
 ```{r }
 
@@ -278,8 +300,8 @@ cat("HP Data with z-scores higher than 2:", outliersHP, "\n")
 ```
 
 ### Percentiles
-Percentiles are statistical measures that divide a dataset into 100 equal parts, helping identify values below which a certain percentage of the data falls and enabling comparisons of data points in a ranked order.  Let's use the built-in R command `quantile()`with the MPG data from the previous example to compute the 10th, 50th, and 90th percentiles for that dataset.
 
+Percentiles are statistical measures that divide a dataset into 100 equal parts, helping identify values below which a certain percentage of the data falls and enabling comparisons of data points in a ranked order. Let's use the built-in R command `quantile()`with the MPG data from the previous example to compute the 10th, 50th, and 90th percentiles for that dataset.
 
 ```{r }
 
@@ -293,9 +315,9 @@ percentilesMPG
 
 Notice that both of our significantly larger MPG values (i.e., 32.4 and 33.9) both fall above the 90th percentile of the dataset.
 
-
 ### Quartiles & the 5-number summary
-Quartiles are statistical measures that divide a dataset into four equal parts, with three quartiles (Q1, Q2, Q3) providing insights into the data's spread and central tendencies; they are resistant to outliers, making them robust tools for summarizing data.  The 5-number summary is a set of five statistics (minimum, Q1, median, Q3, maximum) that provide a concise description of a dataset's central tendencies and spread.  Keeping with our MPG dataset, we will employ the R command `summary()` to give the 5-number summary (which will include Q1, Q2 (also known as the median), & Q3).
+
+Quartiles are statistical measures that divide a dataset into four equal parts, with three quartiles (Q1, Q2, Q3) providing insights into the data's spread and central tendencies; they are resistant to outliers, making them robust tools for summarizing data. The 5-number summary is a set of five statistics (minimum, Q1, median, Q3, maximum) that provide a concise description of a dataset's central tendencies and spread. Keeping with our MPG dataset, we will employ the R command `summary()` to give the 5-number summary (which will include Q1, Q2 (also known as the median), & Q3).
 
 ```{r }
 
@@ -307,7 +329,8 @@ fiveMPG
 ```
 
 ### Boxplot
-A boxplot, also known as a box-and-whisker plot, is a graphical representation of the five-number summary, displaying the median, quartiles, and potential outliers in a dataset, making it a valuable tool for visualizing the distribution and spread of data.  We will employ the R command `boxplot()` to compare the MPG and HP datasets from previous examples.  This R command actually creates a modified boxplot by default.  Recall the only difference between a regular boxplot and a modified box plot is that data which falls outside of the interquartile range is denoted as an outlier and plotted as an individual point on the graph.
+
+A boxplot, also known as a box-and-whisker plot, is a graphical representation of the five-number summary, displaying the median, quartiles, and potential outliers in a dataset, making it a valuable tool for visualizing the distribution and spread of data. We will employ the R command `boxplot()` to compare the MPG and HP datasets from previous examples. This R command actually creates a modified boxplot by default. Recall the only difference between a regular boxplot and a modified box plot is that data which falls outside of the interquartile range is denoted as an outlier and plotted as an individual point on the graph.
 
 ```{r }
 
@@ -325,7 +348,6 @@ Let's also compare the boxplots of each of the four datasets for which we explor
 # Create histogram/boxplot of normal data
 # Sample normal distribution
 normalData <- rnorm(100)
-# par(mfrow = c(2,1))
 hist(normalData, main = "Normal distribution")
 
 boxplot(normalData, main = "Normal Distribution", horizontal = TRUE)
@@ -333,14 +355,12 @@ boxplot(normalData, main = "Normal Distribution", horizontal = TRUE)
 # Create histogram/boxplot of uniform data
 # Sample uniform distribution using the command runif
 uniformData <- runif(50000, min = 10, max = 11)
-# par(mfrow = c(2,1))
 hist(uniformData, main = "Uniform distribution")
 boxplot(uniformData, main = "Uniform Distribution", horizontal = TRUE)
 
 # Sample of a distribution that is skewed right
 skewedRightData <- rexp(1000, 0.4)
 # Create histogram/boxplot of skewed right data
-# par(mfrow = c(2,1))
 hist(skewedRightData, main = "Distribution that is skewed right")
 boxplot(skewedRightData, main = "Distribution that is skewed right", horizontal = TRUE)
 
@@ -348,16 +368,16 @@ boxplot(skewedRightData, main = "Distribution that is skewed right", horizontal 
 # Sample of a distribution that is skewed left
 skewedLeftData <- 1 - rexp(1000, 0.2)
 # Create histogram/boxplot of skewed left data
-# par(mfrow = c(2,1))
 hist(skewedLeftData, main = "Distribution that is skewed left")
 boxplot(skewedLeftData, main = "Distribution that is skewed left", horizontal = TRUE)
 
 ```
-Notice there are a lot of outliers shown on the skewed left & right data.  These points are what is causing the long tails on both histograms.
 
+Notice there are a lot of outliers shown on the skewed left & right data. These points are what is causing the long tails on both histograms.
 
 ### Let's put it all together!
-We will use everything we have learned so far in this section to explore the differences between our two test score datasets, i.e., `scores` and `scores2`.  These are fictional collections of test scores with `scores2` containing several more extremely low test scores than `scores`.  Our first task is to transform the datasets to z-scores and visualize the scaled datasets with a histrogram.
+
+We will use everything we have learned so far in this section to explore the differences between our two test score datasets, i.e., `scores` and `scores2`. These are fictional collections of test scores with `scores2` containing several more extremely low test scores than `scores`. Our first task is to transform the datasets to z-scores and visualize the scaled datasets with a histrogram.
 
 ```{r }
 
@@ -375,7 +395,7 @@ hist(zscores2, main = "Normalized test scores #2", xlab = "Z-score")
 
 ```
 
-Out of the two fictional classes, are there any test scores that are significantly high or low?  What can we conclude about those scores?  Now, let's compute the 5-number summary for each group of test scores.
+Out of the two fictional classes, are there any test scores that are significantly high or low? What can we conclude about those scores? Now, let's compute the 5-number summary for each group of test scores.
 
 ```{r }
 
@@ -390,15 +410,15 @@ summary(scores2)
 
 ```
 
-Finally, let's create boxplots for both datasets and show them on the same plot window for comparison.  
+Finally, let's create boxplots for both datasets and show them on the same plot window for comparison.
 
 ```{r }
 
 # Generate boxplot for both
-# par(mfrow = c(2,1))
 boxplot(scores, main = "Boxplot of test scores #1", horizontal = TRUE, xlab = "Scores")
 boxplot(scores2, main = "Boxplot of test scores #2", horizontal = TRUE, xlab = "Scores")
 
 
 ```
-What conclusions can we draw regarding the two datasets?  If these were two real classes, how would the boxplots help the teacher understand grade performance for the entire class?
+
+What conclusions can we draw regarding the two datasets? If these were two real classes, how would the boxplots help the teacher understand grade performance for the entire class?
