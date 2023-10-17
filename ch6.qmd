@@ -1,0 +1,177 @@
+---
+# title: 'STAT 2670: Elementary Statistics with R'
+# subtitle: "Chapter 6 and 7"
+author: "Wen Tang"
+# date: "2023-08-22"
+# header-includes:
+# - \usepackage{pdflscape}
+# - \newcommand{\blandscape}{\begin{landscape}}
+# - \newcommand{\elandscape}{\end{landscape}}
+# output:
+#   word_document: default
+#   pdf_document:
+#     fig_caption: yes
+#     number_sections: yes
+#     toc: true
+#     toc_depth: 2
+#   html_document:
+#     fig_caption: yes
+#     number_sections: yes
+# urlcolor: blue
+---
+
+```{r set, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# NORMAL PROBABILITY DISTRIBUTION
+## THE standard normal distribution
+### Normal distribution graph (Displaying only).
+
+```{r}
+set.seed(123)                       # Set the seed for reproducibility
+x <- rnorm(1000, mean = 0, sd = 1)  # Generate data for a standard normal distribution
+
+# Plot the data with density curve
+hist(x, prob = TRUE, col = "lightblue", main = "Standard Normal Distribution")
+lines(density(x), col = "red", lwd = 2)
+```
+
+### Find the probability (area) when z scores are given.
+
+```{r}
+# Find the area under the curve to the left of a certain value: P(z<1)
+pnorm(1, mean = 0, sd = 1)
+# Find the area under the curve to the right of a certain value: P(z>1)
+1-pnorm(1, mean = 0, sd = 1)
+# Find the area under the curve between two values: P(-1<z<1)
+diff(pnorm(c(-1, 1), mean = 0, sd = 1))
+```
+
+### Find z scores when the area is given.
+
+```{r}
+# Find the value with a certain area under the curve to its left: critical value 
+alpha <- 0.05
+qnorm(1-alpha, mean = 0, sd = 1) # find the critical Z score.
+```
+
+## REAL application of normal distribution
+### Convert an individual x value to a z-score
+
+```{r}
+x <- 80  # the individual value
+mu <- 75  # the mean of the distribution 
+sigma <- 10  # the standard deviation of the distribution 
+
+# Calculate z-scores for the individual value using scale()
+z_scores <- scale(x, center = mu, scale = sigma)
+cat("Z-score:", z_scores, "\n") # print the z-score
+
+z <- (x - mu) / sigma  # find the z-score by using the formula 
+cat("Z =", z, "\n") # print the z-score
+  
+```
+### Find the probability when x value is given (page 269 Pulse Rates Question)
+
+```{r}
+x1 <- 60
+x2 <- 80
+mu <- 69.6
+sigma <- 11.3
+# Find the probability that X is less than 60: P(X<60)
+pnorm(x1, mean = mu, sd = sigma)
+# Find the probability that X is great than 80: P(X>80)
+1-pnorm(x2, mean = mu, sd = sigma)
+# Find the probability between two values: P(60<X<80)
+diff(pnorm(c(x1, x2), mean = mu, sd = sigma))
+```
+
+### Convert a z-score back to x value
+
+```{r}
+z <- 1.96  # the z-score
+mu <- 100  # the mean of the distribution
+sigma <- 15  # the standard deviation of the distribution
+x <- z * sigma + mu  # convert the z score to individual x value using formula
+cat("X =", x, "\n")  # print the individual x value
+```
+
+## SAMPLING distributions and estimators (Displaying only/Optional)
+### general behavior of sampling distribution of the sample proportion
+
+```{r}
+# Set the seed for reproducibility
+set.seed (123)
+# Generate data
+n <- 10  # sample size
+p <- 0.5  # population proportion
+samples <- replicate(50000, rbinom(1, size = n, prob = p))
+
+# Calculate sample proportions
+sample_props <- samples / n
+
+# Plot the histogram
+
+hist(sample_props, breaks = seq( 0, 1, by = 0.1 ), col = "lightblue", main = "Sampling Distribution of Sample Proportion")
+```
+
+### general behavior of sampling distribution of the sample mean
+
+```{r}
+#input the parameter values
+mu <- 3.5    
+sigma <- 1.7       
+n <- 5         
+# Simulate sampling distribution
+sample_means <- replicate(10000, mean(rnorm(n, mu, sigma)))
+
+# Create a histogram of the sampling distribution of the sample mean
+hist(sample_means, breaks ="FD",  main = "Sampling Distribution of Sample Mean", xlab = "Sample Mean", ylab = "Frequency", col = "lightblue", border = "black")
+```
+
+### general behavior of sampling distribution of the sample variance
+
+```{r}
+mu <- 4    # True population mean
+sigma <- 8       # Population standard deviation
+sample_size <- 10         # Sample size
+num_samples <- 10000       # Number of samples
+# Function to calculate sample variance
+sample_variance <- function(sample) {
+  n <- length(sample)
+  mean_sample <- mean(sample)
+  sum_squared_deviations <- sum((sample - mean_sample)^2)
+  return(sum_squared_deviations / (n - 1))
+}
+# Simulate sampling distribution
+sample_variances <- replicate(num_samples, sample_variance(rnorm(sample_size, mu, sigma)))
+
+# Create a histogram of the sampling distribution of sample variance
+hist(sample_variances, breaks = "FD", freq = FALSE, main = "Sampling Distribution of Sample Variance",
+     xlab = "Sample Variance", ylab = "Frequency", col = "lightblue", border = "black")
+```
+
+## THE central limit theorem
+### Find the probability when individual value is used (Page 292 Ejection Seat Question)
+
+```{r}
+mu <- 171 # population mean
+sigma <- 46 # population standard deviation
+n <- 25 # sample size
+x_lower <- 140
+x_upper <- 211
+
+# Find the probability between two X values
+probability_range <- diff(pnorm(c(x_lower, x_upper), mean = mu, sd = sigma))
+probability_range
+```
+
+### Find the probability when sample mean is used (Page 292 Ejection Seat Question)
+
+```{r}
+# Find the probability between two mean values $x/bar$ (CLT)
+standard_error <- sigma / sqrt(n) # Calculate the standard error of the sample mean
+probability_range <- diff(pnorm(c(x_lower, x_upper), mean = mu, sd = standard_error))# Find the probability  
+probability_range
+```

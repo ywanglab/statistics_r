@@ -1,0 +1,823 @@
+---
+title: 'STAT 2670: Elementary Statistics with R'
+subtitle: "Fall 2023"
+author: "Jerome Goddard II"
+date: "2023-08-18"
+header-includes:
+- \usepackage{pdflscape}
+- \newcommand{\blandscape}{\begin{landscape}}
+- \newcommand{\elandscape}{\end{landscape}}
+
+output:
+  pdf_document:
+    fig_caption: yes
+    number_sections: yes
+    toc: true
+    toc_depth: 2
+  word_document: default
+  html_document:
+    fig_caption: yes
+    number_sections: yes
+urlcolor: blue
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(tidy.opts = list(width.cutoff = 75), tidy = TRUE)
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+\renewcommand{\thesection}{\arabic{section}}
+\setcounter{section}{1}
+<!-- Chapter 2 -->
+# Exploring Data with Tables and Graphs
+
+<!-- Section 2.1 -->
+## Frequency distributions for organizing and summarizing data
+A frequency distribution is a summary table or graph that shows the count or frequency of each unique value or category in a dataset, providing a clear picture of how data is distributed across different values or groups.
+
+### Frequency distributions
+The R command `table()` will generate a frequency distribution for any data set. Let's analyze example test scores from a fictional math class.  Notice the first row of the output is the data name, the second row is the actual data, and the third row contains the number of times each data value appears.
+
+```{r }
+# Load test data into a variable names scores
+scores = c(95, 90, 85, 85, 87, 74, 75, 64, 85, 84, 87, 15, 20, 75, 75, 90, 75)
+
+# Create a frequency table for the scores data
+table(scores)
+
+```
+
+### Relative frequency distributions
+Relative frequency distributions give similar information as a frequency distribution except they use percentages.  Let's examine the same `scores` data set defined above.  This code will give relative frequency rounded to the nearest whole number.  Notice in the output that the second row is the actual data and the third row contains the relative frequencies (rounded to two decimal places). 
+
+```{r }
+# Create a relative frequency table for the scores data
+rftable = table(scores)/length(scores)
+round(rftable, digits = 2)
+
+```
+
+<!-- Section 2.2 -->
+## Histograms
+A histogram is a bar chart that shows how often different values occur in a dataset.  
+
+### Histogram
+The command `hist()` will generate a histogram for any data.  Here is an example using our `scores` data from above.  Notice the x-axis represents the actual scores and the y-axis shows the frequency of the data points.  We will use the following command options: 1) `main` allows the title to be specified, 2) `xlab` sets the x-axis label, and 3) `ylab` sets the y-axis label.
+
+```{r }
+
+# Create a histogram and customize the axis labels and title
+# main is the Plot title, xlab is the x-axis label, & ylab is the y-axis label
+hist(scores, main = "Histogram for test scores", xlab = "Test Scores", ylab = "Frequency")
+
+```
+
+### Relative frequency histogram
+A relative histogram is a bar chart that displays the proportion or percentage of values in different bins within a dataset, providing a relative view of the data distribution.
+
+```{r }
+
+# Using freq = FALSE in hist() will create a relative frequency histogram
+hist(scores, freq = FALSE, main = "Relative frequency histogram", xlab = "Test Scores", ylab = "Relative Frequency")
+
+```
+
+### Common distributions
+Normal distributions are bell-shaped and symmetrical, uniform distributions have constant probabilities across a range, skewed right distributions are characterized by a long tail on the right side, and skewed left distributions have a long tail on the left side, each exhibiting distinct patterns of data distribution.  We will use the `hist()` command to explore each of these common distributions in the code below.
+
+```{r }
+# Sample normal distribution
+normalData = rnorm(100)
+ 
+# Sample uniform distribution using the command runif
+uniformData = runif(50000, min = 10, max = 11)
+
+# Sample of a distribution that is skewed right
+skewedRightData = rexp(1000, 0.4)
+
+# Sample of a distribution that is skewed left
+skewedLeftData = 1 - rexp(1000, 0.2)
+
+# Create histogram of normal data
+hist(normalData, main = "Normal distribution")
+
+# Create histogram of uniform data
+hist(uniformData, main = "Uniform distribution")
+
+# Create histogram of skewed right data
+hist(skewedRightData, main = "Distribution that is skewed right")
+
+# Create histogram of skewed left data
+hist(skewedLeftData, main = "Distribution that is skewed left")
+```
+
+### Normal quantile plots
+A normal quantile plot, also known as a Q-Q plot, is a graphical tool used to assess whether a dataset follows a normal distribution by comparing its quantiles (ordered values) to the quantiles of a theoretical normal distribution; if the points closely follow a straight line, the data is approximately normal.  Let's use the commands `qqnorm()` and `qqline()` to visually test which data set is most likely a sample from a normal distribution.
+
+```{r }
+# Test normalData from above
+qqnorm(normalData, main = "Q-Q Plot for normalData")
+qqline(normalData)
+```
+
+Notice that the `normalData` Q-Q plot shows the points close to the Q-Q line over the entire x-axis.<br />
+
+```{r }
+# Test uniformData from above
+qqnorm(uniformData, main = "Q-Q Plot for uniformData")
+qqline(uniformData)
+
+```
+
+For the `uniformData` dataset, the Q-Q plot shows good agreement between points and line in the center (around 0) but not on either left or right of the x-axis.   
+
+
+### Let's put it all together!
+
+In the built-in R dataset `ChickWeight`, weights are taken from several groups of chickens that were fed various diets. We are asked to use both histogram and Q-Q plots to determine if weights from group 1 and 4 are approximately normal, uniform, skewed left, or skewed right. 
+
+```{r }
+
+# Load data from the built-in dataset into a variable named ChickWeight
+data("ChickWeight")
+
+# Extract all weights from group 1
+group1Weights = ChickWeight[ChickWeight$Diet == 1, 1]
+
+# Extract all weights from group 4
+group4Weights = ChickWeight[ChickWeight$Diet == 4, 1]
+
+# Create a histogram of weights from group 1
+hist(group1Weights, main = "Group 1 weights", xlab = "Weight", ylab = "Frequency")
+
+# Create a histogram of weights from group 4
+hist(group4Weights, main = "Group 4 weights", xlab = "Weight", ylab = "Frequency")
+
+```
+Is the group 1 distribution approximately normal or would a different distribution be a better fit?  What about group 4?  Now, let's confirm our results using Q-Q plots.
+
+```{r }
+# Test group1Weights from above
+qqnorm(group1Weights, main = "Q-Q Plot for Group 1")
+qqline(group1Weights)
+
+# Test group4Weights from above
+qqnorm(group4Weights, main = "Q-Q Plot for Group 4")
+qqline(group4Weights)
+```
+
+Does the Q-Q plot confirm your guess from our visual inspection?  Which group is closer to a normal distribution?
+
+<!-- Section 2.3 -->
+## Graphs that enlighten and graphs that deceive
+R has many commands to illustrate data revealing hidden patterns that could be otherwise missed.  We will explore several of these commands using three different datasets:
+
+(A) **Chicken Weights:** Same data used in Section 2.2: two different groups of chickens fed with different feed.
+
+(B) **Airline Passengers:** A time series of the number of airline passengers in the US by month.
+
+(C) **US Personal Expenditure**  Average personal expenditures for adults in the US from 1960.
+
+This block of code will load this data.
+```{r }
+
+# Chicken weights:
+# Load data from the built-in dataset into a variable named ChickWeight
+data("ChickWeight")
+
+# Extract all weights from group 1
+group1Weights = ChickWeight[ChickWeight$Diet == 1, 1]
+
+# Extract all weights from group 4
+group4Weights = ChickWeight[ChickWeight$Diet == 4, 1]
+
+# Airline passengers:
+# Load from the built-in dataset.  This will create a variable named AirPassengers containing the time series.
+data("AirPassengers")
+
+# Personal expenditure:
+# Load from the built-in dataset.  This will create a variable named USPersonalExpenditure containing the data.
+data("USPersonalExpenditure")
+
+# We now extract only information from 1940
+expenditures1940 = USPersonalExpenditure[1:5]
+
+# We now extract only information from 1960
+expenditures1960 = USPersonalExpenditure[21:25]
+
+# Define categories for expenditure data
+cats = c("Food and Tobacco", "Household Operation", "Medical and Health", "Personal Care", "Private Education")
+
+# Define category names from cats above
+names(expenditures1940) = cats
+names(expenditures1960) = cats
+
+```
+
+### Dotplot
+A dotplot is a simple graphical representation of data in which each data point is shown as a dot above its corresponding value on a number line, helping to visualize the distribution and identify patterns in a dataset.
+With our data previously loaded from the previous run, let's create a dotplot of the data.  First for weights of both groups of chickens.
+
+```{r }
+# Dotplot for group 1 chickens
+dotchart(group1Weights, main = "Dotplot of Group 1 chicken weights", xlab = "Weight")
+
+# Dotplot for group 4 chickens
+dotchart(group4Weights, main = "Dotplot of Group 4 chicken weights", xlab = "Weight")
+
+```
+
+### Stem plot
+
+A stem plot, also known as a stem-and-leaf plot (or just stemplot), is a graphical representation of data where each data point is split into a "stem" (the leading digit or digits) and "leaves" (the trailing digits) to display the individual values in a dataset while preserving their relative order, making it easier to see the distribution and identify key data points.  Let's create a stemplot for our chicken weight data from above.
+
+```{r }
+# Stemplot of group 1 weights
+stem(group1Weights)
+
+# Stemplot of group 4 weights
+stem(group4Weights)
+
+```
+### Scatter Plot
+A scatter plot is a graphical representation that displays individual data points on a two-dimensional plane, with one variable on the x-axis and another on the y-axis, allowing you to visualize the relationship, pattern, or correlation between the two variables.  Let's create a scatter plot using the R command `plot()` for the US airline passengers by month using our data from above. 
+
+```{r }
+
+# Time series plot of AirPassengers
+plot(AirPassengers, main = "US airline passengers by month", xlab = "Time", ylab = "Total Passengers", type = "p")
+
+```
+Notice the overall increasing trend of the data.
+
+### Time-series Graph
+A time series is a sequence of data points collected or recorded at successive points in time, typically at evenly spaced intervals, and a time series graph visually represents this data over time, allowing us to observe trends, patterns, and changes in the data's behavior.  Let's use the R command `ts_plot()` to plot the total US airline passengers by month using our data from above.
+
+```{r }
+
+# Time series plot of AirPassengers
+ts.plot(AirPassengers, main = "US airline passengers by month", xlab = "Time", ylab = "Total Passengers")
+
+```
+
+The time series graph shows several interesting phenomena: 1) airline travel is seasonal with the same basic pattern repeated each year and 2) the overall trend is increasing.
+
+### Pie Chart 
+A pie chart is a circular graph that visually represents data as slices, with each slice showing the proportion or percentage of different categories in the whole dataset.  Let's use a pie chart to visualize the difference between average personal expenditure in the US in 1940 vs 1960 using `USPeronalExpenditure` defined above.
+
+
+```{r }
+
+# Pie chart of 1940 expenditures: labels allows us to name the categories as defined in cats above
+pie(expenditures1940, main = "US personal expenditures in 1940")
+
+# Pie chart of 1960 expenditures: labels allows us to name the categories as defined in cats above
+pie(expenditures1960, main = "US personal expenditures in 1960")
+
+```
+
+### Pareto Chart
+A Pareto chart is a specialized bar chart that displays data in descending order of frequency or importance, highlighting the most significant factors or categories, making it a visual tool for prioritization and decision-making.  Let's use the `expenditures1940` and `expenditures1960` data from above to illustrate the usefulness of a Pareto chart.
+
+
+**The first time you run this code, you will need to install the following package.  After this initial run, you can skip running this code:**
+
+```{r eval = FALSE}
+
+# Installs the package 'qcc'.  ONLY RUN THIS CODE ONCE!
+install.packages('qcc')
+
+```
+
+
+Now, let's create Pareto charts for the 1940 and 1960 expenditure data.  
+
+```{r }
+
+# Load 'qcc' package
+library(qcc)
+
+# Create the Pareto chart for 1940 data 
+pareto.chart(expenditures1940, xlab = "", ylab="Frequency", 
+             main = "US personal expenditures in 1940")
+
+# Create the Pareto chart for 1960 data 
+pareto.chart(expenditures1960, xlab = "", ylab="Frequency", 
+             main = "US personal expenditures in 1960")
+
+```
+
+### Let's put it all together!
+Using the built-in dataset for quarterly profits of the company Johnson & Johnson, load the data and view it using this code. 
+
+
+```{r }
+
+# Johnson & Johnson Profits:
+# Load data from the built-in dataset into a variable named JohnsonJohnson
+data("JohnsonJohnson")
+
+JohnsonJohnson
+
+```
+Now, select the best plot from those illustrated above and plot this data.  Hint: this looks like a time series to me...
+
+<!-- Section 2.4 -->
+## Scatter plots, correlation, and regression
+Correlation quantifies the strength and direction of the relationship between two variables, helping assess how they move together (or in opposite directions).  Any potential such relationship can be visualized using a scatter plot as introduced in Section 2.3.  
+
+### Linear correlation
+Linear correlation measures the strength and direction of the linear relationship between two variables, often represented by the correlation coefficient (r). The p-value associated with this coefficient assesses the statistical significance of the correlation, helping determine whether the observed relationship is likely due to chance or represents a real association.  Let' consider the built-in dataset `mtcars` which contains several aspects and performance of several 1973 - 1974 model cars.  This code loads the dataset and displays several of its entries.
+
+```{r }
+
+# mtcars:
+# Load data from the built-in dataset into a variable named mtcars
+data("mtcars")
+
+mtcars
+
+```
+
+Let's see if there is a linear relationship between miles per gallon (MPG) and the engine horse powerr (HP) using the R command `cor.test()` and storing the **linear correlation coefficient** (*r*) and **P-value** in the variable `mpgvshp`.  Notice that `mtcars$mpg` extracts just the column of MPG from the dataset and similarly for `mtcars$hp`.  The *r*-value can be found by calling `mpgvshp$estimate`, whereas, the P-value can be found by calling `mpgvshp$p.value`.  Finally, the critical *r*-value range is found using the `mpgvshp$conf.int` command.
+
+```{r }
+
+# Calculate the correlation between MPG and HP
+mpgvshp = cor.test(mtcars$mpg, mtcars$hp)
+
+mpgvshp
+
+# Let's view the r- and P-values and critical r-value range
+cat("r:", mpgvshp$estimate, "\n")
+cat("P-value:", mpgvshp$p.value, "\n")
+cat("Critical r-value range: (", mpgvshp$conf.int[1], ", ", mpgvshp$conf.int[2], ")")
+
+```
+A negative *r*-value indicates that if a linear relationship is present then the relationship is negative, i.e., increasing the MPG decreases the HP.  Having the absolute value of the *r*-value close to one indicates a linear relationship.  Notice that our *r*-value falls within the critical *r*-value range supporting the conclusion that a linear relationship is present.
+
+A P-value of less than **0.05** suggests that the sample results are *not* likely to occur merely by chance when there is no linear correlation.  Thus, a small P-value such as the one we received here supports a conclusion that there is a linear correlation between MPG and HP.
+
+Now, let's use a scatter plot to visualize the relationship.
+
+```{r }
+
+# Create a scatter plot to visualize the relationship
+plot(mtcars$mpg, mtcars$hp, xlab = "Miles per Gallon (MPG)", ylab = "Horsepower (HP)", 
+     main = "Plot of MPG vs. HP")
+
+```
+
+### Regression line
+Regression analyzes and models the relationship between variables, allowing us to predict one variable based on the values of others.  Let's return to our MPG vs HP example.  We will use the R command `lm()` to create a linear model (or linear regression) for this data. We then use our scatter plot created previously to plot the model prediction alongside the actual data points.  In this case, the R command `abline()` adds the regression line stored in `model` with the color being specified by the attribute `col`.
+
+```{r }
+
+# Create a linear regression model
+model = lm(hp ~ mpg, data = mtcars)
+
+# Create a scatter plot to visualize the relationship
+plot(mtcars$mpg, mtcars$hp, xlab = "Miles per Gallon (MPG)", ylab = "Horsepower (HP)", 
+      main = "Plot of MPG vs. HP")
+
+# Add the regression line to the plot
+abline(model, col = "blue")
+
+```
+
+### Let's put it all together!
+
+Using the same `mtcars` dataset, use what you have learned above to determine if there is a linear correlation between the weight of a car in the set versus the engine's horse power.  The following code will walk you through the process.  We begin with a visualization of the data using a scatter plot.
+
+
+
+```{r }
+
+# Create a scatter plot to visualize the relationship
+plot(mtcars$wt, mtcars$hp, xlab = "Weight (WT)", ylab = "Horsepower (HP)", main = "Plot of WT vs. HP")
+
+```
+
+
+Now, let's determine if there is a linear relationship between car weight `mtcars$wt` and engine horsepower `mtcars$hp`.
+
+```{r }
+
+# Calculate the correlation between MPG and HP
+wtvshp = cor.test(mtcars$wt, mtcars$hp)
+
+wtvshp
+
+# Let's view the r- and P-values and critical r-value range
+cat("r:", wtvshp$estimate, "\n")
+cat("P-value:", wtvshp$p.value, "\n")
+cat("Critical r-value range: (", wtvshp$conf.int[1], ", ", wtvshp$conf.int[2], ")")
+
+```
+
+What can we conclude about a possible linear relationship between car weight and horsepower?  Is this relationship supported?  Finally, let's visualize the regression line and data together.
+
+
+```{r }
+
+# Create a linear regression model
+model2 <- lm(hp ~ wt, data = mtcars)
+
+# Create a scatter plot to visualize the relationship
+plot(mtcars$wt, mtcars$hp, xlab = "Weight (WT)", ylab = "Horsepower (HP)", main = "Plot of WT vs. HP")
+
+# Add the regression line to the plot
+abline(model2, col = "red")
+
+```
+What about causation?  Does having a heavier car make it have higher or lower horsepower?
+
+
+\renewcommand{\thesection}{\arabic{section}}
+\setcounter{section}{2}
+# Describing, Exploring, and Comparing Data
+
+<!-- Section 3.1 -->
+## Measures of center
+Measures of center, such as the mean and median, provide a central value that summarizes a dataset, helping to understand its typical or central tendency, which is crucial for making data-driven decisions and drawing inferences.
+
+### Mean
+The mean, also known as the average, is a measure of center in a dataset that calculates the sum of all values divided by the total number of values, providing a representative value for the dataset.  We will employ the R command `mean()` to calculate the mean of several datasets.  First, let's use the test scores from Section 2.1.1 which should be stored in `scores`.
+
+```{r }
+
+# Calculate mean of scores and then store it in the variable meanScore
+meanScore = mean(scores)
+
+# print out the answer
+cat("Mean test score is: ", meanScore, "\n")
+
+```
+The mean is very sensitive to outliers.  Let's see what happens when we take the same `scores` list and add some really low grades to the list.
+
+```{r }
+
+# Previous test scores with a several much lower scores added
+scores2 = c(95, 90, 85, 85, 87, 74, 75, 64, 85, 84, 87, 15, 20, 75, 75, 90, 75, 2, 1, 5, 3)
+
+# Calculate mean of scores2 and then store it in the variable meanScore2
+meanScore2 = mean(scores2)
+
+# print out the answer
+cat("Mean test score is from original is: ", meanScore, ", while from scores2 is: ", meanScore2)
+
+```
+This sensitivity to outliers is the notion of <u>resistance</u>.  The mean is not a resistant measure of middle.
+
+### Median
+The median is a measure of center in a dataset that represents the middle value when all values are ordered, and it is resistant to extreme outliers, making it a robust statistic for summarizing data.  Let's return to the scores data and see the difference between mean and median of the two datasets `scores` and `scores2` using the R commands `median()`.
+
+```{r }
+
+# Calculate median of scores and then store it in the variable medianScore
+medianScore = median(scores)
+
+# Calculate median of scores2 and then store it in the variable medianScore2
+medianScore2 = median(scores2)
+
+# print out the answer
+cat("Mean test score from original is: ", meanScore, ", while from scores2 is: ", meanScore2, "\n\n")
+cat("Median test score from original is: ", medianScore, ", while from scores2 is: ", medianScore2, "\n")
+
+```
+### Mode
+The mode is a statistical measure that represents the value or values that occur most frequently in a dataset, making it a useful indicator of the most common observation(s); however, it is not necessarily resistant to outliers, meaning extreme values can heavily influence the mode.  There is no bulit-in R command for mode, so we will have to employ the package `DescTools`.
+
+**The first time you run this code, you will need to install the following package.  After this initial run, you can skip running this code:**
+
+```{r eval = FALSE}
+
+# Installs the package 'DescTools'.  ONLY RUN THIS CODE ONCE!
+install.packages('DescTools')
+
+```
+
+
+Once this package is installed, then we can load the library `DescTools` in order to use the R command `Mode()`.
+```{r }
+
+# Load the DescTools package
+library(DescTools)
+
+# Calculate the mode of both scores and scores2 using the Mode() method
+
+# Calculate Mode of scores and then store it in the variable modeScore
+modeScore = Mode(scores)
+
+# Calculate median of scores2 and then store it in the variable modeScore2
+modeScore2 = Mode(scores2)
+
+# print out the answer
+cat("Mode test score from original is: ", modeScore, ", while from scores2 is: ", modeScore2, "\n")
+```
+
+### Midrange
+The midrange is a measure of center in a dataset that represents the arithmetic mean of the maximum and minimum values, and it is not resistant to extreme outliers, making it sensitive to extreme values.  There is no built-in R command for midrange, thus we will use the following code to calculate the midrange of our `scores` and `scores2` data.
+
+```{r }
+
+# Calculate miderange of scores and then store it in the variable midrangeScore
+midrangeScore = (max(scores) - min(scores)) / 2
+
+# Calculate midrange of scores2 and then store it in the variable midrangeScore2
+midrangeScore2 = (max(scores2) - min(scores2)) / 2
+
+# print out the answer
+cat("Midrange test score from original is: ", midrangeScore, ", while from scores2 is: ", midrangeScore2, "\n")
+
+```
+
+### Let's put it all togeher!
+Consider the built-in dataset `mtcars` which contains several aspects and performance of several 1973 - 1974 model cars which we studied in Section 2.4.  We will calculate mean, meidan, mode, and midrange of the miles per gallon of tthe cars in the dataset.  using the R commands illustrated in the previous sections, as well as compute the so-called 5-number summary using the R command `summary()`.  First, let's plot a histogram of the data.
+
+```{r }
+
+# Extract the MPG data and store it into the variable carsMPG
+carsMPG = mtcars$mpg
+
+# Generate a histogram of the MPG data from mtcars
+hist(carsMPG, main = "MPG for cars", xlab = "MPG")
+
+
+# Calculate mean of MPG data and then store it in the variable meanMPG
+meanMPG = round(mean(carsMPG), digits = 2)
+
+# Calculate median of MPG data and then store it in the variable medianMPG
+medianMPG = median(carsMPG)
+
+# Calculate Mode of scores and then store it in the variable modeMPG
+modeMPG = Mode(carsMPG)
+
+# Calculate miderange of scores and then store it in the variable midrangeMPG
+midrangeMPG = (max(carsMPG) - min(carsMPG)) / 2
+
+# print out the answer
+cat("Mean \t Median \t \t \t  Mode \t \t \t Midrange \n")
+cat(meanMPG, " \t ", medianMPG, " \t ", modeMPG, " \t ", midrangeMPG, "\n\n")
+
+# Give the 5-number summary for MPG data
+cat("5-Number Summary \n")
+summary(carsMPG)
+```
+Notice that there are 7 elements in the mode.  That's because there are 7 most frequent elements, each which appear twice.  Which of these central measures best describes what you visually see as the "center" of data using the histogram?  What does it "mean" that the mean and median are close to each other?  Does the 5-number summary give us any additional information regarding the measure of "center" in the data?
+
+<!-- Section 3.2 -->
+## Measures of variation
+Measures of variation, such as the range, variance, and standard deviation, provide insights into the spread or dispersion of data points within a dataset, helping us understand how much individual values deviate from the central tendency measures like the mean or median. These measures are essential because they quantify the degree of variability in data, allowing us to assess data quality, make more accurate predictions, and draw meaningful conclusions in statistical analysis.
+
+### Visualizing variation
+Histograms can visually represent the variation in a dataset by displaying the distribution of values across different bins or intervals, highlighting the frequency and pattern of data points, and revealing the shape and spread of the distribution.  Let's compare histograms for our `scores2` and `carsMPG` datasets.
+
+```{r }
+
+# Generate a histogram of the MPG data from scores2
+hist(scores2, main = "Test scores", xlab = "Score")
+
+# Generate a histogram of the MPG data from mtcars
+hist(carsMPG, main = "MPG for cars", xlab = "MPG")
+
+
+```
+
+### Range
+The range is a measure of variation that represents the difference between the maximum and minimum values in a dataset, but it is not resistant to outliers, meaning extreme values can substantially affect the range.  Let's compare the ranges of our `carsMPG` and `scores2` datasets using the R command `range()`.
+
+```{r }
+
+# Calculate range of scores2 and then store it in the variable rangeScore2
+rangeScore2 = range(scores2)
+
+# Calculate range of carsMPG and then store it in the variable rangeMPG
+rangeMPG = range(carsMPG)
+
+# print out the answer
+cat("Range for test scores from scores2 is: (", rangeScore2[1], ", ",rangeScore2[2], ") \n")
+cat("Range for MPG from carsMPG is: (", rangeMPG[1], ", ", rangeMPG[2], ") \n")
+
+```
+
+### Standard deviation
+Standard deviation is a measure of the dispersion or spread of data points in a dataset, with a higher value indicating greater variability, and it's calculated differently for **populations** (*$\sigma$*) and **samples** (*s*), where the **sample** standard deviation (*s*) is often used for practical data analysis. However, standard deviation is not resistant to extreme outliers, making it sensitive to the influence of extreme values on its magnitude.  There is a built-in R command for **sample** standard deviation, but no such command for **population** standard deviation.  Recall our test scores dataset `scores2`.  Since this data represents the entire population (every student in the class), we will calculate **population** standard deviation for that dataset.  However, the MPG data in `carsMPG` is only a <u>sample</u> of all the cars on the market in 1973 - 1974.  Thus, we will employ the R command `sd()` to calculate **sample** standard deviation.
+
+```{r }
+
+# Calculate population SD of scores2 and then store it in the variable popSDScore2
+popSDScore2 = sqrt(var(scores2) * (length(scores2) - 1) / length(scores2))
+
+# Calculate sample SD of carsMPG and then store it in the variable samSDMPG
+samSDMPG = sd(carsMPG)
+
+# Print out the answer
+cat("Population standard deviation for test scores from scores2 is: ", popSDScore2, "\n\n")
+cat("Sample standard deviation for MPG from carsMPG is: ", samSDMPG, " \n")
+
+```
+
+### Variance
+Variance measures the average of the squared differences between each data point and the mean of a dataset, providing a measure of data dispersion, but it is not resistant to extreme outliers, making it sensitive to the influence of extreme values on its magnitude. Variance is calculated differently for **populations** (*$\sigma^2$*) and **samples** (*$s^2$*), with the **sample** variance (*$s^2$*) being used for practical data analysis to account for bias when working with a subset of a larger population.  Let's compare **population** variance for our `scores2` dataset and **sample** variance for our `carsMPG` dataset.  As with standard deviation, although there is a built-in R command for **sample** variance, there is not a built-in command for **population** variance, so we will have to improvise.
+
+```{r }
+
+# Calculate population variance of scores2 and then store it in the variable popVarScore2
+popVarScore2 = var(scores2) * (length(scores2) - 1) / length(scores2)
+
+# Calculate sample variance of carsMPG and then store it in the variable samSDMPG
+samVarMPG = var(carsMPG)
+
+# Print out the answer
+cat("Population variance for test scores from scores2 is: ", popVarScore2, "\n\n")
+cat("Sample variance for MPG from carsMPG is: ", samVarMPG, " \n")
+
+```
+
+### Let's put it all togeher!
+Consider the built-in dataset `mtcars` which contains several aspects and performance of several 1973 - 1974 model cars which we studied in Section 2.4.  We will first calculate mean and median of the horse power (HP) of the cars in the dataset.  To calculate measures of variation, we note that since this is just a **sample** of all possible cars on the market during 1973 - 1974, we will employ **sample** variance and standard deviation using the R commands illustrated in the previous sections, along with a histogram to visually explore the data.
+
+```{r }
+
+# Extract the HP data and store it into the variable carsHP
+carsHP = mtcars$hp
+
+# Generate a histogram of the HP data from mtcars
+hist(carsHP, main = "Horse power (HP) for cars", xlab = "HP")
+
+# Calculate mean of HP data and then store it in the variable meanHP
+meanHP = round(mean(carsHP), digits = 2)
+
+# Calculate median of HP data and then store it in the variable medianHP
+medianHP = median(carsHP)
+
+# Calculate variance of HP data and then store it in the variable varHP
+varHP = var(carsHP)
+
+# Calculate standard deviation of HP and then store it in the variable midrangeHP
+sdHP = sd(carsHP)
+
+# print out the answer
+cat("Mean \t Median \t  variance \t Standard Deviation \n")
+cat(meanHP, " \t ", medianHP, " \t ", varHP, " \t ", sdHP, "\n\n")
+
+```
+
+Now, compare the MPG and HP data from the `mtcars` dataset.  For MPG, we calculated a standard deviation around *36* and for HP of around *69*.  Does this mean that the MPG data is less spread out that the HP data?  Is your answer to this question consistent with the histograms we produced?  Can we compare standard deviations from two totally different datasets in a meaningful way?
+
+<!-- Section 3.3 -->
+## Measures of relative standing and boxplots
+Measures of relative standing, such as percentiles and quartiles, provide information about where specific data points fall within a dataset, offering insights into the relative position of values. Boxplots are graphical representations that display the distribution of data, highlighting the median, quartiles, and potential outliers, making them valuable tools for comparing different datasets by visually assessing their central tendency, spread, and skewness.
+
+### z-Scores
+Z-scores, also known as standard scores, standardize individual data points by expressing how many standard deviations they are from the mean, enabling meaningful comparisons and assessments of data points' relative positions within a distribution, regardless of the original scale of the data. Z-scores are valuable for identifying outliers, understanding data distributions, and making statistical inferences, as they provide a common framework for measuring deviations from the mean across different datasets.  Let's explore z-scores using the built-in dataset `mtcars` which contains several aspects and performance of several 1973 - 1974 model cars which we studied in the last section.  Particularly, let's employ the built-in R command `scale()` to convert our dataset to z-scores which can be plotted in a histogram.  Once the two datasets (MPG and HP) are normalized, we will be able to get a better picture of their spread away from the respective means.
+
+```{r }
+
+# Transform the MPG data to z-scores and store the new data in zcarsHP
+zcarsHP = scale(carsHP)
+
+# Transform the MPG data to z-scores and store the new data in zcarsHP
+zcarsMPG = scale(carsMPG)
+
+# Generate a histogram of the transformed HP data from mtcars
+hist(zcarsHP, main = "Normalized horse power (HP) for cars", xlab = "Z-score")
+
+# Generate a histogram of the transformed MPG data from mtcars
+hist(zcarsMPG, main = "Normalized miles per gallon (MPG) for cars", xlab = "Z-score")
+
+```
+
+Visually, the normalized MPG data is more concentrated around the transformed mean of 0, while the HP data is much more spread out.
+
+Any data point that has a z-score of less than -2 or higher than 2 is considered to be significantly lower or higher, respectively.  Let's view our transformed data sets MPG and HP to identify data points that are significantly higher.
+
+```{r }
+
+# Find MPG data points with z-scores higher than 2
+outliersMPG = carsMPG[zcarsMPG > 2]
+
+# Find HP data points with z-scores higher than 2
+outliersHP = carsHP[zcarsHP > 2]
+
+# Print the data points with z-scores higher than 2
+cat("MPG Data with z-scores higher than 2:", outliersMPG, "\n")
+cat("HP Data with z-scores higher than 2:", outliersHP, "\n")
+```
+
+### Percentiles
+Percentiles are statistical measures that divide a dataset into 100 equal parts, helping identify values below which a certain percentage of the data falls and enabling comparisons of data points in a ranked order.  Let's use the built-in R command `quantile()`with the MPG data from the previous example to compute the 10th, 50th, and 90th percentiles for that dataset.
+
+
+```{r }
+
+# Compute 10th, 50th, and 90th percentiles for the MPG dataset
+percentiles = c(0.1, 0.5, 0.9)
+percentilesMPG = quantile(carsMPG, probs = percentiles)
+
+# Print the data points with z-scores higher than 2
+percentilesMPG
+```
+
+Notice that both of our significantly larger MPG values (i.e., 32.4 and 33.9) both fall above the 90th percentile of the dataset.
+
+
+### Quartiles & the 5-number summary
+Quartiles are statistical measures that divide a dataset into four equal parts, with three quartiles (Q1, Q2, Q3) providing insights into the data's spread and central tendencies; they are resistant to outliers, making them robust tools for summarizing data.  The 5-number summary is a set of five statistics (minimum, Q1, median, Q3, maximum) that provide a concise description of a dataset's central tendencies and spread.  Keeping with our MPG dataset, we will employ the R command `summary()` to give the 5-number summary (which will include Q1, Q2 (also known as the median), & Q3).
+
+```{r }
+
+# Compute 5-number summary for MPG data and store it in fiveMPG
+fiveMPG = summary(carsMPG)
+
+# Display the 5-number summary
+fiveMPG
+```
+
+### Boxplot
+A boxplot, also known as a box-and-whisker plot, is a graphical representation of the five-number summary, displaying the median, quartiles, and potential outliers in a dataset, making it a valuable tool for visualizing the distribution and spread of data.  We will employ the R command `boxplot()` to compare the MPG and HP datasets from previous examples.  This R command actually creates a modified boxplot by default.  Recall the only difference between a regular boxplot and a modified box plot is that data which falls outside of the interquartile range is denoted as an outlier and plotted as an individual point on the graph.
+
+```{r }
+
+# Generate boxplot for MPG
+boxplot(carsMPG, main = "Boxplot of MPG", horizontal = TRUE, xlab = "MPG")
+
+# Generate boxplot for HP
+boxplot(carsHP, main = "Boxplot of HP", horizontal = TRUE, xlab = "HP")
+
+```
+
+Let's also compare the boxplots of each of the four datasets for which we explored normal, skewed right, skewed left, and uniform distributions.
+
+```{r }
+# Create histogram/boxplot of normal data
+par(mfrow = c(2,1))
+hist(normalData, main = "Normal distribution")
+boxplot(normalData, main = "Normal Distribution", horizontal = TRUE)
+
+# Create histogram/boxplot of uniform data
+par(mfrow = c(2,1))
+hist(uniformData, main = "Uniform distribution")
+boxplot(uniformData, main = "Uniform Distribution", horizontal = TRUE)
+
+# Create histogram/boxplot of skewed right data
+par(mfrow = c(2,1))
+hist(skewedRightData, main = "Distribution that is skewed right")
+boxplot(skewedRightData, main = "Distribution that is skewed right", horizontal = TRUE)
+
+# Create histogram/boxplot of skewed left data
+par(mfrow = c(2,1))
+hist(skewedLeftData, main = "Distribution that is skewed left")
+boxplot(skewedLeftData, main = "Distribution that is skewed left", horizontal = TRUE)
+
+```
+Notice there are a lot of outliers shown on the skewed left & right data.  These points are what is causing the long tails on both histograms.
+
+
+### Let's put it all together!
+We will use everything we have learned so far in this section to explore the differences between our two test score datasets, i.e., `scores` and `scores2`.  These are fictional collections of test scores with `scores2` containing several more extremely low test scores than `scores`.  Our first task is to transform the datasets to z-scores and visualize the scaled datasets with a histrogram.
+
+```{r }
+
+# Transform the scores data to z-scores and store the new data in zscores
+zscores = scale(scores)
+
+# Transform the scorres2 data to z-scores and store the new data in zscores2
+zscores2 = scale(scores2)
+
+# Generate a histogram of the transformed from scores
+hist(zscores, main = "Normalized test scores #1", xlab = "Z-score")
+
+# Generate a histogram of the transformed from scores2
+hist(zscores2, main = "Normalized test scores #2", xlab = "Z-score")
+
+```
+
+Out of the two fictional classes, are there any test scores that are significantly high or low?  What can we conclude about those scores?  Now, let's compute the 5-number summary for each group of test scores.
+
+```{r }
+
+
+# Compute 5-number summary for scores
+cat("scores: \n \n")
+summary(scores)
+
+# Compute 5-number summary for scores2
+cat("\nscores2: \n \n")
+summary(scores2)
+
+```
+
+Finally, let's create boxplots for both datasets and show them on the same plot window for comparison.  
+
+```{r }
+
+# Generate boxplot for both
+par(mfrow = c(2,1))
+boxplot(scores, main = "Boxplot of test scores #1", horizontal = TRUE, xlab = "Scores")
+boxplot(scores2, main = "Boxplot of test scores #2", horizontal = TRUE, xlab = "Scores")
+
+
+```
+What conclusions can we draw regarding the two datasets?  If these were two real classes, how would the boxplots help the teacher understand grade performance for the entire class?

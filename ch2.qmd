@@ -1,0 +1,434 @@
+---
+# title: 'STAT 2670: Elementary Statistics with R'
+# subtitle: "Fall 2023"
+author: "Jerome Goddard II"
+# date: "2023-08-18"
+# header-includes:
+# - \usepackage{pdflscape}
+# - \newcommand{\blandscape}{\begin{landscape}}
+# - \newcommand{\elandscape}{\end{landscape}}
+# 
+# output:
+#   pdf_document:
+#     fig_caption: yes
+#     number_sections: yes
+#     toc: true
+#     toc_depth: 2
+#   word_document: default
+#   html_document:
+#     fig_caption: yes
+#     number_sections: yes
+# urlcolor: blue
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(tidy.opts = list(width.cutoff = 75), tidy = TRUE)
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+\renewcommand{\thesection}{\arabic{section}}
+\setcounter{section}{1}
+<!-- Chapter 2 -->
+# Exploring Data with Tables and Graphs
+
+<!-- Section 2.1 -->
+## Frequency distributions for organizing and summarizing data
+A frequency distribution is a summary table or graph that shows the count or frequency of each unique value or category in a dataset, providing a clear picture of how data is distributed across different values or groups.
+
+### Frequency distributions
+The R command `table()` will generate a frequency distribution for any data set. Let's analyze example test scores from a fictional math class.  Notice the first row of the output is the data name, the second row is the actual data, and the third row contains the number of times each data value appears.
+
+```{r }
+# Load test data into a variable names scores
+scores = c(95, 90, 85, 85, 87, 74, 75, 64, 85, 84, 87, 15, 20, 75, 75, 90, 75)
+
+# Create a frequency table for the scores data
+table(scores)
+
+```
+
+### Relative frequency distributions
+Relative frequency distributions give similar information as a frequency distribution except they use percentages.  Let's examine the same `scores` data set defined above.  This code will give relative frequency rounded to the nearest whole number.  Notice in the output that the second row is the actual data and the third row contains the relative frequencies (rounded to two decimal places). 
+
+```{r }
+# Create a relative frequency table for the scores data
+rftable <- table(scores)/length(scores)
+round(rftable, digits = 2)
+
+```
+
+<!-- Section 2.2 -->
+## Histograms
+A histogram is a bar chart that shows how often different values occur in a dataset.  
+
+### Histogram
+The command `hist()` will generate a histogram for any data.  Here is an example using our `scores` data from above.  Notice the x-axis represents the actual scores and the y-axis shows the frequency of the data points.  We will use the following command options: 1) `main` allows the title to be specified, 2) `xlab` sets the x-axis label, and 3) `ylab` sets the y-axis label.
+
+```{r }
+
+# Create a histogram and customize the axis labels and title
+# main is the Plot title, xlab is the x-axis label, & ylab is the y-axis label
+hist(scores, main = "Histogram for test scores", xlab = "Test Scores", ylab = "Frequency")
+
+```
+
+### Relative frequency histogram
+A relative histogram is a bar chart that displays the proportion or percentage of values in different bins within a dataset, providing a relative view of the data distribution.
+
+```{r }
+
+# Using freq = FALSE in hist() will create a relative frequency histogram
+hist(scores, freq = FALSE, main = "Relative frequency histogram", xlab = "Test Scores", ylab = "Relative Frequency")
+
+```
+
+### Common distributions
+Normal distributions are bell-shaped and symmetrical, uniform distributions have constant probabilities across a range, skewed right distributions are characterized by a long tail on the right side, and skewed left distributions have a long tail on the left side, each exhibiting distinct patterns of data distribution.  We will use the `hist()` command to explore each of these common distributions in the code below.
+
+```{r }
+# Sample normal distribution
+normalData <- rnorm(100)
+ 
+# Sample uniform distribution using the command runif
+uniformData <- runif(50000, min = 10, max = 11)
+
+# Sample of a distribution that is skewed right
+skewedRightData <- rexp(1000, 0.4)
+
+# Sample of a distribution that is skewed left
+skewedLeftData <- 1 - rexp(1000, 0.2)
+
+# Create histogram of normal data
+hist(normalData, main = "Normal distribution")
+
+# Create histogram of uniform data
+hist(uniformData, main = "Uniform distribution")
+
+# Create histogram of skewed right data
+hist(skewedRightData, main = "Distribution that is skewed right")
+
+# Create histogram of skewed left data
+hist(skewedLeftData, main = "Distribution that is skewed left")
+```
+
+### Normal quantile plots
+A normal quantile plot, also known as a Q-Q plot, is a graphical tool used to assess whether a dataset follows a normal distribution by comparing its quantiles (ordered values) to the quantiles of a theoretical normal distribution; if the points closely follow a straight line, the data is approximately normal.  Let's use the commands `qqnorm()` and `qqline()` to visually test which data set is most likely a sample from a normal distribution.
+
+```{r }
+# Test normalData from above
+qqnorm(normalData, main = "Q-Q Plot for normalData")
+qqline(normalData)
+```
+
+Notice that the `normalData` Q-Q plot shows the points close to the Q-Q line over the entire x-axis.<br />
+
+```{r }
+# Test uniformData from above
+qqnorm(uniformData, main = "Q-Q Plot for uniformData")
+qqline(uniformData)
+
+```
+
+For the `uniformData` dataset, the Q-Q plot shows good agreement between points and line in the center (around 0) but not on either left or right of the x-axis.   
+
+
+### Let's put it all together!
+
+In the built-in R dataset `ChickWeight`, weights are taken from several groups of chickens that were fed various diets. We are asked to use both histogram and Q-Q plots to determine if weights from group 1 and 4 are approximately normal, uniform, skewed left, or skewed right. 
+
+```{r }
+
+# Load data from the built-in dataset into a variable named ChickWeight
+data("ChickWeight")
+
+# Extract all weights from group 1
+group1Weights <- ChickWeight[ChickWeight$Diet == 1, 1]
+
+# Extract all weights from group 4
+group4Weights <- ChickWeight[ChickWeight$Diet == 4, 1]
+
+# Create a histogram of weights from group 1
+hist(group1Weights, main = "Group 1 weights", xlab = "Weight", ylab = "Frequency")
+
+# Create a histogram of weights from group 4
+hist(group4Weights, main = "Group 4 weights", xlab = "Weight", ylab = "Frequency")
+
+```
+Is the group 1 distribution approximately normal or would a different distribution be a better fit?  What about group 4?  Now, let's confirm our results using Q-Q plots.
+
+```{r }
+# Test group1Weights from above
+qqnorm(group1Weights, main = "Q-Q Plot for Group 1")
+qqline(group1Weights)
+
+# Test group4Weights from above
+qqnorm(group4Weights, main = "Q-Q Plot for Group 4")
+qqline(group4Weights)
+```
+
+Does the Q-Q plot confirm your guess from our visual inspection?  Which group is closer to a normal distribution?
+
+<!-- Section 2.3 -->
+## Graphs that enlighten and graphs that deceive
+R has many commands to illustrate data revealing hidden patterns that could be otherwise missed.  We will explore several of these commands using three different datasets:
+
+(A) **Chicken Weights:** Same data used in Section 2.2: two different groups of chickens fed with different feed.
+
+(B) **Airline Passengers:** A time series of the number of airline passengers in the US by month.
+
+(C) **US Personal Expenditure**  Average personal expenditures for adults in the US from 1960.
+
+This block of code will load this data.
+```{r }
+
+# Chicken weights:
+# Load data from the built-in dataset into a variable named ChickWeight
+data("ChickWeight")
+
+# Extract all weights from group 1
+group1Weights <- ChickWeight[ChickWeight$Diet == 1, 1]
+
+# Extract all weights from group 4
+group4Weights <- ChickWeight[ChickWeight$Diet == 4, 1]
+
+# Airline passengers:
+# Load from the built-in dataset.  This will create a variable named AirPassengers containing the time series.
+data("AirPassengers")
+
+# Personal expenditure:
+# Load from the built-in dataset.  This will create a variable named USPersonalExpenditure containing the data.
+data("USPersonalExpenditure")
+
+# We now extract only information from 1940
+expenditures1940 <- USPersonalExpenditure[1:5]
+
+# We now extract only information from 1960
+expenditures1960 <- USPersonalExpenditure[21:25]
+
+# Define categories for expenditure data
+cats <- c("Food and Tobacco", "Household Operation", "Medical and Health", "Personal Care", "Private Education")
+
+# Define category names from cats above
+names(expenditures1940) <- cats
+names(expenditures1960) <- cats
+
+```
+
+### Dotplot
+A dotplot is a simple graphical representation of data in which each data point is shown as a dot above its corresponding value on a number line, helping to visualize the distribution and identify patterns in a dataset.
+With our data previously loaded from the previous run, let's create a dotplot of the data.  First for weights of both groups of chickens.
+
+```{r }
+# Dotplot for group 1 chickens
+dotchart(group1Weights, main = "Dotplot of Group 1 chicken weights", xlab = "Weight")
+
+# Dotplot for group 4 chickens
+dotchart(group4Weights, main = "Dotplot of Group 4 chicken weights", xlab = "Weight")
+
+```
+
+### Stem plot
+
+A stem plot, also known as a stem-and-leaf plot (or just stemplot), is a graphical representation of data where each data point is split into a "stem" (the leading digit or digits) and "leaves" (the trailing digits) to display the individual values in a dataset while preserving their relative order, making it easier to see the distribution and identify key data points.  Let's create a stemplot for our chicken weight data from above.
+
+```{r }
+# Stemplot of group 1 weights
+stem(group1Weights)
+
+# Stemplot of group 4 weights
+stem(group4Weights)
+
+```
+### Scatter Plot
+A scatter plot is a graphical representation that displays individual data points on a two-dimensional plane, with one variable on the x-axis and another on the y-axis, allowing you to visualize the relationship, pattern, or correlation between the two variables.  Let's create a scatter plot using the R command `plot()` for the US airline passengers by month using our data from above. 
+
+```{r }
+
+# Time series plot of AirPassengers
+plot(AirPassengers, main = "US airline passengers by month", xlab = "Time", ylab = "Total Passengers", type = "p")
+
+```
+Notice the overall increasing trend of the data.
+
+### Time-series Graph
+A time series is a sequence of data points collected or recorded at successive points in time, typically at evenly spaced intervals, and a time series graph visually represents this data over time, allowing us to observe trends, patterns, and changes in the data's behavior.  Let's use the R command `ts_plot()` to plot the total US airline passengers by month using our data from above.
+
+```{r }
+
+# Time series plot of AirPassengers
+ts.plot(AirPassengers, main = "US airline passengers by month", xlab = "Time", ylab = "Total Passengers")
+
+```
+
+The time series graph shows several interesting phenomena: 1) airline travel is seasonal with the same basic pattern repeated each year and 2) the overall trend is increasing.
+
+### Pie Chart 
+A pie chart is a circular graph that visually represents data as slices, with each slice showing the proportion or percentage of different categories in the whole dataset.  Let's use a pie chart to visualize the difference between average personal expenditure in the US in 1940 vs 1960 using `USPeronalExpenditure` defined above.
+
+
+```{r }
+
+# Pie chart of 1940 expenditures: labels allows us to name the categories as defined in cats above
+pie(expenditures1940, main = "US personal expenditures in 1940")
+
+# Pie chart of 1960 expenditures: labels allows us to name the categories as defined in cats above
+pie(expenditures1960, main = "US personal expenditures in 1960")
+
+```
+
+### Pareto Chart
+A Pareto chart is a specialized bar chart that displays data in descending order of frequency or importance, highlighting the most significant factors or categories, making it a visual tool for prioritization and decision-making.  Let's use the `expenditures1940` and `expenditures1960` data from above to illustrate the usefulness of a Pareto chart.
+
+
+**The first time you run this code, you will need to install the following package.  After this initial run, you can skip running this code:**
+
+```{r eval = FALSE}
+
+# Installs the package 'qcc'.  ONLY RUN THIS CODE ONCE!
+install.packages('qcc')
+
+```
+
+
+Now, let's create Pareto charts for the 1940 and 1960 expenditure data.  
+
+```{r }
+
+# Load 'qcc' package
+library(qcc)
+
+# Create the Pareto chart for 1940 data 
+pareto.chart(expenditures1940, xlab = "", ylab="Frequency", 
+             main = "US personal expenditures in 1940")
+
+# Create the Pareto chart for 1960 data 
+pareto.chart(expenditures1960, xlab = "", ylab="Frequency", 
+             main = "US personal expenditures in 1960")
+
+```
+
+### Let's put it all together!
+Using the built-in dataset for quarterly profits of the company Johnson & Johnson, load the data and view it using this code. 
+
+
+```{r }
+
+# Johnson & Johnson Profits:
+# Load data from the built-in dataset into a variable named JohnsonJohnson
+data("JohnsonJohnson")
+
+JohnsonJohnson
+
+```
+Now, select the best plot from those illustrated above and plot this data.  Hint: this looks like a time series to me...
+
+<!-- Section 2.4 -->
+## Scatter plots, correlation, and regression
+Correlation quantifies the strength and direction of the relationship between two variables, helping assess how they move together (or in opposite directions).  Any potential such relationship can be visualized using a scatter plot as introduced in Section 2.3.  
+
+### Linear correlation
+Linear correlation measures the strength and direction of the linear relationship between two variables, often represented by the correlation coefficient (r). The p-value associated with this coefficient assesses the statistical significance of the correlation, helping determine whether the observed relationship is likely due to chance or represents a real association.  Let' consider the built-in dataset `mtcars` which contains several aspects and performance of several 1973 - 1974 model cars.  This code loads the dataset and displays several of its entries.
+
+```{r }
+
+# mtcars:
+# Load data from the built-in dataset into a variable named mtcars
+data("mtcars")
+
+mtcars
+
+```
+
+Let's see if there is a linear relationship between miles per gallon (MPG) and the engine horse powerr (HP) using the R command `cor.test()` and storing the **linear correlation coefficient** (*r*) and **P-value** in the variable `mpgvshp`.  Notice that `mtcars$mpg` extracts just the column of MPG from the dataset and similarly for `mtcars$hp`.  The *r*-value can be found by calling `mpgvshp$estimate`, whereas, the P-value can be found by calling `mpgvshp$p.value`.  Finally, the critical *r*-value range is found using the `mpgvshp$conf.int` command.
+
+```{r }
+
+# Calculate the correlation between MPG and HP
+mpgvshp <- cor.test(mtcars$mpg, mtcars$hp)
+
+mpgvshp
+
+# Let's view the r- and P-values and critical r-value range
+cat("r:", mpgvshp$estimate, "\n")
+cat("P-value:", mpgvshp$p.value, "\n")
+cat("Critical r-value range: (", mpgvshp$conf.int[1], ", ", mpgvshp$conf.int[2], ")")
+
+```
+A negative *r*-value indicates that if a linear relationship is present then the relationship is negative, i.e., increasing the MPG decreases the HP.  Having the absolute value of the *r*-value close to one indicates a linear relationship.  Notice that our *r*-value falls within the critical *r*-value range supporting the conclusion that a linear relationship is present.
+
+A P-value of less than **0.05** suggests that the sample results are *not* likely to occur merely by chance when there is no linear correlation.  Thus, a small P-value such as the one we received here supports a conclusion that there is a linear correlation between MPG and HP.
+
+Now, let's use a scatter plot to visualize the relationship.
+
+```{r }
+
+# Create a scatter plot to visualize the relationship
+plot(mtcars$mpg, mtcars$hp, xlab = "Miles per Gallon (MPG)", ylab = "Horsepower (HP)", 
+     main = "Plot of MPG vs. HP")
+
+```
+
+### Regression line
+Regression analyzes and models the relationship between variables, allowing us to predict one variable based on the values of others.  Let's return to our MPG vs HP example.  We will use the R command `lm()` to create a linear model (or linear regression) for this data. We then use our scatter plot created previously to plot the model prediction alongside the actual data points.  In this case, the R command `abline()` adds the regression line stored in `model` with the color being specified by the attribute `col`.
+
+```{r }
+
+# Create a linear regression model
+model <- lm(hp ~ mpg, data = mtcars)
+
+# Create a scatter plot to visualize the relationship
+plot(mtcars$mpg, mtcars$hp, xlab = "Miles per Gallon (MPG)", ylab = "Horsepower (HP)", 
+      main = "Plot of MPG vs. HP")
+
+# Add the regression line to the plot
+abline(model, col = "blue")
+
+```
+
+### Let's put it all together!
+
+Using the same `mtcars` dataset, use what you have learned above to determine if there is a linear correlation between the weight of a car in the set versus the engine's horse power.  The following code will walk you through the process.  We begin with a visualization of the data using a scatter plot.
+
+
+
+```{r }
+
+# Create a scatter plot to visualize the relationship
+plot(mtcars$wt, mtcars$hp, xlab = "Weight (WT)", ylab = "Horsepower (HP)", main = "Plot of WT vs. HP")
+
+```
+
+
+Now, let's determine if there is a linear relationship between car weight `mtcars$wt` and engine horsepower `mtcars$hp`.
+
+```{r }
+
+# Calculate the correlation between MPG and HP
+wtvshp <- cor.test(mtcars$wt, mtcars$hp)
+
+wtvshp
+
+# Let's view the r- and P-values and critical r-value range
+cat("r:", wtvshp$estimate, "\n")
+cat("P-value:", wtvshp$p.value, "\n")
+cat("Critical r-value range: (", wtvshp$conf.int[1], ", ", wtvshp$conf.int[2], ")")
+
+```
+
+What can we conclude about a possible linear relationship between car weight and horsepower?  Is this relationship supported?  Finally, let's visualize the regression line and data together.
+
+
+```{r }
+
+# Create a linear regression model
+model2 <- lm(hp ~ wt, data = mtcars)
+
+# Create a scatter plot to visualize the relationship
+plot(mtcars$wt, mtcars$hp, xlab = "Weight (WT)", ylab = "Horsepower (HP)", main = "Plot of WT vs. HP")
+
+# Add the regression line to the plot
+abline(model2, col = "red")
+
+```
+What about causation?  Does having a heavier car make it have higher or lower horsepower?
+
