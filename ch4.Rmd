@@ -37,19 +37,38 @@ author: "Yi Wang"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Probability
+| `r`-function | Description |
+|:--------------------|--------------------------------------------------------|
+|`length` | Compute the length of a vector 
+|`mean`  | compute the mean|
+|`sum` | Compute the sum 
+| `cat` | concatenate strings and variable values for formatted print
+|`sample(x, size, replace=FALSE), prob=NULL)` | Randomly sample `x` uniformly with the number of samples = `size`. If `prob` is provided, length(prob)=length(x), and `prob` should sum to 1. 
+`table` | tabulate the frequency counts of distinct values. 
+`barplot(x) `| plot barplot of the 1-D data x: arguments: `main`: main title; `xlab`: x-label; `ylab`: y-label; `col`: color
+`factorial(n)` | n!
+`permutations(n,m)`, `combinations(n,m)` | list all permutations (combinations) of n objects taken m at a time (n>m). Accepts an optional argument `v` for indicating the set of permuted `n` elements. 
+`nrow` | find the number of rows in a matrix, dataframe or other rectangular data structure
 
-## Basic concepts of probability
+
+
+
+
+
+
+# PROBABILITY
+
+## Basic Concepts of Probability
 
 In this code:
 
--   We calculate the probability of drawing a Heart from a sample space (a deck of cards).
+-   We calculate the probability of drawing a Heart from a deck of four suits (*sample space*).
 
 -   We simulate random events such as a coin toss and rolling a six-sided die.
 
 -   We simulate multiple die rolls and visualize the resulting probability distribution.
 
--   We calculate the probability of a specific outcome (rolling a 3).
+-   We calculate the probability of a specific outcome (such as, rolling a 3).
 
 ```{r}
 # Set a seed for reproducibility
@@ -126,7 +145,7 @@ library(gtools)
 permutations(3, 2)
 ```
 
-Notice that the order matters here: 3,1 is different than 1,3. Also, note that (1,1), (2,2), and (3,3) do not appear because once we pick a number, it can't appear again.
+Notice that the order matters here: `3,1` is different than `1,3`. Also, note that `(1,1)`, `(2,2)`, and `(3,3)` do not appear because once we pick a number, it can't appear again.
 
 To get the actual number of permutations, one can use the R-function `nrow()` to find the total number of rows in the output of `permutations`:
 
@@ -141,17 +160,18 @@ Alternatively, we can add a vector `v` to indicate the objects that a permutatio
 all_phone_numbers <- permutations(10, 7, v = 0:9) # Use digits 0, 1, ..., 9 
 n <- nrow(all_phone_numbers)
 cat("total number of phone numbers n = ", n, "\n")
-print("Randomly sample 5 phone numbers:")
+
 # Randomly sample 5 phone numbers
 index <- sample(n, 5)
-all_phone_numbers[index,]
+all_phone_numbers[index,] 
 ```
 
+The code `all_phone_numbers[index,]` extract the matrix `all_phone_numbers` with rows indexed by `index`, and all columns because no specific column index is given after `,`.  
 Instead of using the numbers 1 through 10, the default, it uses what we provided through `v`: the digits 0 through 9.
 
 ### Find all combinations and the number of all combinations
 
-How about if the order doesn't matter? For example, in Blackjack if you get an Ace and a face card in the first draw, it is called a *Natural 21* and you win automatically. If we wanted to compute the probability of this happening, we would enumerate the *combinations*, not the permutations, since the order does not matter.
+How about if the order doesn't matter? For example, in Blackjack if you get an Ace and a face card in the first draw, it is called a *Natural 21* and you win automatically. If we wanted to compute the probability of this happening, we would enumerate the *combinations*, not the permutations, since the order of drawn cards does not matter.
 
 ```{r}
 combinations(3,2)

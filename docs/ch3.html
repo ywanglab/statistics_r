@@ -8,7 +8,7 @@
 
 <meta name="author" content="Jerome Goddard II">
 
-<title>Elementary Statistics with R: STAT 2670 - 3&nbsp; Describing, Exploring, and Comparing Data</title>
+<title>Elementary Statistics with R Programming - 3&nbsp; Describing, Exploring, and Comparing Data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -146,19 +146,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Elementary Statistics with R: STAT 2670</a> 
+      <a href="./">Elementary Statistics with R Programming</a> 
         <div class="sidebar-tools-main">
     <div class="dropdown">
       <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./Elementary-Statistics-with-R--STAT-2670.pdf">
+            <a class="dropdown-item sidebar-tools-main-item" href="./Elementary-Statistics-with-R-Programming.pdf">
               <i class="bi bi-bi-file-pdf pe-1"></i>
             Download PDF
             </a>
           </li>
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./Elementary-Statistics-with-R--STAT-2670.docx">
+            <a class="dropdown-item sidebar-tools-main-item" href="./Elementary-Statistics-with-R-Programming.docx">
               <i class="bi bi-bi-file-word pe-1"></i>
             Download Docx
             </a>
@@ -184,7 +184,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Setting-up Computing Environment</span></span></a>
+ <span class="menu-text">Setting-up Computing Environment</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./quick-r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Quick Start to R Programming</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -202,13 +208,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">PROBABILITY</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Discrete probability distribution</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Discrete Probability Distribution</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -232,19 +238,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch9.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">ch9.html</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">INFERENCE FROM TWO SAMPLES</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch10.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Correlation and Regression</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -318,15 +318,87 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<!-- \renewcommand{\thesection}{\arabic{section}} -->
-<!-- \setcounter{section}{2} -->
+<table class="table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 69%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><code>r</code>-function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>mean(x)</code></td>
+<td>Calculate the mean of vector <code>x</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>median(x)</code></td>
+<td>Calculate the median of vector <code>x</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>Mode(x)</code></td>
+<td>Calculate the mode of vector <code>x</code>. Need to install the package <code>DescTools</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>max(x)</code></td>
+<td>Calculate the maximum of vector <code>x</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>min(x)</code></td>
+<td>Calculate the minimum of vector <code>x</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>range(x)</code></td>
+<td>Calculate the range of vector <code>x</code>. <code>range(x)</code> returns a vector <code>c(min(x),max(x))</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>sd</code>, <code>var</code></td>
+<td>calculate the sample standard deviation, use denominator <code>n-1</code>. To remove a <code>NA</code> value, pass the argument <code>na.rm=TRUE</code>. To calculate a population variance <span class="math inline">\sigma^2(x)</span>, use the formula <span class="math inline">\sigma^2(x)= var(x)*(length(x)-1)/length(x)</span>, and <span class="math inline">\sigma = \sqrt{\sigma^2}</span>.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>scale(x)</code></td>
+<td>convert data vector <code>x</code> into <span class="math inline">z</span>-scores.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>quantile(x,probs)</code></td>
+<td>Calculate the percentiles at the indicated probability values <code>probs</code>.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>summary(x)</code></td>
+<td>Give a 5-number (min, Q1, median, mean, Q3, max) summary of the data vector <code>x</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>boxplot(x)</code></td>
+<td>Plot the boxplot of the data vector <code>x</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>hist(x)</code></td>
+<td>plot histogram of the 1-D data <code>x</code>. Optional arguments: <code>main</code>: main title; <code>xlab</code>: x-label; <code>ylab</code>: y-label; <code>col</code>: color. Pass <code>freq=FALSE</code> for a relative frequency histogram.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>rnorm(n,mean,sd)</code></td>
+<td>generate <code>n</code> <em>random</em> values of standard normal distribution with the given <code>mean</code> and <code>sd</code>.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>runif(n, min, max)</code></td>
+<td>Generate <code>n</code> uniformly distributed <em>random</em> values between min (inclusive) and max (inclusive).</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>rexp(n,r)</code></td>
+<td>Generate <code>n</code> exponentially distributed <em>random</em> values with rate <code>r</code> at which events occurs on average</td>
+</tr>
+</tbody>
+</table>
 <!-- Section 3.1 -->
 <section id="measures-of-center" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="measures-of-center"><span class="header-section-number">3.1</span> Measures of center</h2>
 <p>Measures of center, such as the mean and median, provide a central value that summarizes a dataset, helping to understand its typical or central tendency, which is crucial for making data-driven decisions and drawing inferences.</p>
 <section id="mean" class="level3" data-number="3.1.1">
 <h3 data-number="3.1.1" class="anchored" data-anchor-id="mean"><span class="header-section-number">3.1.1</span> Mean</h3>
-<p>The mean, also known as the average, is a measure of center in a dataset that calculates the sum of all values divided by the total number of values, providing a representative value for the dataset. We will employ the R command <code>mean()</code> to calculate the mean of several datasets. First, let’s use the test scores from Section 2.1.1 which should be stored in <code>scores</code>.</p>
+<p>The mean, also known as the average, is a measure of center in a dataset that calculates the sum of all values divided by the total number of values, providing a representative value for the dataset. We will employ the R command <code>mean()</code> to calculate the mean of several datasets.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -347,13 +419,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Previous test scores with a several much lower scores added</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>scores2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">95</span>, <span class="dv">90</span>, <span class="dv">85</span>, <span class="dv">85</span>, <span class="dv">87</span>, <span class="dv">74</span>, <span class="dv">75</span>, <span class="dv">64</span>, <span class="dv">85</span>, <span class="dv">84</span>, <span class="dv">87</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">75</span>, <span class="dv">75</span>, <span class="dv">90</span>, <span class="dv">75</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">3</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate mean of scores2 and then store it in the variable meanScore2</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>meanScore2 <span class="ot">&lt;-</span> <span class="fu">mean</span>(scores2)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># print out the answer</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Mean test score is from original is: "</span>, meanScore, <span class="st">", while from scores2 is: "</span>, meanScore2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>scores2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">95</span>, <span class="dv">90</span>, <span class="dv">85</span>, <span class="dv">85</span>, <span class="dv">87</span>, <span class="dv">74</span>, <span class="dv">75</span>, <span class="dv">64</span>, <span class="dv">85</span>, <span class="dv">84</span>, <span class="dv">87</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">75</span>, <span class="dv">75</span>, <span class="dv">90</span>, <span class="dv">75</span>, </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>             <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">3</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate mean of scores2 and then store it in the variable meanScore2</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>meanScore2 <span class="ot">&lt;-</span> <span class="fu">mean</span>(scores2)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># print out the answer</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Mean test score is from original is: "</span>, meanScore, <span class="st">", while from scores2 is: "</span>, </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    meanScore2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Mean test score is from original is:  74.17647 , while from scores2 is:  60.57143</code></pre>
@@ -374,7 +448,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>medianScore2 <span class="ot">&lt;-</span> <span class="fu">median</span>(scores2)</span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># print out the answer</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Mean test score from original is: "</span>, meanScore, <span class="st">", while from scores2 is: "</span>, meanScore2, <span class="st">"</span><span class="sc">\n\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Mean test score from original is: "</span>, meanScore, <span class="st">", while from scores2 is: "</span>, </span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    meanScore2, <span class="st">"</span><span class="sc">\n\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Mean test score from original is:  74.17647 , while from scores2 is:  60.57143 </code></pre>
@@ -404,23 +479,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the DescTools package</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DescTools)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'DescTools' was built under R version 4.2.3</code></pre>
-</div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the mode of both scores and scores2 using the Mode() method</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate Mode of scores and then store it in the variable modeScore</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>modeScore <span class="ot">&lt;-</span> <span class="fu">Mode</span>(scores)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate median of scores2 and then store it in the variable modeScore2</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>modeScore2 <span class="ot">&lt;-</span> <span class="fu">Mode</span>(scores2)</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># print out the answer</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Mode test score from original is: "</span>, modeScore, <span class="st">", while from scores2 is: "</span>, modeScore2, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DescTools)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the mode of both scores and scores2 using the Mode() method</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate Mode of scores and then store it in the variable modeScore</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>modeScore <span class="ot">&lt;-</span> <span class="fu">Mode</span>(scores)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate median of scores2 and then store it in the variable modeScore2</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>modeScore2 <span class="ot">&lt;-</span> <span class="fu">Mode</span>(scores2)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co"># print out the answer</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Mode test score from original is: "</span>, modeScore, <span class="st">", while from scores2 is: "</span>, </span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    modeScore2, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Mode test score from original is:  75 , while from scores2 is:  75 </code></pre>
@@ -433,80 +504,75 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate miderange of scores and then store it in the variable midrangeScore</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>midrangeScore <span class="ot">&lt;-</span> (<span class="fu">max</span>(scores) <span class="sc">-</span> <span class="fu">min</span>(scores)) <span class="sc">/</span> <span class="dv">2</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate midrange of scores2 and then store it in the variable midrangeScore2</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>midrangeScore2 <span class="ot">&lt;-</span> (<span class="fu">max</span>(scores2) <span class="sc">-</span> <span class="fu">min</span>(scores2)) <span class="sc">/</span> <span class="dv">2</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># print out the answer</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Midrange test score from original is: "</span>, midrangeScore, <span class="st">", while from scores2 is: "</span>, midrangeScore2, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate miderange of scores and then store it in the variable midrangeScore</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>midrangeScore <span class="ot">&lt;-</span> (<span class="fu">max</span>(scores) <span class="sc">-</span> <span class="fu">min</span>(scores)) <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate midrange of scores2 and then store it in the variable midrangeScore2</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>midrangeScore2 <span class="ot">&lt;-</span> (<span class="fu">max</span>(scores2) <span class="sc">-</span> <span class="fu">min</span>(scores2)) <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># print out the answer</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Midrange test score from original is: "</span>, midrangeScore, <span class="st">", </span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="st">    while from scores2 is: "</span>, midrangeScore2, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Midrange test score from original is:  40 , while from scores2 is:  47 </code></pre>
+<pre><code>Midrange test score from original is:  40 , 
+    while from scores2 is:  47 </code></pre>
 </div>
 </div>
 </section>
 <section id="lets-put-it-all-togeher" class="level3" data-number="3.1.5">
 <h3 data-number="3.1.5" class="anchored" data-anchor-id="lets-put-it-all-togeher"><span class="header-section-number">3.1.5</span> Let’s put it all togeher!</h3>
-<p>Consider the built-in dataset <code>mtcars</code> which contains several aspects and performance of several 1973 - 1974 model cars which we studied in Section 2.4. We will calculate mean, meidan, mode, and midrange of the miles per gallon of tthe cars in the dataset. using the R commands illustrated in the previous sections, as well as compute the so-called 5-number summary using the R command <code>summary()</code>. First, let’s plot a histogram of the data.</p>
+<p>Consider the built-in dataset <code>mtcars</code> which contains several aspects and performance of several 1973 - 1974 model cars which we studied in Section 2.4. We will calculate mean, meidan, mode, and midrange of the miles per gallon of the cars in the dataset. using the R commands illustrated in the previous sections, as well as compute the so-called 5-number summary using the R command <code>summary()</code>. First, let’s plot a histogram of the data.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the MPG data and store it into the variable carsMPG</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>carsMPG <span class="ot">&lt;-</span> mtcars<span class="sc">$</span>mpg</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a histogram of the MPG data from mtcars</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(carsMPG, <span class="at">main =</span> <span class="st">"MPG for cars"</span>, <span class="at">xlab =</span> <span class="st">"MPG"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the MPG data and store it into the variable carsMPG</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>carsMPG <span class="ot">&lt;-</span> mtcars<span class="sc">$</span>mpg</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a histogram of the MPG data from mtcars</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(carsMPG, <span class="at">main =</span> <span class="st">"MPG for cars"</span>, <span class="at">xlab =</span> <span class="st">"MPG"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="ch3_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate mean of MPG data and then store it in the variable meanMPG</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>meanMPG <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">mean</span>(carsMPG), <span class="at">digits =</span> <span class="dv">2</span>)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate median of MPG data and then store it in the variable medianMPG</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>medianMPG <span class="ot">&lt;-</span> <span class="fu">median</span>(carsMPG)</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate Mode of scores and then store it in the variable modeMPG</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>modeMPG <span class="ot">&lt;-</span> <span class="fu">Mode</span>(carsMPG)</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate miderange of scores and then store it in the variable midrangeMPG</span></span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>midrangeMPG <span class="ot">&lt;-</span> (<span class="fu">max</span>(carsMPG) <span class="sc">-</span> <span class="fu">min</span>(carsMPG)) <span class="sc">/</span> <span class="dv">2</span></span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="co"># print out the answer</span></span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Mean </span><span class="sc">\t</span><span class="st"> Median </span><span class="sc">\t</span><span class="st"> </span><span class="sc">\t</span><span class="st"> </span><span class="sc">\t</span><span class="st">  Mode </span><span class="sc">\t</span><span class="st"> </span><span class="sc">\t</span><span class="st"> </span><span class="sc">\t</span><span class="st"> Midrange </span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate mean of MPG data and then store it in the variable meanMPG</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>meanMPG <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">mean</span>(carsMPG), <span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate median of MPG data and then store it in the variable medianMPG</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>medianMPG <span class="ot">&lt;-</span> <span class="fu">median</span>(carsMPG)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate Mode of scores and then store it in the variable modeMPG</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>modeMPG <span class="ot">&lt;-</span> <span class="fu">Mode</span>(carsMPG)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate miderange of scores and then store it in the variable midrangeMPG</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>midrangeMPG <span class="ot">&lt;-</span> (<span class="fu">max</span>(carsMPG) <span class="sc">-</span> <span class="fu">min</span>(carsMPG)) <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="co"># print out the answer</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Mean </span><span class="sc">\t</span><span class="st"> Median </span><span class="sc">\t</span><span class="st"> </span><span class="sc">\t</span><span class="st"> </span><span class="sc">\t</span><span class="st">  Mode </span><span class="sc">\t</span><span class="st"> </span><span class="sc">\t</span><span class="st"> </span><span class="sc">\t</span><span class="st"> Midrange </span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Mean     Median               Mode           Midrange </code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(meanMPG, <span class="st">" </span><span class="sc">\t</span><span class="st"> "</span>, medianMPG, <span class="st">" </span><span class="sc">\t</span><span class="st"> "</span>, modeMPG, <span class="st">" </span><span class="sc">\t</span><span class="st"> "</span>, midrangeMPG, <span class="st">"</span><span class="sc">\n\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(meanMPG, <span class="st">" </span><span class="sc">\t</span><span class="st"> "</span>, medianMPG, <span class="st">" </span><span class="sc">\t</span><span class="st"> "</span>, modeMPG, <span class="st">" </span><span class="sc">\t</span><span class="st"> "</span>, midrangeMPG, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>20.09     19.2        10.4 15.2 19.2 21 21.4 22.8 30.4        11.75 </code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Give the 5-number summary for MPG data</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"5-Number Summary </span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>5-Number Summary </code></pre>
-</div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(carsMPG)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Give the 5-number summary for MPG data</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(carsMPG)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
   10.40   15.43   19.20   20.09   22.80   33.90 </code></pre>
 </div>
 </div>
-<p>Notice that there are 7 elements in the mode. That’s because there are 7 most frequent elements, each which appear twice. Which of these central measures best describes what you visually see as the “center” of data using the histogram? What does it “mean” that the mean and median are close to each other? Does the 5-number summary give us any additional information regarding the measure of “center” in the data?</p>
+<p>Notice that there are 7 elements in the mode. That’s because there are 7 most frequent elements, each appear twice. Which of these central measures best describes what you visually see as the “center” of data using the histogram? What does it “mean” that the mean and median are close to each other? Does the 5-number summary give us any additional information regarding the measure of “center” in the data?</p>
 <!-- Section 3.2 -->
 </section>
 </section>
@@ -519,16 +585,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a histogram of the MPG data from scores2</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(scores2, <span class="at">main =</span> <span class="st">"Test scores"</span>, <span class="at">xlab =</span> <span class="st">"Score"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a histogram of the MPG data from scores2</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(scores2, <span class="at">main =</span> <span class="st">"Test scores"</span>, <span class="at">xlab =</span> <span class="st">"Score"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="ch3_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a histogram of the MPG data from mtcars</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(carsMPG, <span class="at">main =</span> <span class="st">"MPG for cars"</span>, <span class="at">xlab =</span> <span class="st">"MPG"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a histogram of the MPG data from mtcars</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(carsMPG, <span class="at">main =</span> <span class="st">"MPG for cars"</span>, <span class="at">xlab =</span> <span class="st">"MPG"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="ch3_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid" width="672"></p>
@@ -541,21 +607,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate range of scores2 and then store it in the variable rangeScore2</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>rangeScore2 <span class="ot">&lt;-</span> <span class="fu">range</span>(scores2)</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate range of carsMPG and then store it in the variable rangeMPG</span></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>rangeMPG <span class="ot">&lt;-</span> <span class="fu">range</span>(carsMPG)</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co"># print out the answer</span></span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Range for test scores from scores2 is: ("</span>, rangeScore2[<span class="dv">1</span>], <span class="st">", "</span>,rangeScore2[<span class="dv">2</span>], <span class="st">") </span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate range of scores2 and then store it in the variable rangeScore2</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>rangeScore2 <span class="ot">&lt;-</span> <span class="fu">range</span>(scores2)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate range of carsMPG and then store it in the variable rangeMPG</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>rangeMPG <span class="ot">&lt;-</span> <span class="fu">range</span>(carsMPG)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co"># print out the answer</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Range for test scores from scores2 is: ("</span>, rangeScore2[<span class="dv">1</span>], <span class="st">", "</span>,</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    rangeScore2[<span class="dv">2</span>], <span class="st">") </span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Range for test scores from scores2 is: ( 1 ,  95 ) </code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Range for MPG from carsMPG is: ("</span>, rangeMPG[<span class="dv">1</span>], <span class="st">", "</span>, rangeMPG[<span class="dv">2</span>], <span class="st">") </span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Range for MPG from carsMPG is: ("</span>, rangeMPG[<span class="dv">1</span>], <span class="st">", "</span>, rangeMPG[<span class="dv">2</span>], <span class="st">") </span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Range for MPG from carsMPG is: ( 10.4 ,  33.9 ) </code></pre>
@@ -564,25 +631,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="standard-deviation" class="level3" data-number="3.2.3">
 <h3 data-number="3.2.3" class="anchored" data-anchor-id="standard-deviation"><span class="header-section-number">3.2.3</span> Standard deviation</h3>
-<p>Standard deviation is a measure of the dispersion or spread of data points in a dataset, with a higher value indicating greater variability, and it’s calculated differently for <strong>populations</strong> (<em><span class="math inline">\sigma</span></em>) and <strong>samples</strong> (<em>s</em>), where the <strong>sample</strong> standard deviation (<em>s</em>) is often used for practical data analysis. However, standard deviation is not resistant to extreme outliers, making it sensitive to the influence of extreme values on its magnitude. There is a built-in R command for <strong>sample</strong> standard deviation, but no such command for <strong>population</strong> standard deviation. Recall our test scores dataset <code>scores2</code>. Since this data represents the entire population (every student in the class), we will calculate <strong>population</strong> standard deviation for that dataset. However, the MPG data in <code>carsMPG</code> is only a <u>sample</u> of all the cars on the market in 1973 - 1974. Thus, we will employ the R command <code>sd()</code> to calculate <strong>sample</strong> standard deviation.</p>
+<p>Standard deviation is a measure of the dispersion or spread of data points in a dataset, with a higher value indicating greater variability, and it’s calculated differently for <strong>populations</strong> (<span class="math inline">\sigma</span>) and <strong>samples</strong> (<em>s</em>), where the <strong>sample</strong> standard deviation (<em>s</em>) is often used for practical data analysis. However, standard deviation is not resistant to extreme outliers, making it sensitive to the influence of extreme values on its magnitude. There is a built-in R command for <strong>sample</strong> standard deviation, but no such command for <strong>population</strong> standard deviation. Recall our test scores dataset <code>scores2</code>. Since this data represents the entire population (every student in the class), we will calculate <strong>population</strong> standard deviation for that dataset. However, the MPG data in <code>carsMPG</code> is only a <u>sample</u> of all the cars on the market in 1973 - 1974. Thus, we will employ the R command <code>sd()</code> to calculate <strong>sample</strong> standard deviation.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate population SD of scores2 and then store it in the variable popSDScore2</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>popSDScore2 <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">var</span>(scores2) <span class="sc">*</span> (<span class="fu">length</span>(scores2) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="fu">length</span>(scores2))</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate sample SD of carsMPG and then store it in the variable samSDMPG</span></span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>samSDMPG <span class="ot">&lt;-</span> <span class="fu">sd</span>(carsMPG)</span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print out the answer</span></span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Population standard deviation for test scores from scores2 is: "</span>, popSDScore2, <span class="st">"</span><span class="sc">\n\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate population SD of scores2 and then store it in the variable popSDScore2</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>popSDScore2 <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">var</span>(scores2) <span class="sc">*</span> (<span class="fu">length</span>(scores2) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="fu">length</span>(scores2))</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate sample SD of carsMPG and then store it in the variable samSDMPG</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>samSDMPG <span class="ot">&lt;-</span> <span class="fu">sd</span>(carsMPG)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print out the answer</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Population standard deviation for test scores from scores2 is: "</span>, popSDScore2, <span class="st">"</span><span class="sc">\n\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Population standard deviation for test scores from scores2 is:  34.35331 </code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Sample standard deviation for MPG from carsMPG is: "</span>, samSDMPG, <span class="st">" </span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Sample standard deviation for MPG from carsMPG is: "</span>, samSDMPG, <span class="st">" </span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Sample standard deviation for MPG from carsMPG is:  6.026948  </code></pre>
@@ -591,25 +658,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="variance" class="level3" data-number="3.2.4">
 <h3 data-number="3.2.4" class="anchored" data-anchor-id="variance"><span class="header-section-number">3.2.4</span> Variance</h3>
-<p>Variance measures the average of the squared differences between each data point and the mean of a dataset, providing a measure of data dispersion, but it is not resistant to extreme outliers, making it sensitive to the influence of extreme values on its magnitude. Variance is calculated differently for <strong>populations</strong> (<em><span class="math inline">\sigma^2</span></em>) and <strong>samples</strong> (<em><span class="math inline">s^2</span></em>), with the <strong>sample</strong> variance (<em><span class="math inline">s^2</span></em>) being used for practical data analysis to account for bias when working with a subset of a larger population. Let’s compare <strong>population</strong> variance for our <code>scores2</code> dataset and <strong>sample</strong> variance for our <code>carsMPG</code> dataset. As with standard deviation, although there is a built-in R command for <strong>sample</strong> variance, there is not a built-in command for <strong>population</strong> variance, so we will have to improvise.</p>
+<p>Variance measures the average of the squared differences between each data point and the mean of a dataset, providing a measure of data dispersion, but it is not resistant to extreme outliers, making it sensitive to the influence of extreme values on its magnitude. Variance is calculated differently for <strong>populations</strong> (<span class="math inline">\sigma^2</span>) and <strong>samples</strong> (<span class="math inline">s^2</span>), with the <strong>sample</strong> variance (<span class="math inline">s^2</span>) being used for practical data analysis to account for bias when working with a subset of a larger population. Let’s compare <strong>population</strong> variance for our <code>scores2</code> dataset and <strong>sample</strong> variance for our <code>carsMPG</code> dataset. As with standard deviation, although there is a built-in R command for <strong>sample</strong> variance, there is not a built-in command for <strong>population</strong> variance, so we will have to improvise.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate population variance of scores2 and then store it in the variable popVarScore2</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>popVarScore2 <span class="ot">&lt;-</span> <span class="fu">var</span>(scores2) <span class="sc">*</span> (<span class="fu">length</span>(scores2) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="fu">length</span>(scores2)</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate sample variance of carsMPG and then store it in the variable samSDMPG</span></span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>samVarMPG <span class="ot">&lt;-</span> <span class="fu">var</span>(carsMPG)</span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print out the answer</span></span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Population variance for test scores from scores2 is: "</span>, popVarScore2, <span class="st">"</span><span class="sc">\n\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate population variance of scores2 and then store it in the variable </span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co"># popVarScore2</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>popVarScore2 <span class="ot">&lt;-</span> <span class="fu">var</span>(scores2) <span class="sc">*</span> (<span class="fu">length</span>(scores2) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="fu">length</span>(scores2)</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate sample variance of carsMPG and then store it in the variable samSDMPG</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>samVarMPG <span class="ot">&lt;-</span> <span class="fu">var</span>(carsMPG)</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Print out the answer</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Population variance for test scores from scores2 is: "</span>, popVarScore2, <span class="st">"</span><span class="sc">\n\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Population variance for test scores from scores2 is:  1180.15 </code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Sample variance for MPG from carsMPG is: "</span>, samVarMPG, <span class="st">" </span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Sample variance for MPG from carsMPG is: "</span>, samVarMPG, <span class="st">" </span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Sample variance for MPG from carsMPG is:  36.3241  </code></pre>
@@ -622,44 +690,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the HP data and store it into the variable carsHP</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>carsHP <span class="ot">&lt;-</span> mtcars<span class="sc">$</span>hp</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a histogram of the HP data from mtcars</span></span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(carsHP, <span class="at">main =</span> <span class="st">"Horse power (HP) for cars"</span>, <span class="at">xlab =</span> <span class="st">"HP"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the HP data and store it into the variable carsHP</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>carsHP <span class="ot">&lt;-</span> mtcars<span class="sc">$</span>hp</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a histogram of the HP data from mtcars</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(carsHP, <span class="at">main =</span> <span class="st">"Horse power (HP) for cars"</span>, <span class="at">xlab =</span> <span class="st">"HP"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="ch3_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate mean of HP data and then store it in the variable meanHP</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>meanHP <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">mean</span>(carsHP), <span class="at">digits =</span> <span class="dv">2</span>)</span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate median of HP data and then store it in the variable medianHP</span></span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>medianHP <span class="ot">&lt;-</span> <span class="fu">median</span>(carsHP)</span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate variance of HP data and then store it in the variable varHP</span></span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>varHP <span class="ot">&lt;-</span> <span class="fu">var</span>(carsHP)</span>
-<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate standard deviation of HP and then store it in the variable midrangeHP</span></span>
-<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>sdHP <span class="ot">&lt;-</span> <span class="fu">sd</span>(carsHP)</span>
-<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a><span class="co"># print out the answer</span></span>
-<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Mean </span><span class="sc">\t</span><span class="st"> Median </span><span class="sc">\t</span><span class="st">  variance </span><span class="sc">\t</span><span class="st"> Standard Deviation </span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate mean of HP data and then store it in the variable meanHP</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>meanHP <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">mean</span>(carsHP), <span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate median of HP data and then store it in the variable medianHP</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>medianHP <span class="ot">&lt;-</span> <span class="fu">median</span>(carsHP)</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate variance of HP data and then store it in the variable varHP</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>varHP <span class="ot">&lt;-</span> <span class="fu">var</span>(carsHP)</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate standard deviation of HP and then store it in the variable midrangeHP</span></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>sdHP <span class="ot">&lt;-</span> <span class="fu">sd</span>(carsHP)</span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a><span class="co"># print out the answer</span></span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Mean </span><span class="sc">\t</span><span class="st"> Median </span><span class="sc">\t</span><span class="st">  variance </span><span class="sc">\t</span><span class="st"> Standard Deviation </span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Mean     Median       variance   Standard Deviation </code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(meanHP, <span class="st">" </span><span class="sc">\t</span><span class="st"> "</span>, medianHP, <span class="st">" </span><span class="sc">\t</span><span class="st"> "</span>, varHP, <span class="st">" </span><span class="sc">\t</span><span class="st"> "</span>, sdHP, <span class="st">"</span><span class="sc">\n\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(meanHP, <span class="st">" </span><span class="sc">\t</span><span class="st"> "</span>, medianHP, <span class="st">" </span><span class="sc">\t</span><span class="st"> "</span>, varHP, <span class="st">" </span><span class="sc">\t</span><span class="st"> "</span>, sdHP, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>146.69        123     4700.867        68.56287 </code></pre>
 </div>
 </div>
-<p>Now, compare the MPG and HP data from the <code>mtcars</code> dataset. For MPG, we calculated a standard deviation around <em>36</em> and for HP of around <em>69</em>. Does this mean that the MPG data is less spread out that the HP data? Is your answer to this question consistent with the histograms we produced? Can we compare standard deviations from two totally different datasets in a meaningful way?</p>
+<p>Now, compare the MPG and HP data from the <code>mtcars</code> dataset. For MPG, we calculated a standard deviation around <em>36</em> and for HP of around <em>69</em>. Does this mean that the MPG data is less spread out than the HP data? Is your answer to this question consistent with the histograms we produced? Can we compare standard deviations from two totally different datasets in a meaningful way?</p>
 <!-- Section 3.3 -->
 </section>
 </section>
@@ -672,22 +740,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transform the MPG data to z-scores and store the new data in zcarsHP</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>zcarsHP <span class="ot">&lt;-</span> <span class="fu">scale</span>(carsHP)</span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Transform the MPG data to z-scores and store the new data in zcarsHP</span></span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>zcarsMPG <span class="ot">&lt;-</span> <span class="fu">scale</span>(carsMPG)</span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a histogram of the transformed HP data from mtcars</span></span>
-<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(zcarsHP, <span class="at">main =</span> <span class="st">"Normalized horse power (HP) for cars"</span>, <span class="at">xlab =</span> <span class="st">"Z-score"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transform the MPG data to z-scores and store the new data in zcarsHP</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>zcarsHP <span class="ot">&lt;-</span> <span class="fu">scale</span>(carsHP)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Transform the MPG data to z-scores and store the new data in zcarsHP</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>zcarsMPG <span class="ot">&lt;-</span> <span class="fu">scale</span>(carsMPG)</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a histogram of the transformed HP data from mtcars</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(zcarsHP, <span class="at">main =</span> <span class="st">"Normalized horse power (HP) for cars"</span>, <span class="at">xlab =</span> <span class="st">"Z-score"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="ch3_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a histogram of the transformed MPG data from mtcars</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(zcarsMPG, <span class="at">main =</span> <span class="st">"Normalized miles per gallon (MPG) for cars"</span>, <span class="at">xlab =</span> <span class="st">"Z-score"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a histogram of the transformed MPG data from mtcars</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(zcarsMPG, <span class="at">main =</span> <span class="st">"Normalized miles per gallon (MPG) for cars"</span>, <span class="at">xlab =</span> <span class="st">"Z-score"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="ch3_files/figure-html/unnamed-chunk-13-2.png" class="img-fluid" width="672"></p>
@@ -698,21 +766,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find MPG data points with z-scores higher than 2</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>outliersMPG <span class="ot">&lt;-</span> carsMPG[zcarsMPG <span class="sc">&gt;</span> <span class="dv">2</span>]</span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Find HP data points with z-scores higher than 2</span></span>
-<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>outliersHP <span class="ot">&lt;-</span> carsHP[zcarsHP <span class="sc">&gt;</span> <span class="dv">2</span>]</span>
-<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the data points with z-scores higher than 2</span></span>
-<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"MPG Data with z-scores higher than 2:"</span>, outliersMPG, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find MPG data points with z-scores higher than 2</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>outliersMPG <span class="ot">&lt;-</span> carsMPG[zcarsMPG <span class="sc">&gt;</span> <span class="dv">2</span>]</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Find HP data points with z-scores higher than 2</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>outliersHP <span class="ot">&lt;-</span> carsHP[zcarsHP <span class="sc">&gt;</span> <span class="dv">2</span>]</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the data points with z-scores higher than 2</span></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"MPG Data with z-scores higher than 2:"</span>, outliersMPG, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>MPG Data with z-scores higher than 2: 32.4 33.9 </code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"HP Data with z-scores higher than 2:"</span>, outliersHP, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"HP Data with z-scores higher than 2:"</span>, outliersHP, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>HP Data with z-scores higher than 2: 335 </code></pre>
@@ -725,12 +793,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute 10th, 50th, and 90th percentiles for the MPG dataset</span></span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>percentiles <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.5</span>, <span class="fl">0.9</span>)</span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>percentilesMPG <span class="ot">&lt;-</span> <span class="fu">quantile</span>(carsMPG, <span class="at">probs =</span> percentiles)</span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the data points with z-scores higher than 2</span></span>
-<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>percentilesMPG</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute 10th, 50th, and 90th percentiles for the MPG dataset</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>percentiles <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.5</span>, <span class="fl">0.9</span>)</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>percentilesMPG <span class="ot">&lt;-</span> <span class="fu">quantile</span>(carsMPG, <span class="at">probs =</span> percentiles)</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the data points with z-scores higher than 2</span></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>percentilesMPG</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>  10%   50%   90% 
@@ -745,11 +813,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute 5-number summary for MPG data and store it in fiveMPG</span></span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>fiveMPG <span class="ot">&lt;-</span> <span class="fu">summary</span>(carsMPG)</span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the 5-number summary</span></span>
-<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>fiveMPG</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute 5-number summary for MPG data and store it in fiveMPG</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>fiveMPG <span class="ot">&lt;-</span> <span class="fu">summary</span>(carsMPG)</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the 5-number summary</span></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>fiveMPG</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
@@ -763,16 +831,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate boxplot for MPG</span></span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(carsMPG, <span class="at">main =</span> <span class="st">"Boxplot of MPG"</span>, <span class="at">horizontal =</span> <span class="cn">TRUE</span>, <span class="at">xlab =</span> <span class="st">"MPG"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate boxplot for MPG</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(carsMPG, <span class="at">main =</span> <span class="st">"Boxplot of MPG"</span>, <span class="at">horizontal =</span> <span class="cn">TRUE</span>, <span class="at">xlab =</span> <span class="st">"MPG"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="ch3_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate boxplot for HP</span></span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(carsHP, <span class="at">main =</span> <span class="st">"Boxplot of HP"</span>, <span class="at">horizontal =</span> <span class="cn">TRUE</span>, <span class="at">xlab =</span> <span class="st">"HP"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate boxplot for HP</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(carsHP, <span class="at">main =</span> <span class="st">"Boxplot of HP"</span>, <span class="at">horizontal =</span> <span class="cn">TRUE</span>, <span class="at">xlab =</span> <span class="st">"HP"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="ch3_files/figure-html/unnamed-chunk-17-2.png" class="img-fluid" width="672"></p>
@@ -782,68 +850,68 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create histogram/boxplot of normal data</span></span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample normal distribution</span></span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>normalData <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
-<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(normalData, <span class="at">main =</span> <span class="st">"Normal distribution"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create histogram/boxplot of normal data</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample normal distribution</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>normalData <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(normalData, <span class="at">main =</span> <span class="st">"Normal distribution"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="ch3_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(normalData, <span class="at">main =</span> <span class="st">"Normal Distribution"</span>, <span class="at">horizontal =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(normalData, <span class="at">main =</span> <span class="st">"Normal Distribution"</span>, <span class="at">horizontal =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="ch3_files/figure-html/unnamed-chunk-18-2.png" class="img-fluid" width="672"></p>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create histogram/boxplot of uniform data</span></span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample uniform distribution using the command runif</span></span>
-<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>uniformData <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">50000</span>, <span class="at">min =</span> <span class="dv">10</span>, <span class="at">max =</span> <span class="dv">11</span>)</span>
-<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(uniformData, <span class="at">main =</span> <span class="st">"Uniform distribution"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create histogram/boxplot of uniform data</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample uniform distribution using the command runif</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>uniformData <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">50000</span>, <span class="at">min =</span> <span class="dv">10</span>, <span class="at">max =</span> <span class="dv">11</span>)</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(uniformData, <span class="at">main =</span> <span class="st">"Uniform distribution"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="ch3_files/figure-html/unnamed-chunk-18-3.png" class="img-fluid" width="672"></p>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(uniformData, <span class="at">main =</span> <span class="st">"Uniform Distribution"</span>, <span class="at">horizontal =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(uniformData, <span class="at">main =</span> <span class="st">"Uniform Distribution"</span>, <span class="at">horizontal =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="ch3_files/figure-html/unnamed-chunk-18-4.png" class="img-fluid" width="672"></p>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample of a distribution that is skewed right</span></span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>skewedRightData <span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="dv">1000</span>, <span class="fl">0.4</span>)</span>
-<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create histogram/boxplot of skewed right data</span></span>
-<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(skewedRightData, <span class="at">main =</span> <span class="st">"Distribution that is skewed right"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample of a distribution that is skewed right</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>skewedRightData <span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="dv">1000</span>, <span class="fl">0.4</span>)</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create histogram/boxplot of skewed right data</span></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(skewedRightData, <span class="at">main =</span> <span class="st">"Distribution that is skewed right"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="ch3_files/figure-html/unnamed-chunk-18-5.png" class="img-fluid" width="672"></p>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(skewedRightData, <span class="at">main =</span> <span class="st">"Distribution that is skewed right"</span>, <span class="at">horizontal =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(skewedRightData, <span class="at">main =</span> <span class="st">"Distribution that is skewed right"</span>, <span class="at">horizontal =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="ch3_files/figure-html/unnamed-chunk-18-6.png" class="img-fluid" width="672"></p>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample of a distribution that is skewed left</span></span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>skewedLeftData <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">rexp</span>(<span class="dv">1000</span>, <span class="fl">0.2</span>)</span>
-<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create histogram/boxplot of skewed left data</span></span>
-<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(skewedLeftData, <span class="at">main =</span> <span class="st">"Distribution that is skewed left"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample of a distribution that is skewed left</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>skewedLeftData <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">rexp</span>(<span class="dv">1000</span>, <span class="fl">0.2</span>)</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create histogram/boxplot of skewed left data</span></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(skewedLeftData, <span class="at">main =</span> <span class="st">"Distribution that is skewed left"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="ch3_files/figure-html/unnamed-chunk-18-7.png" class="img-fluid" width="672"></p>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(skewedLeftData, <span class="at">main =</span> <span class="st">"Distribution that is skewed left"</span>, <span class="at">horizontal =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(skewedLeftData, <span class="at">main =</span> <span class="st">"Distribution that is skewed left"</span>, <span class="at">horizontal =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="ch3_files/figure-html/unnamed-chunk-18-8.png" class="img-fluid" width="672"></p>
@@ -857,22 +925,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transform the scores data to z-scores and store the new data in zscores</span></span>
-<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>zscores <span class="ot">&lt;-</span> <span class="fu">scale</span>(scores)</span>
-<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Transform the scorres2 data to z-scores and store the new data in zscores2</span></span>
-<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>zscores2 <span class="ot">&lt;-</span> <span class="fu">scale</span>(scores2)</span>
-<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a histogram of the transformed from scores</span></span>
-<span id="cb64-8"><a href="#cb64-8" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(zscores, <span class="at">main =</span> <span class="st">"Normalized test scores #1"</span>, <span class="at">xlab =</span> <span class="st">"Z-score"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transform the scores data to z-scores and store the new data in zscores</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>zscores <span class="ot">&lt;-</span> <span class="fu">scale</span>(scores)</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Transform the scorres2 data to z-scores and store the new data in zscores2</span></span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>zscores2 <span class="ot">&lt;-</span> <span class="fu">scale</span>(scores2)</span>
+<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a histogram of the transformed from scores</span></span>
+<span id="cb60-8"><a href="#cb60-8" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(zscores, <span class="at">main =</span> <span class="st">"Normalized test scores #1"</span>, <span class="at">xlab =</span> <span class="st">"Z-score"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="ch3_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a histogram of the transformed from scores2</span></span>
-<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(zscores2, <span class="at">main =</span> <span class="st">"Normalized test scores #2"</span>, <span class="at">xlab =</span> <span class="st">"Z-score"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a histogram of the transformed from scores2</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(zscores2, <span class="at">main =</span> <span class="st">"Normalized test scores #2"</span>, <span class="at">xlab =</span> <span class="st">"Z-score"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="ch3_files/figure-html/unnamed-chunk-19-2.png" class="img-fluid" width="672"></p>
@@ -882,16 +950,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute 5-number summary for scores</span></span>
-<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"scores: </span><span class="sc">\n</span><span class="st"> </span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>scores: 
- </code></pre>
-</div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(scores)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute 5-number summary for scores</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(scores)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
@@ -899,17 +959,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute 5-number summary for scores2</span></span>
-<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">scores2: </span><span class="sc">\n</span><span class="st"> </span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-scores2: 
- </code></pre>
-</div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(scores2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute 5-number summary for scores2</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(scores2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
@@ -920,15 +971,15 @@ scores2:
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate boxplot for both</span></span>
-<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(scores, <span class="at">main =</span> <span class="st">"Boxplot of test scores #1"</span>, <span class="at">horizontal =</span> <span class="cn">TRUE</span>, <span class="at">xlab =</span> <span class="st">"Scores"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate boxplot for both</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(scores, <span class="at">main =</span> <span class="st">"Boxplot of test scores #1"</span>, <span class="at">horizontal =</span> <span class="cn">TRUE</span>, <span class="at">xlab =</span> <span class="st">"Scores"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="ch3_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid" width="672"></p>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(scores2, <span class="at">main =</span> <span class="st">"Boxplot of test scores #2"</span>, <span class="at">horizontal =</span> <span class="cn">TRUE</span>, <span class="at">xlab =</span> <span class="st">"Scores"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(scores2, <span class="at">main =</span> <span class="st">"Boxplot of test scores #2"</span>, <span class="at">horizontal =</span> <span class="cn">TRUE</span>, <span class="at">xlab =</span> <span class="st">"Scores"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="ch3_files/figure-html/unnamed-chunk-21-2.png" class="img-fluid" width="672"></p>
@@ -1339,7 +1390,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./ch4.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">PROBABILITY</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

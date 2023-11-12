@@ -1,1 +1,3 @@
-# INFERENCE FROM TWO SAMPLES
+# INFERENCE FROM TWO SAMPLES 
+
+There is no content for this chapter. 

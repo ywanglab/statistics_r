@@ -8,7 +8,7 @@
 
 <meta name="author" content="Wen Tang">
 
-<title>Elementary Statistics with R: STAT 2670 - 6&nbsp; NORMAL PROBABILITY DISTRIBUTION</title>
+<title>Elementary Statistics with R Programming - 6&nbsp; NORMAL PROBABILITY DISTRIBUTION</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -103,6 +103,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
 
 </head>
 
@@ -130,19 +146,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Elementary Statistics with R: STAT 2670</a> 
+      <a href="./">Elementary Statistics with R Programming</a> 
         <div class="sidebar-tools-main">
     <div class="dropdown">
       <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./Elementary-Statistics-with-R--STAT-2670.pdf">
+            <a class="dropdown-item sidebar-tools-main-item" href="./Elementary-Statistics-with-R-Programming.pdf">
               <i class="bi bi-bi-file-pdf pe-1"></i>
             Download PDF
             </a>
           </li>
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./Elementary-Statistics-with-R--STAT-2670.docx">
+            <a class="dropdown-item sidebar-tools-main-item" href="./Elementary-Statistics-with-R-Programming.docx">
               <i class="bi bi-bi-file-word pe-1"></i>
             Download Docx
             </a>
@@ -168,7 +184,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Setting-up Computing Environment</span></span></a>
+ <span class="menu-text">Setting-up Computing Environment</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./quick-r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Quick Start to R Programming</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -186,13 +208,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">PROBABILITY</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Discrete probability distribution</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Discrete Probability Distribution</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -216,19 +238,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch9.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">ch9.html</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">INFERENCE FROM TWO SAMPLES</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch10.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Correlation and Regression</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -249,9 +265,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#the-standard-normal-distribution" id="toc-the-standard-normal-distribution" class="nav-link active" data-scroll-target="#the-standard-normal-distribution"><span class="header-section-number">6.1</span> THE standard normal distribution</a>
   <ul class="collapse">
-  <li><a href="#normal-distribution-graph-displaying-only." id="toc-normal-distribution-graph-displaying-only." class="nav-link" data-scroll-target="#normal-distribution-graph-displaying-only."><span class="header-section-number">6.1.1</span> Normal distribution graph (Displaying only).</a></li>
-  <li><a href="#find-the-probability-area-when-z-scores-are-given." id="toc-find-the-probability-area-when-z-scores-are-given." class="nav-link" data-scroll-target="#find-the-probability-area-when-z-scores-are-given."><span class="header-section-number">6.1.2</span> Find the probability (area) when z scores are given.</a></li>
-  <li><a href="#find-z-scores-when-the-area-is-given." id="toc-find-z-scores-when-the-area-is-given." class="nav-link" data-scroll-target="#find-z-scores-when-the-area-is-given."><span class="header-section-number">6.1.3</span> Find z scores when the area is given.</a></li>
+  <li><a href="#normal-distribution-graph-optional" id="toc-normal-distribution-graph-optional" class="nav-link" data-scroll-target="#normal-distribution-graph-optional"><span class="header-section-number">6.1.1</span> Normal distribution graph (Optional)</a></li>
+  <li><a href="#find-the-probability-area-when-z-scores-are-given" id="toc-find-the-probability-area-when-z-scores-are-given" class="nav-link" data-scroll-target="#find-the-probability-area-when-z-scores-are-given"><span class="header-section-number">6.1.2</span> Find the probability (area) when z scores are given</a></li>
+  <li><a href="#find-z-scores-when-the-area-is-given" id="toc-find-z-scores-when-the-area-is-given" class="nav-link" data-scroll-target="#find-z-scores-when-the-area-is-given"><span class="header-section-number">6.1.3</span> Find z scores when the area is given</a></li>
   </ul></li>
   <li><a href="#real-application-of-normal-distribution" id="toc-real-application-of-normal-distribution" class="nav-link" data-scroll-target="#real-application-of-normal-distribution"><span class="header-section-number">6.2</span> REAL application of normal distribution</a>
   <ul class="collapse">
@@ -259,11 +275,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#find-the-probability-when-x-value-is-given-page-269-pulse-rates-question" id="toc-find-the-probability-when-x-value-is-given-page-269-pulse-rates-question" class="nav-link" data-scroll-target="#find-the-probability-when-x-value-is-given-page-269-pulse-rates-question"><span class="header-section-number">6.2.2</span> Find the probability when x value is given (page 269 Pulse Rates Question)</a></li>
   <li><a href="#convert-a-z-score-back-to-x-value" id="toc-convert-a-z-score-back-to-x-value" class="nav-link" data-scroll-target="#convert-a-z-score-back-to-x-value"><span class="header-section-number">6.2.3</span> Convert a z-score back to x value</a></li>
   </ul></li>
-  <li><a href="#sampling-distributions-and-estimators-displaying-onlyoptional" id="toc-sampling-distributions-and-estimators-displaying-onlyoptional" class="nav-link" data-scroll-target="#sampling-distributions-and-estimators-displaying-onlyoptional"><span class="header-section-number">6.3</span> SAMPLING distributions and estimators (Displaying only/Optional)</a>
+  <li><a href="#sampling-distributions-and-estimators-optional" id="toc-sampling-distributions-and-estimators-optional" class="nav-link" data-scroll-target="#sampling-distributions-and-estimators-optional"><span class="header-section-number">6.3</span> SAMPLING distributions and estimators (Optional)</a>
   <ul class="collapse">
-  <li><a href="#general-behavior-of-sampling-distribution-of-the-sample-proportion" id="toc-general-behavior-of-sampling-distribution-of-the-sample-proportion" class="nav-link" data-scroll-target="#general-behavior-of-sampling-distribution-of-the-sample-proportion"><span class="header-section-number">6.3.1</span> general behavior of sampling distribution of the sample proportion</a></li>
-  <li><a href="#general-behavior-of-sampling-distribution-of-the-sample-mean" id="toc-general-behavior-of-sampling-distribution-of-the-sample-mean" class="nav-link" data-scroll-target="#general-behavior-of-sampling-distribution-of-the-sample-mean"><span class="header-section-number">6.3.2</span> general behavior of sampling distribution of the sample mean</a></li>
-  <li><a href="#general-behavior-of-sampling-distribution-of-the-sample-variance" id="toc-general-behavior-of-sampling-distribution-of-the-sample-variance" class="nav-link" data-scroll-target="#general-behavior-of-sampling-distribution-of-the-sample-variance"><span class="header-section-number">6.3.3</span> general behavior of sampling distribution of the sample variance</a></li>
+  <li><a href="#general-behavior-of-sampling-distribution-of-sample-proportions" id="toc-general-behavior-of-sampling-distribution-of-sample-proportions" class="nav-link" data-scroll-target="#general-behavior-of-sampling-distribution-of-sample-proportions"><span class="header-section-number">6.3.1</span> General behavior of sampling distribution of sample proportions</a></li>
+  <li><a href="#general-behavior-of-sampling-distribution-of-sample-means" id="toc-general-behavior-of-sampling-distribution-of-sample-means" class="nav-link" data-scroll-target="#general-behavior-of-sampling-distribution-of-sample-means"><span class="header-section-number">6.3.2</span> general behavior of sampling distribution of sample means</a></li>
+  <li><a href="#general-behavior-of-sampling-distribution-of-sample-variances" id="toc-general-behavior-of-sampling-distribution-of-sample-variances" class="nav-link" data-scroll-target="#general-behavior-of-sampling-distribution-of-sample-variances"><span class="header-section-number">6.3.3</span> general behavior of sampling distribution of sample variances</a></li>
   </ul></li>
   <li><a href="#the-central-limit-theorem" id="toc-the-central-limit-theorem" class="nav-link" data-scroll-target="#the-central-limit-theorem"><span class="header-section-number">6.4</span> THE central limit theorem</a>
   <ul class="collapse">
@@ -301,10 +317,68 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<table class="table">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 72%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><code>r</code>-function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>rnorm(n,mean,sd)</code></td>
+<td>generate <code>n</code> random values of standard normal distribution with the given <code>mean</code> and <code>sd</code>.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>hist(x)</code></td>
+<td>Plot the histogram of the data vector <code>x</code>, pass <code>probability=TRUE</code> to use density estimate. Pass <code>breaks</code> argument to specify edges of bins. Eg.: <code>breaks = seq(0,1, by=0.1)</code>. <code>breaks="FD"</code> is a method based on data variability.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>seq(start, end, by=step)</code></td>
+<td>Generate a sequence.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>density(x)</code></td>
+<td>Estimate the density of the data vector <code>x</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>lines(x,y)</code></td>
+<td>Add a line to an existing plot. <code>y</code> may be omitted depending on <code>x</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>pnorm(q,mean=0, sd=1)</code></td>
+<td>Calculate the cumulative probability <span class="math inline">P(X\le q)</span> for a normal distributed random variable <span class="math inline">X</span> with a given <code>mean</code> and <code>sd</code>.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>diff(x)</code></td>
+<td>Calculate the first difference of a vector <code>x</code>.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>qnorm(p, mean=0, sd=1)</code></td>
+<td>Calculate the quantile of the normal distribution corresponding to the probability <code>p</code> (from left-tail).</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>scale(x,center, scale)</code></td>
+<td>Scale data <code>x</code> to <span class="math inline">z</span>-score using a given mean (<code>center</code>) and standard deviation (<code>scale</code>). E.g.: <code>scale(x, center=5, scale=2)</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>rbinom(s,size=n, prob=p)</code></td>
+<td>Generate <code>s</code> random binomial-distributed values with <code>n</code> trials and success probability <code>p</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>replicate(n, expr)</code></td>
+<td>Perform the Monte-Carlo simulation by replicating the experiment given by the expression <code>expr</code> <code>n</code> times.</td>
+</tr>
+</tbody>
+</table>
 <section id="the-standard-normal-distribution" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="the-standard-normal-distribution"><span class="header-section-number">6.1</span> THE standard normal distribution</h2>
-<section id="normal-distribution-graph-displaying-only." class="level3" data-number="6.1.1">
-<h3 data-number="6.1.1" class="anchored" data-anchor-id="normal-distribution-graph-displaying-only."><span class="header-section-number">6.1.1</span> Normal distribution graph (Displaying only).</h3>
+<section id="normal-distribution-graph-optional" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="normal-distribution-graph-optional"><span class="header-section-number">6.1.1</span> Normal distribution graph (Optional)</h3>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -312,7 +386,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)  <span class="co"># Generate data for a standard normal distribution</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the data with density curve</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x, <span class="at">prob =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"lightblue"</span>, <span class="at">main =</span> <span class="st">"Standard Normal Distribution"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x, <span class="at">probability =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"lightblue"</span>, <span class="at">main =</span> <span class="st">"Standard Normal Distribution"</span>)</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(x), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
@@ -320,8 +394,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="find-the-probability-area-when-z-scores-are-given." class="level3" data-number="6.1.2">
-<h3 data-number="6.1.2" class="anchored" data-anchor-id="find-the-probability-area-when-z-scores-are-given."><span class="header-section-number">6.1.2</span> Find the probability (area) when z scores are given.</h3>
+<section id="find-the-probability-area-when-z-scores-are-given" class="level3" data-number="6.1.2">
+<h3 data-number="6.1.2" class="anchored" data-anchor-id="find-the-probability-area-when-z-scores-are-given"><span class="header-section-number">6.1.2</span> Find the probability (area) when z scores are given</h3>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -349,8 +423,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="find-z-scores-when-the-area-is-given." class="level3" data-number="6.1.3">
-<h3 data-number="6.1.3" class="anchored" data-anchor-id="find-z-scores-when-the-area-is-given."><span class="header-section-number">6.1.3</span> Find z scores when the area is given.</h3>
+<section id="find-z-scores-when-the-area-is-given" class="level3" data-number="6.1.3">
+<h3 data-number="6.1.3" class="anchored" data-anchor-id="find-z-scores-when-the-area-is-given"><span class="header-section-number">6.1.3</span> Find z scores when the area is given</h3>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -442,10 +516,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="sampling-distributions-and-estimators-displaying-onlyoptional" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="sampling-distributions-and-estimators-displaying-onlyoptional"><span class="header-section-number">6.3</span> SAMPLING distributions and estimators (Displaying only/Optional)</h2>
-<section id="general-behavior-of-sampling-distribution-of-the-sample-proportion" class="level3" data-number="6.3.1">
-<h3 data-number="6.3.1" class="anchored" data-anchor-id="general-behavior-of-sampling-distribution-of-the-sample-proportion"><span class="header-section-number">6.3.1</span> general behavior of sampling distribution of the sample proportion</h3>
+<section id="sampling-distributions-and-estimators-optional" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="sampling-distributions-and-estimators-optional"><span class="header-section-number">6.3</span> SAMPLING distributions and estimators (Optional)</h2>
+<section id="general-behavior-of-sampling-distribution-of-sample-proportions" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="general-behavior-of-sampling-distribution-of-sample-proportions"><span class="header-section-number">6.3.1</span> General behavior of sampling distribution of sample proportions</h3>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -456,20 +530,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fl">0.5</span>  <span class="co"># population proportion</span></span>
 <span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>samples <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">50000</span>, <span class="fu">rbinom</span>(<span class="dv">1</span>, <span class="at">size =</span> n, <span class="at">prob =</span> p))</span>
 <span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate sample proportions</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate sample proportions of successes</span></span>
 <span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>sample_props <span class="ot">&lt;-</span> samples <span class="sc">/</span> n</span>
 <span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the histogram</span></span>
 <span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sample_props, <span class="at">breaks =</span> <span class="fu">seq</span>( <span class="dv">0</span>, <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.1</span> ), <span class="at">col =</span> <span class="st">"lightblue"</span>, <span class="at">main =</span> <span class="st">"Sampling Distribution of Sample Proportion"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sample_props, <span class="at">breaks =</span> <span class="fu">seq</span>( <span class="dv">0</span>, <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.1</span> ), <span class="at">col =</span> <span class="st">"lightblue"</span>, </span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Sampling Distribution of Sample Proportion"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="ch6_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
-<section id="general-behavior-of-sampling-distribution-of-the-sample-mean" class="level3" data-number="6.3.2">
-<h3 data-number="6.3.2" class="anchored" data-anchor-id="general-behavior-of-sampling-distribution-of-the-sample-mean"><span class="header-section-number">6.3.2</span> general behavior of sampling distribution of the sample mean</h3>
+<section id="general-behavior-of-sampling-distribution-of-sample-means" class="level3" data-number="6.3.2">
+<h3 data-number="6.3.2" class="anchored" data-anchor-id="general-behavior-of-sampling-distribution-of-sample-means"><span class="header-section-number">6.3.2</span> general behavior of sampling distribution of sample means</h3>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -481,15 +556,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>sample_means <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">10000</span>, <span class="fu">mean</span>(<span class="fu">rnorm</span>(n, mu, sigma)))</span>
 <span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a histogram of the sampling distribution of the sample mean</span></span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sample_means, <span class="at">breaks =</span><span class="st">"FD"</span>,  <span class="at">main =</span> <span class="st">"Sampling Distribution of Sample Mean"</span>, <span class="at">xlab =</span> <span class="st">"Sample Mean"</span>, <span class="at">ylab =</span> <span class="st">"Frequency"</span>, <span class="at">col =</span> <span class="st">"lightblue"</span>, <span class="at">border =</span> <span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sample_means, <span class="at">breaks =</span><span class="st">"FD"</span>,  <span class="at">main =</span> <span class="st">"Sampling Distribution of Sample Mean"</span>, </span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Sample Mean"</span>, <span class="at">ylab =</span> <span class="st">"Frequency"</span>, <span class="at">col =</span> <span class="st">"lightblue"</span>, <span class="at">border =</span> <span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="ch6_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
-<section id="general-behavior-of-sampling-distribution-of-the-sample-variance" class="level3" data-number="6.3.3">
-<h3 data-number="6.3.3" class="anchored" data-anchor-id="general-behavior-of-sampling-distribution-of-the-sample-variance"><span class="header-section-number">6.3.3</span> general behavior of sampling distribution of the sample variance</h3>
+<section id="general-behavior-of-sampling-distribution-of-sample-variances" class="level3" data-number="6.3.3">
+<h3 data-number="6.3.3" class="anchored" data-anchor-id="general-behavior-of-sampling-distribution-of-sample-variances"><span class="header-section-number">6.3.3</span> general behavior of sampling distribution of sample variances</h3>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -505,11 +581,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(sum_squared_deviations <span class="sc">/</span> (n <span class="sc">-</span> <span class="dv">1</span>))</span>
 <span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate sampling distribution</span></span>
-<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>sample_variances <span class="ot">&lt;-</span> <span class="fu">replicate</span>(num_samples, <span class="fu">sample_variance</span>(<span class="fu">rnorm</span>(sample_size, mu, sigma)))</span>
-<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a histogram of the sampling distribution of sample variance</span></span>
-<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sample_variances, <span class="at">breaks =</span> <span class="st">"FD"</span>, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">main =</span> <span class="st">"Sampling Distribution of Sample Variance"</span>,</span>
-<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Sample Variance"</span>, <span class="at">ylab =</span> <span class="st">"Frequency"</span>, <span class="at">col =</span> <span class="st">"lightblue"</span>, <span class="at">border =</span> <span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>sample_variances <span class="ot">&lt;-</span> <span class="fu">replicate</span>(num_samples, <span class="fu">sample_variance</span>(<span class="fu">rnorm</span>(sample_size, </span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>                                                                 mu, sigma)))</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a histogram of the sampling distribution of sample variance</span></span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sample_variances, <span class="at">breaks =</span> <span class="st">"FD"</span>, <span class="at">freq =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Sampling Distribution of Sample Variance"</span>,</span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Sample Variance"</span>, <span class="at">ylab =</span> <span class="st">"Frequency"</span>, <span class="at">col =</span> <span class="st">"lightblue"</span>, <span class="at">border =</span> <span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="ch6_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
@@ -546,8 +624,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the probability between two mean values $x/bar$ (CLT)</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>standard_error <span class="ot">&lt;-</span> sigma <span class="sc">/</span> <span class="fu">sqrt</span>(n) <span class="co"># Calculate the standard error of the sample mean</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>probability_range <span class="ot">&lt;-</span> <span class="fu">diff</span>(<span class="fu">pnorm</span>(<span class="fu">c</span>(x_lower, x_upper), <span class="at">mean =</span> mu, <span class="at">sd =</span> standard_error))<span class="co"># Find the probability  </span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>probability_range</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>probability_range <span class="ot">&lt;-</span> <span class="fu">diff</span>(<span class="fu">pnorm</span>(<span class="fu">c</span>(x_lower, x_upper), <span class="at">mean =</span> mu, </span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>                                <span class="at">sd =</span> standard_error))<span class="co"># Find the probability  </span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>probability_range</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.9996167</code></pre>
@@ -952,7 +1031,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./ch5.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Discrete probability distribution</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Discrete Probability Distribution</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

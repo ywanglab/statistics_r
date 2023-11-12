@@ -3,13 +3,14 @@ project:
   output-dir: docs
 
 book:
-  title: "Elementary Statistics with R: STAT 2670"
+  title: "Elementary Statistics with R Programming"
   # author: "Yi Wang"
   # date: "9/5/2023"
   downloads: [pdf, docx]
   chapters:
     - index.qmd
     - intro.qmd
+    - quick-r.qmd
     - ch2.qmd
     - ch3.qmd
     - ch4.Rmd
@@ -19,7 +20,7 @@ book:
     - ch8.qmd
     - ch9.qmd
     - ch10.qmd
-    - summary.qmd
+    # - summary.qmd
     - references.qmd
 
 bibliography: references.bib

@@ -8,7 +8,7 @@
 
 <meta name="author" content="Jieun Park">
 
-<title>Elementary Statistics with R: STAT 2670 - 8&nbsp; Hypothesis Testing</title>
+<title>Elementary Statistics with R Programming - 8&nbsp; Hypothesis Testing</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -146,19 +146,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Elementary Statistics with R: STAT 2670</a> 
+      <a href="./">Elementary Statistics with R Programming</a> 
         <div class="sidebar-tools-main">
     <div class="dropdown">
       <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./Elementary-Statistics-with-R--STAT-2670.pdf">
+            <a class="dropdown-item sidebar-tools-main-item" href="./Elementary-Statistics-with-R-Programming.pdf">
               <i class="bi bi-bi-file-pdf pe-1"></i>
             Download PDF
             </a>
           </li>
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./Elementary-Statistics-with-R--STAT-2670.docx">
+            <a class="dropdown-item sidebar-tools-main-item" href="./Elementary-Statistics-with-R-Programming.docx">
               <i class="bi bi-bi-file-word pe-1"></i>
             Download Docx
             </a>
@@ -184,7 +184,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Setting-up Computing Environment</span></span></a>
+ <span class="menu-text">Setting-up Computing Environment</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./quick-r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Quick Start to R Programming</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -202,13 +208,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">PROBABILITY</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Discrete probability distribution</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Discrete Probability Distribution</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -232,19 +238,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch9.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">ch9.html</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">INFERENCE FROM TWO SAMPLES</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch10.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Correlation and Regression</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -263,9 +263,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#basic-of-hypothesis-testing" id="toc-basic-of-hypothesis-testing" class="nav-link active" data-scroll-target="#basic-of-hypothesis-testing"><span class="header-section-number">8.0.1</span> Basic of Hypothesis Testing</a></li>
-  <li><a href="#testing-a-claim-about-a-proportion" id="toc-testing-a-claim-about-a-proportion" class="nav-link" data-scroll-target="#testing-a-claim-about-a-proportion"><span class="header-section-number">8.0.2</span> Testing a Claim About a Proportion</a></li>
-  <li><a href="#tesing-a-claim-about-a-mean" id="toc-tesing-a-claim-about-a-mean" class="nav-link" data-scroll-target="#tesing-a-claim-about-a-mean"><span class="header-section-number">8.0.3</span> Tesing a Claim About a Mean</a></li>
+  <li><a href="#basic-of-hypothesis-testing" id="toc-basic-of-hypothesis-testing" class="nav-link active" data-scroll-target="#basic-of-hypothesis-testing"><span class="header-section-number">8.1</span> Basic of Hypothesis Testing</a></li>
+  <li><a href="#testing-a-claim-about-a-proportion" id="toc-testing-a-claim-about-a-proportion" class="nav-link" data-scroll-target="#testing-a-claim-about-a-proportion"><span class="header-section-number">8.2</span> Testing a Claim About a Proportion</a>
+  <ul class="collapse">
+  <li><a href="#two-sided-proportion-test-using-the-z-test-method-in-the-textbook" id="toc-two-sided-proportion-test-using-the-z-test-method-in-the-textbook" class="nav-link" data-scroll-target="#two-sided-proportion-test-using-the-z-test-method-in-the-textbook"><span class="header-section-number">8.2.1</span> Two-sided proportion test using the <span class="math inline">z</span>-test (method in the textbook)</a></li>
+  <li><a href="#two-sided-proportion-test-using-the-built-in-function-prop.test" id="toc-two-sided-proportion-test-using-the-built-in-function-prop.test" class="nav-link" data-scroll-target="#two-sided-proportion-test-using-the-built-in-function-prop.test"><span class="header-section-number">8.2.2</span> Two-sided Proportion Test using the built-in function <code>prop.test</code></a></li>
+  <li><a href="#one-sided-proportion-test" id="toc-one-sided-proportion-test" class="nav-link" data-scroll-target="#one-sided-proportion-test"><span class="header-section-number">8.2.3</span> One-sided Proportion Test</a></li>
+  </ul></li>
+  <li><a href="#testing-a-claim-about-a-mean" id="toc-testing-a-claim-about-a-mean" class="nav-link" data-scroll-target="#testing-a-claim-about-a-mean"><span class="header-section-number">8.3</span> Testing a Claim About a Mean</a>
+  <ul class="collapse">
+  <li><a href="#unknown-sigma-with-normality-assumption" id="toc-unknown-sigma-with-normality-assumption" class="nav-link" data-scroll-target="#unknown-sigma-with-normality-assumption"><span class="header-section-number">8.3.1</span> Unknown <span class="math inline">\sigma</span> with Normality Assumption</a></li>
+  <li><a href="#known-sigma-with-normality-assumption" id="toc-known-sigma-with-normality-assumption" class="nav-link" data-scroll-target="#known-sigma-with-normality-assumption"><span class="header-section-number">8.3.2</span> Known <span class="math inline">\sigma</span> with Normality Assumption</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -297,8 +306,58 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="basic-of-hypothesis-testing" class="level3" data-number="8.0.1">
-<h3 data-number="8.0.1" class="anchored" data-anchor-id="basic-of-hypothesis-testing"><span class="header-section-number">8.0.1</span> Basic of Hypothesis Testing</h3>
+<table class="table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 69%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><code>r</code>-function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>prop.test(successes, n, conf.level=0.95)</code></td>
+<td>Perform a hypothesis test for a single proportion. Pass a hypothesized (<span class="math inline">H_0</span>) proportion <code>p</code> if it’s not 0.5. Eg. <code>p=0.6</code> for <span class="math inline">H_0</span>. Pass a parameter <code>alternative</code> for alternative hypothesis: “two.sided”(default) ,“less”, “greater”. Note the <code>conf.int</code> given by the test uses Wilson’s method than the Wald method used in the book. The test returns three values: <code>$p.value</code> (for p-value), <code>$statistic</code> (for test-statistic), and <code>$conf.int</code> (for confidence interval).</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>t.test(x, conf.level=0.95)</code></td>
+<td>Perform a <span class="math inline">t</span>-test for a population mean. Accepts an additional <code>alternative</code> argument for <span class="math inline">H_1</span>. The default hypothesized mean is <code>mu=0</code>. Otherwise, pass a hypothesized mean value.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>z.test(x, sigma.x=sigma, conf.level=0.95)</code></td>
+<td>Perform a <span class="math inline">z</span>-test for a population mean with known <code>sigma.x=sigma</code>. Accepts an additional <code>alternative</code> argument for <span class="math inline">H_1</span>. The default hypothesized mean is <code>mu=0</code>. Otherwise, pass a hypothesized mean value.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>qnorm(p, mean=0, sd=1)</code></td>
+<td>Calculate the quantile of the normal distribution corresponding to the probability <code>p</code> (from left-tail).</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>qt(p, df)</code></td>
+<td>calculate the quantile for the probability <code>p</code> of <span class="math inline">t</span>-distribution with degree of freedom equal to <code>df</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>qchisq(p, df)</code></td>
+<td>calculate the quantile for the probability <code>p</code> of <span class="math inline">\chi^2</span>-distribution with degree of freedom equal to <code>df</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>attach(df)</code></td>
+<td>add a data frame <code>df</code> to the search path, which allows you to access the variables within the data frame <code>df</code> directly by their names instead of using a normal way such as <code>df$var</code>.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>table</code></td>
+<td>tabulate the frequency counts of distinct values.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>prop.table(table)</code></td>
+<td>compute the proportions of a table or data. Pass an argument <code>margin</code> for the direction: <code>1</code> for rows, <code>2</code> for columns, or <code>NULL</code> for the entire table (default).</td>
+</tr>
+</tbody>
+</table>
+<section id="basic-of-hypothesis-testing" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="basic-of-hypothesis-testing"><span class="header-section-number">8.1</span> Basic of Hypothesis Testing</h2>
 <p>We will use the following functions to perform hypothesis tests.</p>
 <div class="cell">
 <details>
@@ -320,7 +379,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">#   conf.level = 0.95)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>We use <code>qnorm()</code> and <code>qt()</code> functions to calculate critical values. For example, we can obtain <span class="math inline">z_{0.05}</span> using the <code>qnorm(0.95)</code> for a normal distribution, and the critical value <span class="math inline">t_{0.05, 5}</span> using <code>qt(0.95, 5)</code> for a t-distribution with 5 degree of freedom with <span class="math inline">\alpha=0.05</span> as below.</p>
+<p>We use <code>qnorm()</code> and <code>qt()</code> functions to calculate critical values. For example, we can obtain <span class="math inline">z_{0.95}</span> using the <code>qnorm(0.95)</code> for a normal distribution, and the critical value <span class="math inline">t_{0.05, 5}</span> using <code>qt(0.95, 5)</code> for a t-distribution with 5 degree of freedom with <span class="math inline">\alpha=0.05</span> as below.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -338,9 +397,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="testing-a-claim-about-a-proportion" class="level3" data-number="8.0.2">
-<h3 data-number="8.0.2" class="anchored" data-anchor-id="testing-a-claim-about-a-proportion"><span class="header-section-number">8.0.2</span> Testing a Claim About a Proportion</h3>
-<p><code>mtcars</code> dataset has data for 32 automobiles in 1973-1974 with 11 variables. Among these variable, we are interested to check if the proportion of V-shaped engine (<code>vs = 0</code>) is 0.5. That is, <span class="math inline">H_0: p = 0.5</span>. We set the null hypothesis as follows: the population proportion of cars with a V-shaped engine (vs = 0) among all automobiles in 1973-1974 is equal to 0.5. We first check if we can use a normal approximation to perform a proportion test. With a sample size of <span class="math inline">n=32</span> and a proportion of interest <span class="math inline">p=0.5</span>, both the expected number of successes and failures are <span class="math inline">np= n(1-p) = 32\cdot 0.5 = 16</span>. Since they are greater than 5, we can apply the proportion test using a normal approximation. In our sample, the number of success (<code>vs=0</code>) is 18 and the sample proportion is 0.56.</p>
+<section id="testing-a-claim-about-a-proportion" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="testing-a-claim-about-a-proportion"><span class="header-section-number">8.2</span> Testing a Claim About a Proportion</h2>
+<p><code>mtcars</code> dataset has data for 32 automobiles in 1973-1974 with 11 variables. Among these variable, we are interested to check if the proportion of V-shaped engine (<code>vs = 0</code>) is 0.5. That is, <span class="math inline">H_0: p = 0.5</span>.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -363,32 +422,80 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 0.5625 0.4375 </code></pre>
 </div>
 </div>
-<p>We use one sample proportion test with <code>prop.test()</code> function if <span class="math inline">np \ge 5</span> and <span class="math inline">n(1-p) \ge 5</span> where <span class="math inline">p</span> is the null hypothesized proportion and <span class="math inline">n</span> is the sample size. The syntax is below if we want to test with a sample vector (categorical variable with two levels) for <span class="math inline">H_0: p = p_0</span> with <span class="math inline">\alpha = 0.05</span>. <code>x</code> is the number of success, <code>n</code>is the sample size, and <code>p_0</code> is the null hypothesized proportion.</p>
+<section id="two-sided-proportion-test-using-the-z-test-method-in-the-textbook" class="level3" data-number="8.2.1">
+<h3 data-number="8.2.1" class="anchored" data-anchor-id="two-sided-proportion-test-using-the-z-test-method-in-the-textbook"><span class="header-section-number">8.2.1</span> Two-sided proportion test using the <span class="math inline">z</span>-test (method in the textbook)</h3>
+<p>We first check if we can use a normal approximation to perform a proportion test. With a sample size of <span class="math inline">n=32</span> and a proportion of interest <span class="math inline">p=0.5</span>, both the expected number of successes and failures are <span class="math inline">np= n(1-p) = 32\cdot 0.5 = 16</span>. Since they are greater than 5, we can apply the proportion test using a normal approximation. In our sample, the number of success (<code>vs=0</code>) is 18 and the sample proportion is 0.56.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># prop.test(x, n, p = p_0, conf.level=0.95, alternative=c("two.sided", "less", "greater"))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example data</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>successes <span class="ot">&lt;-</span> <span class="dv">18</span>  <span class="co"># Number of successes</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>trials <span class="ot">&lt;-</span> <span class="dv">32</span>    <span class="co"># Total number of trials</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>null_prob <span class="ot">&lt;-</span> <span class="fl">0.5</span>  <span class="co"># Hypothesized population proportion under the null hypothesis</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the sample proportion</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>sample_proportion <span class="ot">&lt;-</span> successes <span class="sc">/</span> trials</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform the z-test</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>z_stat <span class="ot">&lt;-</span> (sample_proportion <span class="sc">-</span> null_prob) <span class="sc">/</span> <span class="fu">sqrt</span>(null_prob <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> null_prob) <span class="sc">/</span> trials)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the p-value</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>p_value <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="fu">abs</span>(z_stat)))</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the critical value</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>critical_value <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">qnorm</span>(alpha),<span class="fu">qnorm</span>(<span class="dv">1</span><span class="sc">-</span>alpha))</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the results</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Z-statistic:"</span>, z_stat, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Z-statistic: 0.7071068 </code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"p-value:"</span>, p_value, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>p-value: 0.4795001 </code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Critical values:"</span>, critical_value, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Critical values: -1.644854 1.644854 </code></pre>
+</div>
+</div>
+<p>We are ready to make a decision using the following method:</p>
+<ul>
+<li><span class="math inline">p</span>-value method: The <span class="math inline">p</span>-value 0.4795001 is greater than the <em>significance level</em> <span class="math inline">\alpha =0.05</span>, therefore we <em>fail</em> to reject the Null hypothesis <span class="math inline">H_0: p=0.5</span>.</li>
+<li><strong>critical value</strong> method: The test statistics 0.7071068 is not as extreme as the two critical values, therefore we <em>fail</em> to reject the Null Hypothesis.</li>
+</ul>
+</section>
+<section id="two-sided-proportion-test-using-the-built-in-function-prop.test" class="level3" data-number="8.2.2">
+<h3 data-number="8.2.2" class="anchored" data-anchor-id="two-sided-proportion-test-using-the-built-in-function-prop.test"><span class="header-section-number">8.2.2</span> Two-sided Proportion Test using the built-in function <code>prop.test</code></h3>
+<p>Next we will use the R built-in <code>prop.test()</code> function to perform one sample proportion test. The syntax is below.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># prop.test(x, n, p = p_0, conf.level=0.95, alternative=c("two.sided", "less", </span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># "greater"))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Depending on the alternative hypothesis <span class="math inline">H_1</span>, we can choose one among <code>two.sided</code>, <code>less</code>, and <code>greater</code>. Under <span class="math inline">H_0: p = p_0</span>, we can use each <code>alternative</code> option for <code>prop.test()</code> function.<br>
-</p>
+<p>Depending on the alternative hypothesis <span class="math inline">H_1</span>, we can choose one among <code>two.sided</code>, <code>less</code>, and <code>greater</code>:</p>
 <ol type="1">
-<li><span class="math inline">H_1: p = p_0</span>: <code>alternative = "two.sided"</code><br>
-</li>
-<li><span class="math inline">H_1: p = p_0</span> :<code>alternative = "less"</code><br>
-</li>
-<li><span class="math inline">H_1: p = p_0</span>: <code>alternative = "less"</code><br>
-</li>
+<li><span class="math inline">H_1: p \ne p_0</span>: <code>alternative = "two.sided"</code></li>
+<li><span class="math inline">H_1: p &lt; p_0</span> :<code>alternative = "less"</code></li>
+<li><span class="math inline">H_1: p &gt; p_0</span>: <code>alternative = "greater"</code></li>
 </ol>
-<p>For the proportion of <code>vs</code> , we test for the proportion of <code>vs = 0</code> with <span class="math inline">H_0: p = 0.5</span> and <span class="math inline">\alpha = 0.05</span>.</p>
-<section id="two-sided-proportion-test" class="level4" data-number="8.0.2.1">
-<h4 data-number="8.0.2.1" class="anchored" data-anchor-id="two-sided-proportion-test"><span class="header-section-number">8.0.2.1</span> Two-sided Proportion Test</h4>
+<p>It is remarkable that the built-in <code>prop.test</code> uses the Pearson <span class="math inline">\chi^2</span> distributed test statistic which is different than the <span class="math inline">z-</span>test used by the textbook.</p>
 <p><span class="math display">H_0: p = 0.5 \quad \textrm{ vs }\quad H_1: p \ne 0.5</span></p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">prop.test</span>(<span class="at">x=</span><span class="dv">18</span>, <span class="at">n=</span><span class="dv">32</span>, <span class="at">p =</span> <span class="fl">0.50</span>, <span class="at">alternative =</span> <span class="st">"two.sided"</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">prop.test</span>(<span class="at">x=</span><span class="dv">18</span>, <span class="at">n=</span><span class="dv">32</span>, <span class="at">p =</span> <span class="fl">0.50</span>, <span class="at">alternative =</span> <span class="st">"two.sided"</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -404,21 +511,44 @@ sample estimates:
 0.5625 </code></pre>
 </div>
 </div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"The p-value is given by "</span>, res<span class="sc">$</span>p.value, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>The p-value is given by  0.5958831 </code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"The $chi^2$ test statistic  is given by "</span>, res<span class="sc">$</span>statistic, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>The $chi^2$ test statistic  is given by  0.28125 </code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"The confidence interval is given by ("</span>, res<span class="sc">$</span>conf.int[<span class="dv">1</span>], <span class="st">","</span> ,res<span class="sc">$</span>conf.int[<span class="dv">2</span>], <span class="st">")</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>The confidence interval is given by ( 0.3788033 , 0.7316489 )</code></pre>
+</div>
+</div>
 <p><strong>Decision:</strong></p>
 <ul>
-<li><strong>P-Value</strong>: we fail to reject the null hypothesis since p-value 0.596 is greater than <span class="math inline">\alpha=0.05</span>.<br>
+<li><strong>P-Value</strong>: we fail to reject the Null Hypothesis since p-value 0.596 is greater than <span class="math inline">\alpha=0.05</span>.<br>
 </li>
-<li><strong>Critical Value</strong>: the z-test statistic <span class="math inline">z=</span> 0.53 is closer to 0 than the critical values. Thus, we fail to reject the null hypothesis.<br>
+<li><strong>Critical Value</strong>: the <span class="math inline">\chi^2</span> test statistic 0.281 is not as extreme as the critical values which can be found as below. Thus, we fail to reject the Null Hypothesis.<br>
 </li>
 </ul>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the critical value can be calculated by the following code.</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="fu">qnorm</span>(<span class="fl">0.025</span>), <span class="fu">qnorm</span>(<span class="fl">0.975</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the critical value can be calculated by the following code.</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="fu">qchisq</span>(<span class="fl">0.025</span>, <span class="dv">1</span>), <span class="fu">qchisq</span>(<span class="fl">0.975</span>,<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -1.959964  1.959964</code></pre>
+<pre><code>[1] 0.0009820691 5.0238861873</code></pre>
 </div>
 </div>
 <ul>
@@ -426,14 +556,14 @@ sample estimates:
 </li>
 </ul>
 </section>
-<section id="one-sided-proportion-test" class="level4" data-number="8.0.2.2">
-<h4 data-number="8.0.2.2" class="anchored" data-anchor-id="one-sided-proportion-test"><span class="header-section-number">8.0.2.2</span> One-sided Proportion Test</h4>
+<section id="one-sided-proportion-test" class="level3" data-number="8.2.3">
+<h3 data-number="8.2.3" class="anchored" data-anchor-id="one-sided-proportion-test"><span class="header-section-number">8.2.3</span> One-sided Proportion Test</h3>
 <p><span class="math display">H_0: p = 0.5 \quad \textrm{ vs }\quad H_1: p &gt; 0.5</span></p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">prop.test</span>(<span class="at">x=</span><span class="dv">18</span>, <span class="at">n=</span><span class="dv">32</span>, <span class="at">p =</span> <span class="fl">0.50</span>, <span class="at">alternative =</span> <span class="st">"greater"</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">prop.test</span>(<span class="at">x=</span><span class="dv">18</span>, <span class="at">n=</span><span class="dv">32</span>, <span class="at">p =</span> <span class="fl">0.50</span>, <span class="at">alternative =</span> <span class="st">"greater"</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -453,55 +583,49 @@ sample estimates:
 <ul>
 <li><strong>P-Value</strong>: we fail to reject the null hypothesis since p-value 0.298 is greater than <span class="math inline">\alpha=0.05</span>.<br>
 </li>
-<li><strong>Critical Value</strong>: the test statistic <span class="math inline">z=</span> 0.53 does not fall in the critical region which is greater than <span class="math inline">z_{0.05}</span> = 1.645. Thus, we fail to reject the null hypothesis.<br>
-</li>
+<li><strong>Critical Value</strong>: the <span class="math inline">\chi^2</span> test statistic 0.281 does not fall in the critical region which is greater than 3.8414588 or smaller than 0.0039321. Thus, we fail to reject the null hypothesis. The critical value can be found by</li>
 </ul>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the critical value can be calculated by the following code.</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the critical value can be calculated by the following code.</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="fu">qchisq</span>(<span class="fl">0.05</span>,<span class="dv">1</span>), <span class="fu">qchisq</span>(<span class="fl">0.95</span>,<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.644854</code></pre>
+<pre><code>[1] 0.00393214 3.84145882</code></pre>
 </div>
 </div>
 <ul>
-<li><strong>Confidence Interval</strong>: the claimed proportion 0.5 falls within the confidence interval of (0.404, 1). Thus we fail to reject the null hypothesis.<br>
-</li>
+<li><strong>Confidence Interval</strong>: the claimed proportion 0.5 falls within the confidence interval of (0.404, 1). Thus we fail to reject the null hypothesis.</li>
 </ul>
 </section>
 </section>
-<section id="tesing-a-claim-about-a-mean" class="level3" data-number="8.0.3">
-<h3 data-number="8.0.3" class="anchored" data-anchor-id="tesing-a-claim-about-a-mean"><span class="header-section-number">8.0.3</span> Tesing a Claim About a Mean</h3>
-<section id="unknown-sigma-with-normality-assumption" class="level4" data-number="8.0.3.1">
-<h4 data-number="8.0.3.1" class="anchored" data-anchor-id="unknown-sigma-with-normality-assumption"><span class="header-section-number">8.0.3.1</span> Unknown <span class="math inline">\sigma</span> with Normality Assumption</h4>
-<p>We use one sample t-test with <code>t.test()</code> function when we assume normality for population or the sample size is large enough. The syntax is below if we want to test with a sample vector (variable) <code>x</code> for <span class="math inline">H_0: \mu = m</span> with <span class="math inline">\alpha = 0.05</span>.</p>
+<section id="testing-a-claim-about-a-mean" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="testing-a-claim-about-a-mean"><span class="header-section-number">8.3</span> Testing a Claim About a Mean</h2>
+<section id="unknown-sigma-with-normality-assumption" class="level3" data-number="8.3.1">
+<h3 data-number="8.3.1" class="anchored" data-anchor-id="unknown-sigma-with-normality-assumption"><span class="header-section-number">8.3.1</span> Unknown <span class="math inline">\sigma</span> with Normality Assumption</h3>
+<p>We use one sample t-test with <code>t.test()</code> function when we assume normality for population or the sample size is large enough. The syntax is as below if we want to test with a sample vector (variable) <code>x</code> for <span class="math inline">H_0: \mu = m</span> with a given confidence level <code>conf.level</code>, for example, <code>conf.level=0.95</code>.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># t.test(x, mu= m, conf.level=0.95, alternative=c("two.sided", "less", "greater"))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># t.test(x, mu= m, conf.level=0.95, alternative=c("two.sided", "less", "greater"))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Depending on the alternative hypothesis <span class="math inline">H_1</span>, we can choose one among <code>two.sided</code>, <code>less</code>, and <code>greater</code>. Under <span class="math inline">H_0: \mu = m</span>, use each <code>alternative</code> option for <code>t.test()</code> function.<br>
-</p>
+<p>Depending on the alternative hypothesis <span class="math inline">H_1</span>, we can choose one among <code>two.sided</code>, <code>less</code>, and <code>greater</code>.</p>
 <ol type="1">
-<li><span class="math inline">H_1: \mu \ne m</span>: <code>alternative = "two.sided"</code><br>
-</li>
-<li><span class="math inline">H_1: \mu &lt; m</span> :<code>alternative = "less"</code><br>
-</li>
-<li><span class="math inline">H_1: \mu &gt; m</span>: <code>alternative = "less"</code><br>
-</li>
+<li><span class="math inline">H_1: \mu \ne m</span>: <code>alternative = "two.sided"</code></li>
+<li><span class="math inline">H_1: \mu &lt; m</span> :<code>alternative = "less"</code></li>
+<li><span class="math inline">H_1: \mu &gt; m</span>: <code>alternative = "greater"</code></li>
 </ol>
-<p>As an example, we test for <code>mpg</code> with <span class="math inline">H_0: \mu = 22</span>. That is, we test if the population mean of <code>mpg</code> is equal to 22. <code>mtcars</code> cars have 32 samples and we can understand that we have a large enough sample to use t-test with <span class="math inline">\alpha = 0.05</span>.</p>
-<section id="two-sided-t-test" class="level5" data-number="8.0.3.1.1">
-<h5 data-number="8.0.3.1.1" class="anchored" data-anchor-id="two-sided-t-test"><span class="header-section-number">8.0.3.1.1</span> Two-sided t-test</h5>
+<p>As an example, we test for <code>mpg</code> with <span class="math inline">H_0: \mu = 22</span>. That is, we test if the population mean of <code>mpg</code> is equal to 22. <code>mtcars</code> cars have 32 samples and the sample size is large enough to use t-test with <span class="math inline">\alpha = 0.05</span>.</p>
+<section id="two-sided-t-test" class="level4" data-number="8.3.1.1">
+<h4 data-number="8.3.1.1" class="anchored" data-anchor-id="two-sided-t-test"><span class="header-section-number">8.3.1.1</span> Two-sided t-test</h4>
 <p><span class="math display">H_0: \mu = 22 \quad \textrm{ vs }\quad H_1: \mu \ne 22</span></p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">t.test</span>(mpg, <span class="at">mu=</span><span class="dv">22</span>, <span class="at">alternative =</span> <span class="st">"two.sided"</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">t.test</span>(mpg, <span class="at">mu=</span><span class="dv">22</span>, <span class="at">alternative =</span> <span class="st">"two.sided"</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -517,36 +641,56 @@ mean of x
  20.09062 </code></pre>
 </div>
 </div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"The p-value is given by "</span>, res<span class="sc">$</span>p.value, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>The p-value is given by  0.08287848 </code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"The test statistic is given by "</span>, res<span class="sc">$</span>statistic, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>The test statistic is given by  -1.792127 </code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"The confidence interval is given by ("</span>, res<span class="sc">$</span>conf.int[<span class="dv">1</span>], <span class="st">","</span> ,res<span class="sc">$</span>conf.int[<span class="dv">2</span>], <span class="st">")</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>The confidence interval is given by ( 17.91768 , 22.26357 )</code></pre>
+</div>
+</div>
 <p><strong>Decision:</strong></p>
 <ul>
-<li><strong>P-Value</strong>: we fail to reject the null hypothesis since p-value 0.083 is greater than <span class="math inline">\alpha=0.05</span>.<br>
-</li>
-<li><strong>Critical Value</strong>: the test statistic <span class="math inline">t=</span> -1.792 is closer to 0 than the critical values. Thus, we fail to reject the null hypothesis.<br>
-</li>
+<li><strong>P-Value</strong>: we fail to reject the null hypothesis since p-value 0.083 is greater than <span class="math inline">\alpha=0.05</span>.</li>
+<li><strong>Critical Value</strong>: the test statistic <span class="math inline">t=</span> -1.792 is closer to 0 than the critical values which can be found as below. Thus, we fail to reject the null hypothesis.</li>
 </ul>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the critical value can be calculated by the following code.</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="fu">qt</span>(<span class="fl">0.025</span>, <span class="at">df=</span><span class="dv">31</span>), <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="at">df=</span><span class="dv">31</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the critical value can be calculated by the following code.</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="fu">qt</span>(<span class="fl">0.025</span>, <span class="at">df=</span><span class="dv">31</span>), <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="at">df=</span><span class="dv">31</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -2.039513  2.039513</code></pre>
 </div>
 </div>
 <ul>
-<li><strong>Confidence Interval</strong>: the claimed mean 22 falls within the confidence interval of (17.918, 22.264). Thus we fail to reject the null hypothesis.<br>
-</li>
+<li><strong>Confidence Interval</strong>: the claimed mean 22 falls within the confidence interval of (17.918, 22.264). Thus we fail to reject the null hypothesis.</li>
 </ul>
 </section>
-<section id="one-sided-t-test-h_1-mu-m" class="level5" data-number="8.0.3.1.2">
-<h5 data-number="8.0.3.1.2" class="anchored" data-anchor-id="one-sided-t-test-h_1-mu-m"><span class="header-section-number">8.0.3.1.2</span> One-sided t-test <span class="math inline">H_1: \mu &lt; m</span></h5>
+<section id="one-sided-t-test-h_1-mu-m" class="level4" data-number="8.3.1.2">
+<h4 data-number="8.3.1.2" class="anchored" data-anchor-id="one-sided-t-test-h_1-mu-m"><span class="header-section-number">8.3.1.2</span> One-sided t-test <span class="math inline">H_1: \mu &lt; m</span></h4>
 <p><span class="math display">H_0: \mu = 22 \quad \textrm{ vs }\quad H_1: \mu &lt; 22</span></p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">t.test</span>(mpg, <span class="at">mu=</span><span class="dv">22</span>, <span class="at">alternative =</span> <span class="st">"less"</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">t.test</span>(mpg, <span class="at">mu=</span><span class="dv">22</span>, <span class="at">alternative =</span> <span class="st">"less"</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -572,49 +716,45 @@ mean of x
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the critical value can be calculated by the following code.</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="fl">0.05</span>, <span class="at">df=</span><span class="dv">31</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the critical value can be calculated by the following code.</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="fl">0.05</span>, <span class="at">df=</span><span class="dv">31</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -1.695519</code></pre>
 </div>
 </div>
 <ul>
-<li><strong>Confidence Interval</strong>: the claimed mean does not fall within the confidence interval of (<span class="math inline">-\infty</span>, 21.897). Thus we reject the null hypothesis.<br>
-</li>
+<li><strong>Confidence Interval</strong>: the claimed mean <span class="math inline">\mu=22</span> does not fall within the confidence interval of (<span class="math inline">-\infty</span>, 21.897). Thus we reject the null hypothesis.</li>
 </ul>
 </section>
 </section>
-<section id="known-sigma-with-normality-assumption" class="level4" data-number="8.0.3.2">
-<h4 data-number="8.0.3.2" class="anchored" data-anchor-id="known-sigma-with-normality-assumption"><span class="header-section-number">8.0.3.2</span> Known <span class="math inline">\sigma</span> with Normality Assumption</h4>
-<p>We use one sample z-test or normal test with <code>z.test()</code> function when we assume normality for population with known population standard deviation <span class="math inline">\sigma</span>. The syntax is below if we want to test with a sample vector (variable) <code>x</code> for <span class="math inline">H_0: \mu = m</span> with <span class="math inline">\alpha = 0.05</span> and known <code>sigma</code>.</p>
+<section id="known-sigma-with-normality-assumption" class="level3" data-number="8.3.2">
+<h3 data-number="8.3.2" class="anchored" data-anchor-id="known-sigma-with-normality-assumption"><span class="header-section-number">8.3.2</span> Known <span class="math inline">\sigma</span> with Normality Assumption</h3>
+<p>We use one sample z-test or normal test with <code>z.test()</code> function when we assume normality for population with known population standard deviation <span class="math inline">\sigma</span>. The syntax is as below if we want to test with a sample vector (variable) <code>x</code> for <span class="math inline">H_0: \mu = m</span> with <span class="math inline">\alpha = 0.05</span> and a known <code>sigma</code>.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(BSDA)</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co"># z.test(x, mu = m, sigma.x = sigma, conf.level = 0.95, alternative = c("two.sided", "less", "greater"))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(BSDA)</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="co"># z.test(x, mu = m, sigma.x = sigma, conf.level = 0.95, </span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="co"># alternative = c("two.sided", "less", "greater"))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Depending on the alternative hypothesis <span class="math inline">H_1</span>, we can choose one among <code>two.sided</code>, <code>less</code>, and <code>greater</code>. Under <span class="math inline">H_0: \mu = m</span>, use each <code>alternative</code> option for <code>t.test()</code> function.<br>
-</p>
+<p>Depending on the alternative hypothesis <span class="math inline">H_1</span>, we can choose one among <code>two.sided</code>, <code>less</code>, and <code>greater</code>.</p>
 <ol type="1">
-<li><span class="math inline">H_1: \mu \ne m</span>: <code>alternative = "two.sided"</code><br>
-</li>
-<li><span class="math inline">H_1: \mu &lt; m</span> :<code>alternative = "less"</code><br>
-</li>
-<li><span class="math inline">H_1: \mu &gt; m</span>: <code>alternative = "less"</code><br>
-</li>
+<li><span class="math inline">H_1: \mu \ne m</span>: <code>alternative = "two.sided"</code></li>
+<li><span class="math inline">H_1: \mu &lt; m</span> :<code>alternative = "less"</code></li>
+<li><span class="math inline">H_1: \mu &gt; m</span>: <code>alternative = "greater"</code></li>
 </ol>
 <p>For example, we test for <code>mpg</code> with <span class="math inline">H_0: \mu = 22</span>. Assume <code>mpg</code> follows a normal distribution with <span class="math inline">\sigma = 6</span>, then we can use z-test with <span class="math inline">\alpha = 0.05</span>.</p>
-<section id="two-sided-z-test" class="level5" data-number="8.0.3.2.1">
-<h5 data-number="8.0.3.2.1" class="anchored" data-anchor-id="two-sided-z-test"><span class="header-section-number">8.0.3.2.1</span> Two-sided z-test</h5>
+<section id="two-sided-z-test" class="level4" data-number="8.3.2.1">
+<h4 data-number="8.3.2.1" class="anchored" data-anchor-id="two-sided-z-test"><span class="header-section-number">8.3.2.1</span> Two-sided z-test</h4>
 <p><span class="math display">H_0: \mu = 22 \quad \textrm{ vs }\quad H_1: \mu \ne 22</span></p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(BSDA)</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">z.test</span>(mpg, <span class="at">mu=</span><span class="dv">22</span>, <span class="at">sigma.x =</span> <span class="dv">6</span>, <span class="at">alternative =</span> <span class="st">"two.sided"</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(BSDA)</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">z.test</span>(mpg, <span class="at">mu=</span><span class="dv">22</span>, <span class="at">sigma.x =</span> <span class="dv">6</span>, <span class="at">alternative =</span> <span class="st">"two.sided"</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -630,36 +770,56 @@ mean of x
  20.09062 </code></pre>
 </div>
 </div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"The p-value is given by "</span>, res<span class="sc">$</span>p.value, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>The p-value is given by  0.07183285 </code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"The test statistic is given by "</span>, res<span class="sc">$</span>statistic, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>The test statistic is given by  -1.800176 </code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"The confidence interval is given by ("</span>, res<span class="sc">$</span>conf.int[<span class="dv">1</span>], <span class="st">","</span> ,res<span class="sc">$</span>conf.int[<span class="dv">2</span>], <span class="st">")</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>The confidence interval is given by ( 18.01177 , 22.16948 )</code></pre>
+</div>
+</div>
 <p><strong>Decision:</strong></p>
 <ul>
-<li><strong>P-Value</strong>: we fail to reject the null hypothesis since p-value 0.072 is greater than <span class="math inline">\alpha=0.05</span>.<br>
-</li>
-<li><strong>Critical Value</strong>: the test statistic <span class="math inline">z=</span> -1.8 is closer to 0 than the critical values. Thus, we fail to reject the null hypothesis.<br>
-</li>
+<li><strong>P-Value</strong>: we fail to reject the null hypothesis since p-value 0.072 is greater than <span class="math inline">\alpha=0.05</span>.</li>
+<li><strong>Critical Value</strong>: the test statistic <span class="math inline">z=</span> -1.8 is closer to 0 than the critical values as found below. Thus, we fail to reject the null hypothesis.</li>
 </ul>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the critical value can be calculated by the following code.</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="fu">qnorm</span>(<span class="fl">0.025</span>), <span class="fu">qnorm</span>(<span class="fl">0.975</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the critical value can be calculated by the following code.</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="fu">qnorm</span>(<span class="fl">0.025</span>), <span class="fu">qnorm</span>(<span class="fl">0.975</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -1.959964  1.959964</code></pre>
 </div>
 </div>
 <ul>
-<li><strong>Confidence Interval</strong>: the claimed mean 22 falls within the confidence interval of (18.012, 22.169). Thus we fail to reject the null hypothesis.<br>
-</li>
+<li><strong>Confidence Interval</strong>: the claimed mean 22 falls within the confidence interval of (18.012, 22.169). Thus we fail to reject the null hypothesis.</li>
 </ul>
 </section>
-<section id="one-sided-z-test-h_1-mu-m" class="level5" data-number="8.0.3.2.2">
-<h5 data-number="8.0.3.2.2" class="anchored" data-anchor-id="one-sided-z-test-h_1-mu-m"><span class="header-section-number">8.0.3.2.2</span> One-sided z-test <span class="math inline">H_1: \mu &lt; m</span></h5>
+<section id="one-sided-z-test-h_1-mu-m" class="level4" data-number="8.3.2.2">
+<h4 data-number="8.3.2.2" class="anchored" data-anchor-id="one-sided-z-test-h_1-mu-m"><span class="header-section-number">8.3.2.2</span> One-sided z-test <span class="math inline">H_1: \mu &lt; m</span></h4>
 <p><span class="math display">H_0: \mu_{mpg} = 22 \quad \textrm{ vs }\quad H_1: \mu_{mpg} &lt; 22</span></p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">z.test</span>(mpg, <span class="at">mu=</span><span class="dv">22</span>, <span class="at">sigma.x =</span> <span class="dv">6</span>, <span class="at">alternative =</span> <span class="st">"less"</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">z.test</span>(mpg, <span class="at">mu=</span><span class="dv">22</span>, <span class="at">sigma.x =</span> <span class="dv">6</span>, <span class="at">alternative =</span> <span class="st">"less"</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -677,16 +837,14 @@ mean of x
 </div>
 <p><strong>Decision:</strong></p>
 <ul>
-<li><strong>P-Value</strong>: we reject the null hypothesis since p-value 0.036 is less than <span class="math inline">\alpha=0.05</span>.<br>
-</li>
-<li><strong>Critical Value</strong>: the test statistic <span class="math inline">z=</span> -1.8 falls in the critical region which is less than <span class="math inline">z_{0.05}</span> = -1.645. Thus, we reject the null hypothesis.<br>
-</li>
+<li><strong>P-Value</strong>: we reject the null hypothesis since p-value 0.036 is less than <span class="math inline">\alpha=0.05</span>.</li>
+<li><strong>Critical Value</strong>: the test statistic <span class="math inline">z=</span> -1.8 falls in the critical region which is less than <span class="math inline">z_{0.05}</span> = -1.645. Thus, we reject the null hypothesis.</li>
 </ul>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the critical value can be calculated by the following code.</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.05</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the critical value can be calculated by the following code.</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.05</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -1.644854</code></pre>
@@ -1101,7 +1259,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./ch9.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">ch9.html</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">INFERENCE FROM TWO SAMPLES</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

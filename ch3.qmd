@@ -1,10 +1,25 @@
 ---
 author: "Jerome Goddard II"
+editor: visual
 ---
 
-<!-- \renewcommand{\thesection}{\arabic{section}} -->
-
-<!-- \setcounter{section}{2} -->
+| `r`-function         | Description                                                                                                                                                                                                                                                              |
+|:---------------------|-------------------------------------------------|
+| `mean(x)`            | Calculate the mean of vector `x`                                                                                                                                                                                                                                         |
+| `median(x)`          | Calculate the median of vector `x`                                                                                                                                                                                                                                       |
+| `Mode(x)`            | Calculate the mode of vector `x`. Need to install the package `DescTools`                                                                                                                                                                                                |
+| `max(x)`             | Calculate the maximum of vector `x`                                                                                                                                                                                                                                      |
+| `min(x)`             | Calculate the minimum of vector `x`                                                                                                                                                                                                                                      |
+| `range(x)`           | Calculate the range of vector `x`. `range(x)` returns a vector `c(min(x),max(x))`                                                                                                                                                                                        |
+| `sd`, `var`          | calculate the sample standard deviation, use denominator `n-1`. To remove a `NA` value, pass the argument `na.rm=TRUE`. To calculate a population variance $\sigma^2(x)$, use the formula $\sigma^2(x)= var(x)*(length(x)-1)/length(x)$, and $\sigma = \sqrt{\sigma^2}$. |
+| `scale(x)`           | convert data vector `x` into $z$-scores.                                                                                                                                                                                                                                 |
+| `quantile(x,probs)`  | Calculate the percentiles at the indicated probability values `probs`.                                                                                                                                                                                                   |
+| `summary(x)`         | Give a 5-number (min, Q1, median, mean, Q3, max) summary of the data vector `x`                                                                                                                                                                                          |
+| `boxplot(x)`         | Plot the boxplot of the data vector `x`  |                                                           
+`hist(x)` | plot histogram of the 1-D data `x`. Optional arguments: `main`: main title; `xlab`: x-label; `ylab`: y-label; `col`: color. Pass `freq=FALSE` for a relative frequency histogram. 
+| `rnorm(n,mean,sd)`   | generate `n` *random* values of standard normal distribution with the given `mean` and `sd`.                                                                                                                                                                             |
+| `runif(n, min, max)` | Generate `n` uniformly distributed *random* values between min (inclusive) and max (inclusive).                                                                                                                                                                          |
+| `rexp(n,r)`          | Generate `n` exponentially distributed *random* values with rate `r` at which events occurs on average                                                                                                                                                                   |
 
 # Describing, Exploring, and Comparing Data
 
@@ -16,7 +31,7 @@ Measures of center, such as the mean and median, provide a central value that su
 
 ### Mean
 
-The mean, also known as the average, is a measure of center in a dataset that calculates the sum of all values divided by the total number of values, providing a representative value for the dataset. We will employ the R command `mean()` to calculate the mean of several datasets. First, let's use the test scores from Section 2.1.1 which should be stored in `scores`.
+The mean, also known as the average, is a measure of center in a dataset that calculates the sum of all values divided by the total number of values, providing a representative value for the dataset. We will employ the R command `mean()` to calculate the mean of several datasets.
 
 ```{r }
 # Load test data into a variable names scores
@@ -34,13 +49,15 @@ The mean is very sensitive to outliers. Let's see what happens when we take the 
 ```{r }
 
 # Previous test scores with a several much lower scores added
-scores2 <- c(95, 90, 85, 85, 87, 74, 75, 64, 85, 84, 87, 15, 20, 75, 75, 90, 75, 2, 1, 5, 3)
+scores2 <- c(95, 90, 85, 85, 87, 74, 75, 64, 85, 84, 87, 15, 20, 75, 75, 90, 75, 
+             2, 1, 5, 3)
 
 # Calculate mean of scores2 and then store it in the variable meanScore2
 meanScore2 <- mean(scores2)
 
 # print out the answer
-cat("Mean test score is from original is: ", meanScore, ", while from scores2 is: ", meanScore2)
+cat("Mean test score is from original is: ", meanScore, ", while from scores2 is: ", 
+    meanScore2)
 
 ```
 
@@ -59,7 +76,8 @@ medianScore <- median(scores)
 medianScore2 <- median(scores2)
 
 # print out the answer
-cat("Mean test score from original is: ", meanScore, ", while from scores2 is: ", meanScore2, "\n\n")
+cat("Mean test score from original is: ", meanScore, ", while from scores2 is: ", 
+    meanScore2, "\n\n")
 cat("Median test score from original is: ", medianScore, ", while from scores2 is: ", medianScore2, "\n")
 
 ```
@@ -79,7 +97,7 @@ install.packages('DescTools')
 
 Once this package is installed, then we can load the library `DescTools` in order to use the R command `Mode()`.
 
-```{r }
+```{r warning= FALSE }
 
 # Load the DescTools package
 library(DescTools)
@@ -93,7 +111,8 @@ modeScore <- Mode(scores)
 modeScore2 <- Mode(scores2)
 
 # print out the answer
-cat("Mode test score from original is: ", modeScore, ", while from scores2 is: ", modeScore2, "\n")
+cat("Mode test score from original is: ", modeScore, ", while from scores2 is: ", 
+    modeScore2, "\n")
 ```
 
 ### Midrange
@@ -109,13 +128,14 @@ midrangeScore <- (max(scores) - min(scores)) / 2
 midrangeScore2 <- (max(scores2) - min(scores2)) / 2
 
 # print out the answer
-cat("Midrange test score from original is: ", midrangeScore, ", while from scores2 is: ", midrangeScore2, "\n")
+cat("Midrange test score from original is: ", midrangeScore, ", 
+    while from scores2 is: ", midrangeScore2, "\n")
 
 ```
 
 ### Let's put it all togeher!
 
-Consider the built-in dataset `mtcars` which contains several aspects and performance of several 1973 - 1974 model cars which we studied in Section 2.4. We will calculate mean, meidan, mode, and midrange of the miles per gallon of tthe cars in the dataset. using the R commands illustrated in the previous sections, as well as compute the so-called 5-number summary using the R command `summary()`. First, let's plot a histogram of the data.
+Consider the built-in dataset `mtcars` which contains several aspects and performance of several 1973 - 1974 model cars which we studied in Section 2.4. We will calculate mean, meidan, mode, and midrange of the miles per gallon of the cars in the dataset. using the R commands illustrated in the previous sections, as well as compute the so-called 5-number summary using the R command `summary()`. First, let's plot a histogram of the data.
 
 ```{r }
 
@@ -140,14 +160,13 @@ midrangeMPG <- (max(carsMPG) - min(carsMPG)) / 2
 
 # print out the answer
 cat("Mean \t Median \t \t \t  Mode \t \t \t Midrange \n")
-cat(meanMPG, " \t ", medianMPG, " \t ", modeMPG, " \t ", midrangeMPG, "\n\n")
+cat(meanMPG, " \t ", medianMPG, " \t ", modeMPG, " \t ", midrangeMPG, "\n")
 
 # Give the 5-number summary for MPG data
-cat("5-Number Summary \n")
 summary(carsMPG)
 ```
 
-Notice that there are 7 elements in the mode. That's because there are 7 most frequent elements, each which appear twice. Which of these central measures best describes what you visually see as the "center" of data using the histogram? What does it "mean" that the mean and median are close to each other? Does the 5-number summary give us any additional information regarding the measure of "center" in the data?
+Notice that there are 7 elements in the mode. That's because there are 7 most frequent elements, each appear twice. Which of these central measures best describes what you visually see as the "center" of data using the histogram? What does it "mean" that the mean and median are close to each other? Does the 5-number summary give us any additional information regarding the measure of "center" in the data?
 
 <!-- Section 3.2 -->
 
@@ -183,7 +202,8 @@ rangeScore2 <- range(scores2)
 rangeMPG <- range(carsMPG)
 
 # print out the answer
-cat("Range for test scores from scores2 is: (", rangeScore2[1], ", ",rangeScore2[2], ") \n")
+cat("Range for test scores from scores2 is: (", rangeScore2[1], ", ",
+    rangeScore2[2], ") \n")
 cat("Range for MPG from carsMPG is: (", rangeMPG[1], ", ", rangeMPG[2], ") \n")
 
 ```
@@ -212,7 +232,8 @@ Variance measures the average of the squared differences between each data point
 
 ```{r }
 
-# Calculate population variance of scores2 and then store it in the variable popVarScore2
+# Calculate population variance of scores2 and then store it in the variable 
+# popVarScore2
 popVarScore2 <- var(scores2) * (length(scores2) - 1) / length(scores2)
 
 # Calculate sample variance of carsMPG and then store it in the variable samSDMPG
@@ -250,11 +271,11 @@ sdHP <- sd(carsHP)
 
 # print out the answer
 cat("Mean \t Median \t  variance \t Standard Deviation \n")
-cat(meanHP, " \t ", medianHP, " \t ", varHP, " \t ", sdHP, "\n\n")
+cat(meanHP, " \t ", medianHP, " \t ", varHP, " \t ", sdHP, "\n")
 
 ```
 
-Now, compare the MPG and HP data from the `mtcars` dataset. For MPG, we calculated a standard deviation around *36* and for HP of around *69*. Does this mean that the MPG data is less spread out that the HP data? Is your answer to this question consistent with the histograms we produced? Can we compare standard deviations from two totally different datasets in a meaningful way?
+Now, compare the MPG and HP data from the `mtcars` dataset. For MPG, we calculated a standard deviation around *36* and for HP of around *69*. Does this mean that the MPG data is less spread out than the HP data? Is your answer to this question consistent with the histograms we produced? Can we compare standard deviations from two totally different datasets in a meaningful way?
 
 <!-- Section 3.3 -->
 
@@ -401,13 +422,10 @@ Out of the two fictional classes, are there any test scores that are significant
 
 
 # Compute 5-number summary for scores
-cat("scores: \n \n")
 summary(scores)
 
 # Compute 5-number summary for scores2
-cat("\nscores2: \n \n")
 summary(scores2)
-
 ```
 
 Finally, let's create boxplots for both datasets and show them on the same plot window for comparison.

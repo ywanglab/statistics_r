@@ -1,0 +1,50 @@
+---
+author: "Yi Wang"
+---
+# Quick Start to R Programming 
+
+
+## 1-minture `R` Programming Introduction
+
+`Variables`: To create a variable, use the assignment operator `<-`. For example, 
+```{r}
+x <- 5
+```
+
+`Data Structures`: `R` supports various data structures such as `vectors`, `matrices`, `arrays`, `lists`, and `dataframes`. For instance, you can create a vector using `c()` like 
+```{r}
+my_vector <- c(1, 2, 3, 4, 5)
+```
+To index the second element of `my_vector`, use `[]` operator:
+```{r}
+my_vector[2]
+```
+The output after running the code `my_vector[2]` is displayed as `[1] 2`, where `[1]` indicates the *first* line of the output, and `2` is the *value* of `my_vector[2]`. 
+
+To print a *formatted* output, use the built-in function `cat` to concatenate *strings* enclosed in double quotes `""`(or equivalently single quotes `' '`). Note `"\n"` represents a *newline* feed.  For example:
+```{r}
+cat("The first element in my_vector is:", my_vector[1], "\n")
+```
+
+`Functions`: Functions in `R` are defined using the `function()` keyword. For example, you can create a function as follows:
+
+```{r }
+my_sum <- function(arg1, arg2) {
+  # function body
+  return(arg1 + arg2)  #return the sum of arg1 and arg2
+}
+```
+`Code comment`:  A code comment starts with `#`. A comment line will not affect your code. When a R-code is executed, a comment line will be ignored by the R-code interpreter. **When you are following along with the code in this manual, you do not need to type the line starting with `#`.** They are provided to interpret the codes. 
+
+`Control Structures`: `R` supports typical control structures like `if`-`else` statements, `for` loops, `while` loops, etc.
+
+`Packages`: R's functionality can be extended through packages. You can install packages using the `install.packages("package_Name")` function and load them using the `library("package_name")` function.
+
+`Data Manipulation and Analysis`: `R` provides powerful tools for data manipulation and analysis. Packages like `dplyr` and `ggplot2` are commonly used for data manipulation and visualization, respectively.
+
+`Help`: to access the help document, type in the R-console: `?function_name` or help(function_name). For example:, `?mean` or `help(mean)`. 
+
+
+
+
+

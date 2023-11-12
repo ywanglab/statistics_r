@@ -23,21 +23,36 @@ author: "Wen Tang"
 ```{r set, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+| `r`-function | Description |
+|:--------------------|--------------------------------------------------------|
+`rnorm(n,mean,sd)` | generate `n` random values of standard normal distribution with the given `mean` and `sd`. 
+`hist(x)` | Plot the histogram of the data vector `x`, pass `probability=TRUE` to use density estimate. Pass `breaks` argument to specify edges of bins. Eg.: `breaks = seq(0,1, by=0.1)`. `breaks="FD"` is a method based on data variability. 
+`seq(start, end, by=step)` | Generate a sequence. 
+`density(x)` | Estimate the density of the data vector `x`
+`lines(x,y)` | Add a line to an existing plot. `y` may be omitted depending on `x`
+`pnorm(q,mean=0, sd=1)`| Calculate the cumulative probability $P(X\le q)$ for a normal distributed random variable $X$ with a given `mean` and `sd`. 
+`diff(x)` | Calculate the first difference of a vector `x`. 
+`qnorm(p, mean=0, sd=1)`| Calculate the quantile of the normal distribution corresponding to the probability `p` (from left-tail). 
+`scale(x,center, scale)`| Scale data `x` to $z$-score using a given mean (`center`) and standard deviation (`scale`). E.g.: `scale(x, center=5, scale=2)`
+`rbinom(s,size=n, prob=p)`| Generate `s` random binomial-distributed values with `n` trials and success probability `p`
+`replicate(n, expr)`| Perform the Monte-Carlo simulation by replicating the experiment given by the expression `expr` `n` times. 
+
+
 
 # NORMAL PROBABILITY DISTRIBUTION
 ## THE standard normal distribution
-### Normal distribution graph (Displaying only).
+### Normal distribution graph (Optional)
 
 ```{r}
 set.seed(123)                       # Set the seed for reproducibility
 x <- rnorm(1000, mean = 0, sd = 1)  # Generate data for a standard normal distribution
 
 # Plot the data with density curve
-hist(x, prob = TRUE, col = "lightblue", main = "Standard Normal Distribution")
+hist(x, probability = TRUE, col = "lightblue", main = "Standard Normal Distribution")
 lines(density(x), col = "red", lwd = 2)
 ```
 
-### Find the probability (area) when z scores are given.
+### Find the probability (area) when z scores are given
 
 ```{r}
 # Find the area under the curve to the left of a certain value: P(z<1)
@@ -48,7 +63,7 @@ pnorm(1, mean = 0, sd = 1)
 diff(pnorm(c(-1, 1), mean = 0, sd = 1))
 ```
 
-### Find z scores when the area is given.
+### Find z scores when the area is given
 
 ```{r}
 # Find the value with a certain area under the curve to its left: critical value 
@@ -97,8 +112,8 @@ x <- z * sigma + mu  # convert the z score to individual x value using formula
 cat("X =", x, "\n")  # print the individual x value
 ```
 
-## SAMPLING distributions and estimators (Displaying only/Optional)
-### general behavior of sampling distribution of the sample proportion
+## SAMPLING distributions and estimators (Optional)
+### General behavior of sampling distribution of sample proportions
 
 ```{r}
 # Set the seed for reproducibility
@@ -108,15 +123,16 @@ n <- 10  # sample size
 p <- 0.5  # population proportion
 samples <- replicate(50000, rbinom(1, size = n, prob = p))
 
-# Calculate sample proportions
+# Calculate sample proportions of successes
 sample_props <- samples / n
 
 # Plot the histogram
 
-hist(sample_props, breaks = seq( 0, 1, by = 0.1 ), col = "lightblue", main = "Sampling Distribution of Sample Proportion")
+hist(sample_props, breaks = seq( 0, 1, by = 0.1 ), col = "lightblue", 
+     main = "Sampling Distribution of Sample Proportion")
 ```
 
-### general behavior of sampling distribution of the sample mean
+### general behavior of sampling distribution of sample means
 
 ```{r}
 #input the parameter values
@@ -127,10 +143,11 @@ n <- 5
 sample_means <- replicate(10000, mean(rnorm(n, mu, sigma)))
 
 # Create a histogram of the sampling distribution of the sample mean
-hist(sample_means, breaks ="FD",  main = "Sampling Distribution of Sample Mean", xlab = "Sample Mean", ylab = "Frequency", col = "lightblue", border = "black")
+hist(sample_means, breaks ="FD",  main = "Sampling Distribution of Sample Mean", 
+     xlab = "Sample Mean", ylab = "Frequency", col = "lightblue", border = "black")
 ```
 
-### general behavior of sampling distribution of the sample variance
+### general behavior of sampling distribution of sample variances
 
 ```{r}
 mu <- 4    # True population mean
@@ -145,10 +162,12 @@ sample_variance <- function(sample) {
   return(sum_squared_deviations / (n - 1))
 }
 # Simulate sampling distribution
-sample_variances <- replicate(num_samples, sample_variance(rnorm(sample_size, mu, sigma)))
+sample_variances <- replicate(num_samples, sample_variance(rnorm(sample_size, 
+                                                                 mu, sigma)))
 
 # Create a histogram of the sampling distribution of sample variance
-hist(sample_variances, breaks = "FD", freq = FALSE, main = "Sampling Distribution of Sample Variance",
+hist(sample_variances, breaks = "FD", freq = FALSE, 
+     main = "Sampling Distribution of Sample Variance",
      xlab = "Sample Variance", ylab = "Frequency", col = "lightblue", border = "black")
 ```
 
@@ -172,6 +191,7 @@ probability_range
 ```{r}
 # Find the probability between two mean values $x/bar$ (CLT)
 standard_error <- sigma / sqrt(n) # Calculate the standard error of the sample mean
-probability_range <- diff(pnorm(c(x_lower, x_upper), mean = mu, sd = standard_error))# Find the probability  
+probability_range <- diff(pnorm(c(x_lower, x_upper), mean = mu, 
+                                sd = standard_error))# Find the probability  
 probability_range
 ```

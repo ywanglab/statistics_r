@@ -8,7 +8,7 @@
 
 <meta name="author" content="Wen Tang">
 
-<title>Elementary Statistics with R: STAT 2670 - 7&nbsp; ESTIMATING PARAMETERS AND DETERMINGING SAMPLE SIZES</title>
+<title>Elementary Statistics with R Programming - 7&nbsp; ESTIMATING PARAMETERS AND DETERMINGING SAMPLE SIZES</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -103,6 +103,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
 
 </head>
 
@@ -130,19 +146,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Elementary Statistics with R: STAT 2670</a> 
+      <a href="./">Elementary Statistics with R Programming</a> 
         <div class="sidebar-tools-main">
     <div class="dropdown">
       <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./Elementary-Statistics-with-R--STAT-2670.pdf">
+            <a class="dropdown-item sidebar-tools-main-item" href="./Elementary-Statistics-with-R-Programming.pdf">
               <i class="bi bi-bi-file-pdf pe-1"></i>
             Download PDF
             </a>
           </li>
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./Elementary-Statistics-with-R--STAT-2670.docx">
+            <a class="dropdown-item sidebar-tools-main-item" href="./Elementary-Statistics-with-R-Programming.docx">
               <i class="bi bi-bi-file-word pe-1"></i>
             Download Docx
             </a>
@@ -168,7 +184,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Setting-up Computing Environment</span></span></a>
+ <span class="menu-text">Setting-up Computing Environment</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./quick-r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Quick Start to R Programming</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -186,13 +208,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">PROBABILITY</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Discrete probability distribution</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Discrete Probability Distribution</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -216,19 +238,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch9.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">ch9.html</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">INFERENCE FROM TWO SAMPLES</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch10.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Correlation and Regression</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -250,14 +266,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#estimating-a-population-proportion-page-313-online-course-example" id="toc-estimating-a-population-proportion-page-313-online-course-example" class="nav-link active" data-scroll-target="#estimating-a-population-proportion-page-313-online-course-example"><span class="header-section-number">7.1</span> ESTIMATING a population proportion (Page 313 Online Course Example)</a>
   <ul class="collapse">
   <li><a href="#getting-the-ci-directly" id="toc-getting-the-ci-directly" class="nav-link" data-scroll-target="#getting-the-ci-directly"><span class="header-section-number">7.1.1</span> Getting the CI directly</a></li>
-  <li><a href="#getting-the-ci-step-by-step" id="toc-getting-the-ci-step-by-step" class="nav-link" data-scroll-target="#getting-the-ci-step-by-step"><span class="header-section-number">7.1.2</span> Getting the CI step by step</a></li>
+  <li><a href="#getting-the-ci-step-by-step-using-the-textbooks-walds-method-slightly-different-result-than-the-result-given-above" id="toc-getting-the-ci-step-by-step-using-the-textbooks-walds-method-slightly-different-result-than-the-result-given-above" class="nav-link" data-scroll-target="#getting-the-ci-step-by-step-using-the-textbooks-walds-method-slightly-different-result-than-the-result-given-above"><span class="header-section-number">7.1.2</span> Getting the CI step by step using the textbook’s Wald’s Method (slightly different result than the result given above)</a></li>
   </ul></li>
   <li><a href="#estimating-a-population-mean" id="toc-estimating-a-population-mean" class="nav-link" data-scroll-target="#estimating-a-population-mean"><span class="header-section-number">7.2</span> ESTIMATING a population mean</a>
   <ul class="collapse">
-  <li><a href="#get-the-ci-directly-with-original-data-values-are-given.-page-343-mercury-question" id="toc-get-the-ci-directly-with-original-data-values-are-given.-page-343-mercury-question" class="nav-link" data-scroll-target="#get-the-ci-directly-with-original-data-values-are-given.-page-343-mercury-question"><span class="header-section-number">7.2.1</span> Get the CI directly with Original data values are given. (Page 343 Mercury question)</a></li>
+  <li><a href="#get-the-ci-directly-with-sample-data-values-given.-page-343-mercury-question" id="toc-get-the-ci-directly-with-sample-data-values-given.-page-343-mercury-question" class="nav-link" data-scroll-target="#get-the-ci-directly-with-sample-data-values-given.-page-343-mercury-question"><span class="header-section-number">7.2.1</span> Get the CI directly with sample data values given. (Page 343 Mercury question)</a></li>
   <li><a href="#get-the-ci-step-by-step-with-given-mean-and-standard-deviation-page-341-hershey-kisses-question" id="toc-get-the-ci-step-by-step-with-given-mean-and-standard-deviation-page-341-hershey-kisses-question" class="nav-link" data-scroll-target="#get-the-ci-step-by-step-with-given-mean-and-standard-deviation-page-341-hershey-kisses-question"><span class="header-section-number">7.2.2</span> Get the CI step by step with given mean and standard deviation (Page 341 Hershey kisses question)</a></li>
   </ul></li>
-  <li><a href="#estimating-a-population-variance-body-temperature-example-page-353" id="toc-estimating-a-population-variance-body-temperature-example-page-353" class="nav-link" data-scroll-target="#estimating-a-population-variance-body-temperature-example-page-353"><span class="header-section-number">7.3</span> ESTIMATING a population variance (body temperature example page 353)</a>
+  <li><a href="#estimating-a-population-deviation-or-variance-body-temperature-example-page-353" id="toc-estimating-a-population-deviation-or-variance-body-temperature-example-page-353" class="nav-link" data-scroll-target="#estimating-a-population-deviation-or-variance-body-temperature-example-page-353"><span class="header-section-number">7.3</span> ESTIMATING a population Deviation or Variance (body temperature example page 353)</a>
   <ul class="collapse">
   <li><a href="#critical-values" id="toc-critical-values" class="nav-link" data-scroll-target="#critical-values"><span class="header-section-number">7.3.1</span> Critical values</a></li>
   <li><a href="#confidence-interval" id="toc-confidence-interval" class="nav-link" data-scroll-target="#confidence-interval"><span class="header-section-number">7.3.2</span> Confidence interval</a></li>
@@ -293,6 +309,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<table class="table">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 72%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><code>r</code>-function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>prop.test(successes, n, conf.level=0.95)</code></td>
+<td>Perform a hypothesis test for a single proportion. Pass a hypothesized (<span class="math inline">H_0</span>) proportion <code>p</code> if it’s not 0.5. Eg. <code>p=0.6</code> for <span class="math inline">H_0</span>. Pass a parameter <code>alternative</code> for alternative hypothesis: “two.sided”(default) ,“less”, “greater”. Note the <code>conf.int</code> given by the test uses Wilson’s method than the Wald method used in the book.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>t.test(x, conf.level=0.95)</code></td>
+<td>Perform a <span class="math inline">t</span>-test for a population mean. Accepts an additional <code>alternative</code> argument for <span class="math inline">H_1</span>. The default hypothesized mean is <code>mu=0</code>. Otherwise, pass a hypothesized mean value.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>qt(p, df)</code></td>
+<td>calculate the quantile for the probability <code>p</code> of <span class="math inline">t</span>-distribution with degree of freedom equal to <code>df</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>qchisq(p, df)</code></td>
+<td>calculate the quantile for the probability <code>p</code> of <span class="math inline">\chi^2</span>-distribution with degree of freedom equal to <code>df</code></td>
+</tr>
+</tbody>
+</table>
 <section id="estimating-a-population-proportion-page-313-online-course-example" class="level2" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="estimating-a-population-proportion-page-313-online-course-example"><span class="header-section-number">7.1</span> ESTIMATING a population proportion (Page 313 Online Course Example)</h2>
 <section id="getting-the-ci-directly" class="level3" data-number="7.1.1">
@@ -309,7 +355,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the confidence interval</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>conf_interval <span class="ot">&lt;-</span> result<span class="sc">$</span>conf.int</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the confidence interval</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the confidence interval (calculated by the Wilson method)</span></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Confidence Interval:"</span>, conf_interval[<span class="dv">1</span>], <span class="st">"to"</span>, conf_interval[<span class="dv">2</span>], <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
@@ -317,8 +363,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="getting-the-ci-step-by-step" class="level3" data-number="7.1.2">
-<h3 data-number="7.1.2" class="anchored" data-anchor-id="getting-the-ci-step-by-step"><span class="header-section-number">7.1.2</span> Getting the CI step by step</h3>
+<section id="getting-the-ci-step-by-step-using-the-textbooks-walds-method-slightly-different-result-than-the-result-given-above" class="level3" data-number="7.1.2">
+<h3 data-number="7.1.2" class="anchored" data-anchor-id="getting-the-ci-step-by-step-using-the-textbooks-walds-method-slightly-different-result-than-the-result-given-above"><span class="header-section-number">7.1.2</span> Getting the CI step by step using the textbook’s Wald’s Method (slightly different result than the result given above)</h3>
 <p>1.Critical value</p>
 <div class="cell">
 <details>
@@ -375,8 +421,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="estimating-a-population-mean" class="level2" data-number="7.2">
 <h2 data-number="7.2" class="anchored" data-anchor-id="estimating-a-population-mean"><span class="header-section-number">7.2</span> ESTIMATING a population mean</h2>
-<section id="get-the-ci-directly-with-original-data-values-are-given.-page-343-mercury-question" class="level3" data-number="7.2.1">
-<h3 data-number="7.2.1" class="anchored" data-anchor-id="get-the-ci-directly-with-original-data-values-are-given.-page-343-mercury-question"><span class="header-section-number">7.2.1</span> Get the CI directly with Original data values are given. (Page 343 Mercury question)</h3>
+<section id="get-the-ci-directly-with-sample-data-values-given.-page-343-mercury-question" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="get-the-ci-directly-with-sample-data-values-given.-page-343-mercury-question"><span class="header-section-number">7.2.1</span> Get the CI directly with sample data values given. (Page 343 Mercury question)</h3>
+<p>In this case, the population <span class="math inline">\sigma</span> is unknown.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -415,7 +462,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>critical_t <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="dv">1</span> <span class="sc">-</span> alpha<span class="sc">/</span> <span class="dv">2</span>, <span class="at">df =</span> degrees_of_freedom)</span>
 <span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the result</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Critical t-value for degrees of freedom ="</span>, degrees_of_freedom, <span class="st">"and confidence level ="</span>, confidence_level, <span class="st">":"</span>, critical_t, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Critical t-value for degrees of freedom ="</span>, degrees_of_freedom, </span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"and confidence level ="</span>, confidence_level, <span class="st">":"</span>, critical_t, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Critical t-value for degrees of freedom = 31 and confidence level = 0.99 : 2.744042 </code></pre>
@@ -437,7 +485,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>margin_of_error <span class="ot">&lt;-</span> critical_t <span class="sc">*</span> standard_error</span>
 <span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the result</span></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Margin of Error for confidence level ="</span>, confidence_level, <span class="st">"and sample size ="</span>, n, <span class="st">":"</span>, margin_of_error, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Margin of Error for confidence level ="</span>, confidence_level, </span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"and sample size ="</span>, n, <span class="st">":"</span>, margin_of_error, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Margin of Error for confidence level = 0.99 and sample size = 32 : 0.0522434 </code></pre>
@@ -464,8 +513,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="estimating-a-population-variance-body-temperature-example-page-353" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="estimating-a-population-variance-body-temperature-example-page-353"><span class="header-section-number">7.3</span> ESTIMATING a population variance (body temperature example page 353)</h2>
+<section id="estimating-a-population-deviation-or-variance-body-temperature-example-page-353" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="estimating-a-population-deviation-or-variance-body-temperature-example-page-353"><span class="header-section-number">7.3</span> ESTIMATING a population Deviation or Variance (body temperature example page 353)</h2>
 <section id="critical-values" class="level3" data-number="7.3.1">
 <h3 data-number="7.3.1" class="anchored" data-anchor-id="critical-values"><span class="header-section-number">7.3.1</span> Critical values</h3>
 <div class="cell">
@@ -474,7 +523,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>confidence_level <span class="ot">&lt;-</span> <span class="fl">0.95</span>  <span class="co"># Confidence level ( 0.95 for 95% confidence)</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">-</span> confidence_level</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>sample_size <span class="ot">&lt;-</span> <span class="dv">106</span>          <span class="co"># Sample size</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>degrees_of_freedom <span class="ot">&lt;-</span> sample_size <span class="sc">-</span> <span class="dv">1</span>  <span class="co"># Degrees of freedom for the chi-squared distribution</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>degrees_of_freedom <span class="ot">&lt;-</span> sample_size <span class="sc">-</span> <span class="dv">1</span>  <span class="co"># df for the chi-squared distribution</span></span>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the critical values using the chi-squared distribution</span></span>
 <span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>lower_critical_value <span class="ot">&lt;-</span> <span class="fu">qchisq</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>, <span class="at">df =</span> degrees_of_freedom)</span>

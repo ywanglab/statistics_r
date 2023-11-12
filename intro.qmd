@@ -2,7 +2,7 @@
 author: "Yi Wang"
 ---
 
-# Setting-up Computing Environment
+# Setting-up Computing Environment {.unnumbered}
 
 ## Setting up your own computing environment on a personal computer
 
@@ -24,3 +24,4 @@ Alternatively, one can save the hassle of setting up on a personal computer and 
 -   Either create a new account using an email address such as your AUM email or simply "Log in using Google" or click on other log-in alternative.
 
 After log-in to your account, you are ready to use R Studio.
+

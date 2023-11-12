@@ -5,6 +5,6 @@ This is an R-manual that accompanies the textbook @triola22 for the courses STAT
 Credits:
 
 -   Jerome Goddard (Chapters 2 and 3)
--   Yi Wang (chapters 4 and 5; Overall editing)
--   Wen Tang (chapters 6 and 7)
--   Jieun Park (chapters 8 and 10)
+-   Yi Wang (Chapters 1, 4 and 5; Overall editing)
+-   Wen Tang (Chapters 6 and 7)
+-   Jieun Park (Chapters 8 and 10)

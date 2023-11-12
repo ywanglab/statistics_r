@@ -23,11 +23,25 @@ author: "Jieun Park"
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
 ```
-## Hypothesis Testing
 
+| `r`-function                                | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+|:---------------------|-------------------------------------------------|
+| `prop.test(successes, n, conf.level=0.95)`  | Perform a hypothesis test for a single proportion. Pass a hypothesized ($H_0$) proportion `p` if it's not 0.5. Eg. `p=0.6` for $H_0$. Pass a parameter `alternative` for alternative hypothesis: "two.sided"(default) ,"less", "greater". Note the `conf.int` given by the test uses Wilson's method than the Wald method used in the book. The test returns three values: `$p.value` (for p-value), `$statistic` (for test-statistic), and `$conf.int` (for confidence interval). |
+| `t.test(x, conf.level=0.95)`                | Perform a $t$-test for a population mean. Accepts an additional `alternative` argument for $H_1$. The default hypothesized mean is `mu=0`. Otherwise, pass a hypothesized mean value.                                                                                                                                                                                                                                                                                              |
+| `z.test(x, sigma.x=sigma, conf.level=0.95)` | Perform a $z$-test for a population mean with known `sigma.x=sigma`. Accepts an additional `alternative` argument for $H_1$. The default hypothesized mean is `mu=0`. Otherwise, pass a hypothesized mean value.                                                                                                                                                                                                                                                                   |
+| `qnorm(p, mean=0, sd=1)`                    | Calculate the quantile of the normal distribution corresponding to the probability `p` (from left-tail).                                                                                                                                                                                                                                                                                                                                                                           |
+| `qt(p, df)`                                 | calculate the quantile for the probability `p` of $t$-distribution with degree of freedom equal to `df`                                                                                                                                                                                                                                                                                                                                                                            |
+| `qchisq(p, df)`                             | calculate the quantile for the probability `p` of $\chi^2$-distribution with degree of freedom equal to `df`|          
+| `attach(df)` | add a data frame `df` to the search path, which allows you to access the variables within the data frame `df` directly by their names instead of using a normal way such as `df$var`. |
+| `table` | tabulate the frequency counts of distinct values. |
+| `prop.table(table)` | compute the proportions of a table or data. Pass an argument `margin` for the direction: `1` for rows, `2` for columns, or `NULL` for the entire table (default). |
 
-### Basic of Hypothesis Testing
+# Hypothesis Testing
+
+## Basic of Hypothesis Testing
+
 We will use the following functions to perform hypothesis tests.
+
 ```{r, message=FALSE}
 library(BSDA)
 # prop.test(x, n, p = NULL,
@@ -47,19 +61,17 @@ library(BSDA)
 
 ```
 
+We use `qnorm()` and `qt()` functions to calculate critical values. For example, we can obtain $z_{0.95}$ using the `qnorm(0.95)` for a normal distribution, and the critical value $t_{0.05, 5}$ using `qt(0.95, 5)` for a t-distribution with 5 degree of freedom with $\alpha=0.05$ as below.
 
-We use `qnorm()` and `qt()` functions to calculate critical values. For example, we can obtain $z_{0.05}$ using the `qnorm(0.95)` for a normal distribution, and the critical value $t_{0.05, 5}$ using `qt(0.95, 5)` for a t-distribution with 5 degree of freedom with $\alpha=0.05$ as below. 
 ```{r}
 qnorm(0.95)
 qt(0.95, 5)
 ```
 
+## Testing a Claim About a Proportion
 
+`mtcars` dataset has data for 32 automobiles in 1973-1974 with 11 variables. Among these variable, we are interested to check if the proportion of V-shaped engine (`vs = 0`) is 0.5. That is, $H_0: p = 0.5$.
 
-### Testing a Claim About a Proportion
-
-`mtcars` dataset has data for 32 automobiles in 1973-1974 with 11 variables. Among these variable, we are interested to check if the proportion of V-shaped engine (`vs = 0`) is 0.5. That is, $H_0: p = 0.5$. We set the null hypothesis as follows: the population proportion of cars with a V-shaped engine (vs = 0) among all automobiles in 1973-1974 is equal to 0.5.
-We first check if we can use a normal approximation to perform a proportion test. With a sample size of $n=32$ and a proportion of interest $p=0.5$, both the expected number of successes and failures are  $np= n(1-p) = 32\cdot 0.5 = 16$. Since they are greater than 5, we can apply the proportion test using a normal approximation. In our sample, the number of success (`vs=0`) is 18 and the sample proportion is 0.56.
 ```{r, message=FALSE}
 data(mtcars)
 attach(mtcars)
@@ -67,157 +79,232 @@ table(vs)
 prop.table(table(vs))
 ```
 
+### Two-sided proportion test using the $z$-test (method in the textbook)
 
+We first check if we can use a normal approximation to perform a proportion test. With a sample size of $n=32$ and a proportion of interest $p=0.5$, both the expected number of successes and failures are $np= n(1-p) = 32\cdot 0.5 = 16$. Since they are greater than 5, we can apply the proportion test using a normal approximation. In our sample, the number of success (`vs=0`) is 18 and the sample proportion is 0.56.
 
-We use one sample proportion test with `prop.test()` function if $np \ge 5$ and $n(1-p) \ge 5$  where $p$ is the null hypothesized proportion and $n$ is the sample size. The syntax is below if we want to test with a sample vector (categorical variable with two levels) for $H_0: p = p_0$ with $\alpha = 0.05$. `x` is the number of success, `n`is the sample size, and `p_0` is the null hypothesized proportion.
 ```{r}
-# prop.test(x, n, p = p_0, conf.level=0.95, alternative=c("two.sided", "less", "greater"))
+# Example data
+successes <- 18  # Number of successes
+trials <- 32    # Total number of trials
+null_prob <- 0.5  # Hypothesized population proportion under the null hypothesis
 
+# Calculate the sample proportion
+sample_proportion <- successes / trials
+
+# Perform the z-test
+z_stat <- (sample_proportion - null_prob) / sqrt(null_prob * (1 - null_prob) / trials)
+
+# Calculate the p-value
+p_value <- 2 * (1 - pnorm(abs(z_stat)))
+
+# Calculate the critical value
+alpha <- 0.05
+critical_value <- c(qnorm(alpha),qnorm(1-alpha))
+
+# Print the results
+cat("Z-statistic:", z_stat, "\n")
+cat("p-value:", p_value, "\n")
+cat("Critical values:", critical_value, "\n")
 ```
-Depending on the alternative hypothesis $H_1$, we can choose one among `two.sided`, `less`, and `greater`.
-Under $H_0: p = p_0$, we can use each `alternative` option for `prop.test()` function.\
 
-1. $H_1: p = p_0$: `alternative = "two.sided"`\
-2. $H_1: p = p_0$ :`alternative = "less"`\
-3. $H_1: p = p_0$: `alternative = "less"`\
+We are ready to make a decision using the following method:
 
-For the proportion of `vs` , we test for the proportion of `vs = 0` with $H_0: p = 0.5$ and $\alpha = 0.05$.
+-   $p$-value method: The $p$-value `r p_value` is greater than the *significance level* $\alpha =0.05$, therefore we *fail* to reject the Null hypothesis $H_0: p=0.5$.
+-   **critical value** method: The test statistics `r z_stat` is not as extreme as the two critical values, therefore we *fail* to reject the Null Hypothesis.
 
-#### Two-sided Proportion Test
+### Two-sided Proportion Test using the built-in function `prop.test`
+
+Next we will use the R built-in `prop.test()` function to perform one sample proportion test. The syntax is below.
+
+```{r}
+# prop.test(x, n, p = p_0, conf.level=0.95, alternative=c("two.sided", "less", 
+# "greater"))
+```
+
+Depending on the alternative hypothesis $H_1$, we can choose one among `two.sided`, `less`, and `greater`:
+
+1.  $H_1: p \ne p_0$: `alternative = "two.sided"`
+2.  $H_1: p < p_0$ :`alternative = "less"`
+3.  $H_1: p > p_0$: `alternative = "greater"`
+
+It is remarkable that the built-in `prop.test` uses the Pearson $\chi^2$ distributed test statistic which is different than the $z-$test used by the textbook.
+
 $$H_0: p = 0.5 \quad \textrm{ vs }\quad H_1: p \ne 0.5$$
+
 ```{r}
 res <- prop.test(x=18, n=32, p = 0.50, alternative = "two.sided", conf.level = 0.95)
 res
 ```
+
+```{r}
+cat("The p-value is given by ", res$p.value, "\n")
+cat("The $chi^2$ test statistic  is given by ", res$statistic, "\n")
+cat("The confidence interval is given by (", res$conf.int[1], "," ,res$conf.int[2], ")\n")
+```
+
 **Decision:**
 
-* **P-Value**: we fail to reject the null hypothesis since p-value `r round(res$p.value, 3)` is greater than $\alpha=0.05$.\
-* **Critical Value**: the z-test statistic $z=$ `r round(sqrt(res$statistic), 3)` is closer to 0 than the critical values. Thus, we fail to reject the null hypothesis. \
+-   **P-Value**: we fail to reject the Null Hypothesis since p-value `r round(res$p.value, 3)` is greater than $\alpha=0.05$.\
+-   **Critical Value**: the $\chi^2$ test statistic `r round(res$statistic, 3)` is not as extreme as the critical values which can be found as below. Thus, we fail to reject the Null Hypothesis.\
+
 ```{r}
 # the critical value can be calculated by the following code.
-c(qnorm(0.025), qnorm(0.975))
+c(qchisq(0.025, 1), qchisq(0.975,1))
 ```
-* **Confidence Interval**: the claimed proportion 0.5 falls within the confidence interval of (`r round(res$conf.int[1],3)`, `r round(res$conf.int[2],3)`). Thus we fail to reject the null hypothesis.\
 
+-   **Confidence Interval**: the claimed proportion 0.5 falls within the confidence interval of (`r round(res$conf.int[1],3)`, `r round(res$conf.int[2],3)`). Thus we fail to reject the null hypothesis.\
 
-#### One-sided Proportion Test
+### One-sided Proportion Test
+
 $$H_0: p = 0.5 \quad \textrm{ vs }\quad H_1: p > 0.5$$
+
 ```{r}
 res <- prop.test(x=18, n=32, p = 0.50, alternative = "greater", conf.level = 0.95)
 res
 ```
+
 **Decision:**
 
-* **P-Value**: we fail to reject the null hypothesis since p-value `r round(res$p.value, 3)` is greater than $\alpha=0.05$.\
-* **Critical Value**: the test statistic $z=$ `r round(sqrt(res$statistic), 3)` does not fall in the critical region which is greater than $z_{0.05}$ = `r round(qnorm(0.95),3)`. Thus, we fail to reject the null hypothesis. \
+-   **P-Value**: we fail to reject the null hypothesis since p-value `r round(res$p.value, 3)` is greater than $\alpha=0.05$.\
+-   **Critical Value**: the $\chi^2$ test statistic `r round(res$statistic, 3)` does not fall in the critical region which is greater than `r qchisq(0.95,1)` or smaller than `r qchisq(0.05,1)`. Thus, we fail to reject the null hypothesis. The critical value can be found by
+
 ```{r}
 # the critical value can be calculated by the following code.
-qnorm(0.95)
+c(qchisq(0.05,1), qchisq(0.95,1))
 ```
-* **Confidence Interval**: the claimed proportion 0.5 falls within the confidence interval of (`r round(res$conf.int[1],3)`, `r round(res$conf.int[2],3)`). Thus we fail to reject the null hypothesis.\
 
+-   **Confidence Interval**: the claimed proportion 0.5 falls within the confidence interval of (`r round(res$conf.int[1],3)`, `r round(res$conf.int[2],3)`). Thus we fail to reject the null hypothesis.
 
+## Testing a Claim About a Mean
 
-### Tesing a Claim About a Mean
+### Unknown $\sigma$ with Normality Assumption
 
-#### Unknown $\sigma$ with Normality Assumption
+We use one sample t-test with `t.test()` function when we assume normality for population or the sample size is large enough. The syntax is as below if we want to test with a sample vector (variable) `x` for $H_0: \mu = m$ with a given confidence level `conf.level`, for example, `conf.level=0.95`.
 
-We use one sample t-test with `t.test()` function when we assume normality for population or the sample size is large enough. The syntax is below if we want to test with a sample vector (variable) `x` for $H_0: \mu = m$ with $\alpha = 0.05$. 
 ```{r}
 # t.test(x, mu= m, conf.level=0.95, alternative=c("two.sided", "less", "greater"))
-
 ```
+
 Depending on the alternative hypothesis $H_1$, we can choose one among `two.sided`, `less`, and `greater`.
-Under $H_0: \mu = m$, use each `alternative` option for `t.test()` function.\
 
-1. $H_1: \mu \ne m$: `alternative = "two.sided"`\
-2. $H_1: \mu < m$ :`alternative = "less"`\
-3. $H_1: \mu > m$: `alternative = "less"`\
+1.  $H_1: \mu \ne m$: `alternative = "two.sided"`
+2.  $H_1: \mu < m$ :`alternative = "less"`
+3.  $H_1: \mu > m$: `alternative = "greater"`
 
-As an example, we test for `mpg` with $H_0: \mu = 22$. That is, we test if the population mean of `mpg` is equal to 22. `mtcars` cars have 32 samples and we can understand that we have a large enough sample to use t-test with $\alpha = 0.05$.
+As an example, we test for `mpg` with $H_0: \mu = 22$. That is, we test if the population mean of `mpg` is equal to 22. `mtcars` cars have 32 samples and the sample size is large enough to use t-test with $\alpha = 0.05$.
 
-##### Two-sided t-test
+#### Two-sided t-test
+
 $$H_0: \mu = 22 \quad \textrm{ vs }\quad H_1: \mu \ne 22$$
+
 ```{r}
 res <- t.test(mpg, mu=22, alternative = "two.sided", conf.level = 0.95)
 res
 ```
+
+```{r}
+cat("The p-value is given by ", res$p.value, "\n")
+cat("The test statistic is given by ", res$statistic, "\n")
+cat("The confidence interval is given by (", res$conf.int[1], "," ,res$conf.int[2], ")\n")
+```
+
 **Decision:**
 
-* **P-Value**: we fail to reject the null hypothesis since p-value `r round(res$p.value, 3)` is greater than $\alpha=0.05$.\
-* **Critical Value**: the test statistic $t=$ `r round(res$statistic, 3)` is closer to 0 than the critical values. Thus, we fail to reject the null hypothesis. \
+-   **P-Value**: we fail to reject the null hypothesis since p-value `r round(res$p.value, 3)` is greater than $\alpha=0.05$.
+-   **Critical Value**: the test statistic $t=$ `r round(res$statistic, 3)` is closer to 0 than the critical values which can be found as below. Thus, we fail to reject the null hypothesis.
+
 ```{r}
 # the critical value can be calculated by the following code.
 c(qt(0.025, df=31), qt(0.975, df=31))
 ```
-* **Confidence Interval**: the claimed mean 22 falls within the confidence interval of (`r round(res$conf.int[1],3)`, `r round(res$conf.int[2],3)`). Thus we fail to reject the null hypothesis.\
 
-##### One-sided t-test $H_1: \mu < m$
+-   **Confidence Interval**: the claimed mean 22 falls within the confidence interval of (`r round(res$conf.int[1],3)`, `r round(res$conf.int[2],3)`). Thus we fail to reject the null hypothesis.
+
+#### One-sided t-test $H_1: \mu < m$
+
 $$H_0: \mu = 22 \quad \textrm{ vs }\quad H_1: \mu < 22$$
+
 ```{r}
 res <- t.test(mpg, mu=22, alternative = "less", conf.level = 0.95)
 res
 ```
+
 **Decision:**
 
-* **P-Value**: we reject the null hypothesis since p-value `r round(res$p.value, 3)` is less than $\alpha=0.05$.\
-* **Critical Value**: the test statistic $t=$ `r round(res$statistic, 3)` falls in the critical region which is less than $t_{0.05, 31}$ = `r round(qt(0.05, df=31),3)`. Thus, we reject the null hypothesis. \
+-   **P-Value**: we reject the null hypothesis since p-value `r round(res$p.value, 3)` is less than $\alpha=0.05$.\
+-   **Critical Value**: the test statistic $t=$ `r round(res$statistic, 3)` falls in the critical region which is less than $t_{0.05, 31}$ = `r round(qt(0.05, df=31),3)`. Thus, we reject the null hypothesis.\
+
 ```{r}
 # the critical value can be calculated by the following code.
 qt(0.05, df=31)
 ```
-* **Confidence Interval**: the claimed mean does not fall within the confidence interval of ($-\infty$, `r round(res$conf.int[2],3)`). Thus we reject the null hypothesis.\
 
+-   **Confidence Interval**: the claimed mean $\mu=22$ does not fall within the confidence interval of ($-\infty$, `r round(res$conf.int[2],3)`). Thus we reject the null hypothesis.
 
+### Known $\sigma$ with Normality Assumption
 
-#### Known $\sigma$ with Normality Assumption
+We use one sample z-test or normal test with `z.test()` function when we assume normality for population with known population standard deviation $\sigma$. The syntax is as below if we want to test with a sample vector (variable) `x` for $H_0: \mu = m$ with $\alpha = 0.05$ and a known `sigma`.
 
-We use one sample z-test or normal test with `z.test()` function when we assume normality for population with known population standard deviation $\sigma$. The syntax is below if we want to test with a sample vector (variable) `x` for $H_0: \mu = m$ with $\alpha = 0.05$ and known `sigma`. 
 ```{r}
 #library(BSDA)
-# z.test(x, mu = m, sigma.x = sigma, conf.level = 0.95, alternative = c("two.sided", "less", "greater"))
-
+# z.test(x, mu = m, sigma.x = sigma, conf.level = 0.95, 
+# alternative = c("two.sided", "less", "greater"))
 ```
-Depending on the alternative hypothesis $H_1$, we can choose one among `two.sided`, `less`, and `greater`.
-Under $H_0: \mu = m$, use each `alternative` option for `t.test()` function.\
 
-1. $H_1: \mu \ne m$: `alternative = "two.sided"`\
-2. $H_1: \mu < m$ :`alternative = "less"`\
-3. $H_1: \mu > m$: `alternative = "less"`\
+Depending on the alternative hypothesis $H_1$, we can choose one among `two.sided`, `less`, and `greater`.
+
+1.  $H_1: \mu \ne m$: `alternative = "two.sided"`
+2.  $H_1: \mu < m$ :`alternative = "less"`
+3.  $H_1: \mu > m$: `alternative = "greater"`
 
 For example, we test for `mpg` with $H_0: \mu = 22$. Assume `mpg` follows a normal distribution with $\sigma = 6$, then we can use z-test with $\alpha = 0.05$.
 
-##### Two-sided z-test
+#### Two-sided z-test
+
 $$H_0: \mu = 22 \quad \textrm{ vs }\quad H_1: \mu \ne 22$$
+
 ```{r}
 library(BSDA)
 res <- z.test(mpg, mu=22, sigma.x = 6, alternative = "two.sided", conf.level = 0.95)
 res
 ```
+
+```{r}
+cat("The p-value is given by ", res$p.value, "\n")
+cat("The test statistic is given by ", res$statistic, "\n")
+cat("The confidence interval is given by (", res$conf.int[1], "," ,res$conf.int[2], ")\n")
+```
+
 **Decision:**
 
-* **P-Value**: we fail to reject the null hypothesis since p-value `r round(res$p.value, 3)` is greater than $\alpha=0.05$.\
-* **Critical Value**: the test statistic $z=$ `r round(res$statistic, 3)` is closer to 0 than the critical values. Thus, we fail to reject the null hypothesis. \
+-   **P-Value**: we fail to reject the null hypothesis since p-value `r round(res$p.value, 3)` is greater than $\alpha=0.05$.
+-   **Critical Value**: the test statistic $z=$ `r round(res$statistic, 3)` is closer to 0 than the critical values as found below. Thus, we fail to reject the null hypothesis.
+
 ```{r}
 # the critical value can be calculated by the following code.
 c(qnorm(0.025), qnorm(0.975))
 ```
-* **Confidence Interval**: the claimed mean 22 falls within the confidence interval of (`r round(res$conf.int[1],3)`, `r round(res$conf.int[2],3)`). Thus we fail to reject the null hypothesis.\
 
-##### One-sided z-test $H_1: \mu < m$
+-   **Confidence Interval**: the claimed mean 22 falls within the confidence interval of (`r round(res$conf.int[1],3)`, `r round(res$conf.int[2],3)`). Thus we fail to reject the null hypothesis.
+
+#### One-sided z-test $H_1: \mu < m$
+
 $$H_0: \mu_{mpg} = 22 \quad \textrm{ vs }\quad H_1: \mu_{mpg} < 22$$
+
 ```{r}
 res <- z.test(mpg, mu=22, sigma.x = 6, alternative = "less", conf.level = 0.95)
 res
 ```
+
 **Decision:**
 
-* **P-Value**: we reject the null hypothesis since p-value `r round(res$p.value, 3)` is less than $\alpha=0.05$.\
-* **Critical Value**: the test statistic $z=$ `r round(res$statistic, 3)` falls in the critical region which is less than $z_{0.05}$ = `r round(qnorm(0.05),3)`. Thus, we reject the null hypothesis. \
+-   **P-Value**: we reject the null hypothesis since p-value `r round(res$p.value, 3)` is less than $\alpha=0.05$.
+-   **Critical Value**: the test statistic $z=$ `r round(res$statistic, 3)` falls in the critical region which is less than $z_{0.05}$ = `r round(qnorm(0.05),3)`. Thus, we reject the null hypothesis.
+
 ```{r}
 # the critical value can be calculated by the following code.
 qnorm(0.05)
 ```
-* **Confidence Interval**: the claimed mean does not fall within the confidence interval of ($-\infty$, `r round(res$conf.int[2],3)`). Thus we reject the null hypothesis.\
 
-
+-   **Confidence Interval**: the claimed mean does not fall within the confidence interval of ($-\infty$, `r round(res$conf.int[2],3)`). Thus we reject the null hypothesis.\

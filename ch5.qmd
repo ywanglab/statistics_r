@@ -12,11 +12,27 @@ author: "Yi Wang"
 editor: visual
 ---
 
-# Discrete probability distribution
+| `r`-function               | Description                                                                                                                                                                                                                              |
+|:-------------------|----------------------------------------------------|
+| `mean`                       | calculate the mean                                                                                                                                                                                                                       |
+| `sd`, `var`                | calculate the sample standard deviation, use denominator `n-1`. To remove a `NA` value, pass the argument `na.rm=TRUE`.                                                                                                                    |
+| `weighted.mean(x,wt)`        | Calculate a weighted mean (expectation)                                                                                                                                                                                                  |
+| `median(x)`                  | calculate the median                                                                                                                                                                                                                     |
+| `rbinom(s,size=n, prob=p)` | Generate `s` random binomial-distributed *random* values with `n` trials and success probability `p`                                                                                                                                              |
+| `dbinom(x,size=n, prob=p)` | Calculate the density (probability) of a binomial distribution with `x` successes in `n` trials given the success probability `p`                                                                                                        |
+| `pbinom(q,size=n, prob=p)` | Calculate the cumulative probability of a binomial distribution less than or equal to `q` successes in `n` trials given the success probability `p`. To calculate the probability greater than `q`, pass an argument `lower.tail=FALSE`. |
+| `hist(x)`                    | plot histogram of the 1-D data x: arguments: `main`: main title; `xlab`: x-label; `ylab`: y-label; `col`: color. Pass `freq=FALSE` for a relative frequency histogram.                                                                   |
+| `rpois(n, lambda)`         | Generate `n` random Poisson-distributed values with mean rate of events `lambda`                                                                                                                                                         |
+| `dpois(x, lambda)`         | Calculate the density (probability) of getting exactly `x` events given a Poisson-distribution with mean rate of events `lambda`                                                                                                         |
+| `ppois(x, lambda)`         | Calculate the cumulative probability of less than or equal to `x` given a Poisson-distribution with mean rate of events `lambda`                                                                                                         |
 
-## Calculate mean, standard deviation and variance with equal probability
+# Discrete Probability Distribution
 
-You can use R to calculate the mean, standard deviation, and variance of a given data set using built-in functions like `mean()`, `sd()`, and `var()`. Here's some sample R code to do that:
+## Probability Distribution
+
+### Calculate sample mean, standard deviation and variance with equal probability
+
+You can use R to calculate the **sample** mean, standard deviation, and variance of a given data set using built-in functions like `mean()`, `sd()`, and `var()`. Here's some sample R code to do that:
 
 ```{r}
 # Sample data set
@@ -26,20 +42,20 @@ data_set <- c(12, 15, 18, 21, 24, 27, 30, 33, 36, 39)
 mean_value <- mean(data_set)
 cat("Mean:", mean_value, "\n")
 
-# Calculate the standard deviation
+# Calculate the sample standard deviation
 std_deviation <- sd(data_set)
 cat("Standard Deviation:", std_deviation, "\n")
 
-# Calculate the variance
+# Calculate the sample variance
 variance <- var(data_set)
 cat("Variance:", variance, "\n")
 ```
 
 Just replace the data_set vector with your actual data, and this code will compute and print the mean, standard deviation, and variance for your data set. Note the results calculated by `mean()`, `sd()` and `var()` assumes each data points occurs with the equal probability $1/n$, where $n$ is the number of data points.
 
-## Expectation and standard deviation with a given probability distribution
+### Expectation and standard deviation with a given probability distribution
 
-By definition,
+Calculation by definition:
 
 ```{r}
 # Define the possible values and their corresponding probabilities
@@ -62,7 +78,7 @@ xm <- weighted.mean(x, wt)
 xm
 ```
 
-To calculate the variance of a probability distribution in R, you can use the Here's how you can do it:
+To calculate the variance of a probability distribution in R, you can use the following codes.
 
 ```{r}
 # Define the values of the random variable (x_i)
@@ -82,7 +98,7 @@ cat("Variance:", variance, "\n")
 
 ```
 
-## Median
+### Median
 
 ```{r}
 # Create a sample vector
@@ -106,13 +122,14 @@ n <- 100    # Number of trials
 p <- 0.3    # Probability of success in each trial
 
 # Generate a dataset with a binomial distribution
-binomial_data <- rbinom(n, size = n, prob = p)
+binomial_data <- rbinom(50, size = n, prob = p)
 
 # Print the generated dataset
 print(binomial_data)
 
 # Create a histogram to visualize the data
-hist(binomial_data, main = "Binomial Distribution", xlab = "Number of Successes", ylab = "Frequency", col = "lightblue", border = "black")
+hist(binomial_data, main = "Binomial Distribution", xlab = "Number of Successes", 
+     ylab = "Frequency", col = "lightblue", border = "black")
 
 # verify the mean =np, and var=npq
 # Sample mean
@@ -129,7 +146,8 @@ You can calculate the probability of specific outcomes in a binomial distributio
 
 ```{r}
 # Set the parameters for the binomial distribution
-x <- 2     # Number of successes (the outcome you want to calculate the probability for)
+x <- 2     # Number of successes (the outcome you want to calculate the 
+           # probability for)
 n <- 10    # Number of trials
 p <- 0.3   # Probability of success in each trial
 
@@ -172,7 +190,7 @@ cat("Cumulative Probability:", cumulative_prob, "\n")
 
 In this example, we're calculating the cumulative probability that a random variable following a binomial distribution with parameters `size = 10` and `prob = 0.3` is less than or equal to `3`. The result is stored in the cumulative_prob variable and printed to the console.
 
-You can use the `pbinom()` function to answer questions like "What is the probability of getting at most 3 successes in 10 trials with a success probability of 0.3?" by specifying the appropriate values for q, size, and prob.
+You can use the `pbinom()` function to answer questions like "What is the probability of getting at most 3 successes in 10 trials with a success probability of 0.3?" by specifying the appropriate values for `q`, `size`, and `prob`.
 
 ## Poisson probability distributions (Optional)
 
@@ -189,19 +207,19 @@ poisson_data <- rpois(n = 100, lambda = lambda)
 print(poisson_data)
 
 # Create a histogram to visualize the data
-hist(poisson_data, main = "Poisson Distribution", xlab = "Number of Events", ylab = "Frequency", col = "lightblue", border = "black")
+hist(poisson_data, main = "Poisson Distribution", xlab = "Number of Events", 
+     ylab = "Frequency", col = "lightblue", border = "black")
 
-# Verify the theoretical mean and variance
+# Sample mean
 mean(poisson_data)
 #Theoretical mean = lambda
 
+# Sample Variance
 var(poisson_data)
 #Theoretical variance = lambda
-
-
 ```
 
-To calculate the probability of a specific value occurring in a Poisson distribution in R, you can use the `dpois()` function. This function calculates the *probability mass function* (PMF) of the Poisson distribution. Here's how to use it:
+To calculate the probability of a specific value occurring in a Poisson distribution in R, you can use the `dpois()` function. This function calculates the *probability mass function* (PMF) of the Poisson distribution. Here's how to use it.
 
 ```{r}
 # Set the parameters for the Poisson distribution
@@ -219,13 +237,13 @@ To calculate the *cumulative distribution function* (CDF) for a Poisson distribu
 
 ```{r}
 # Set the parameters for the Poisson distribution
-x <- 2     # The specific value for which you want to calculate the cumulative probability
+x <- 2  # The specific value to calculate the cumulative probability
 lambda <- 3  # Mean (average) rate of events
 
 # Calculate the cumulative probability of getting less than or equal to 'x' events
 cumulative_prob <- ppois(x, lambda)
 
 # Print the calculated cumulative probability
-cat("Cumulative Probability of less than or equal to", x, "events:", cumulative_prob, "\n")
-
+cat("Cumulative Probability of less than or equal to", x, "events:", 
+    cumulative_prob, "\n")
 ```
