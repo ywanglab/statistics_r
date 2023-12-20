@@ -40,15 +40,15 @@ knitr::opts_chunk$set(echo = TRUE)
 | `r`-function | Description |
 |:--------------------|--------------------------------------------------------|
 |`length` | Compute the length of a vector 
-|`mean`  | compute the mean|
+|`mean`  | Compute the mean|
 |`sum` | Compute the sum 
-| `cat` | concatenate strings and variable values for formatted print
+| `cat` | Concatenate strings and variable values for formatted print
 |`sample(x, size, replace=FALSE), prob=NULL)` | Randomly sample `x` uniformly with the number of samples = `size`. If `prob` is provided, length(prob)=length(x), and `prob` should sum to 1. 
-`table` | tabulate the frequency counts of distinct values. 
-`barplot(x) `| plot barplot of the 1-D data x: arguments: `main`: main title; `xlab`: x-label; `ylab`: y-label; `col`: color
+`table` | Tabulate the frequency counts of distinct values. 
+`barplot(x) `| Plot barplot of the 1-D data x: arguments: `main`: main title; `xlab`: x-label; `ylab`: y-label; `col`: color
 `factorial(n)` | n!
-`permutations(n,m)`, `combinations(n,m)` | list all permutations (combinations) of n objects taken m at a time (n>m). Accepts an optional argument `v` for indicating the set of permuted `n` elements. 
-`nrow` | find the number of rows in a matrix, dataframe or other rectangular data structure
+`permutations(n,m)`, `combinations(n,m)` | List all permutations (combinations) of n objects taken m at a time (n>m). Accepts an optional argument `v` for indicating the set of permuted `n` elements. 
+`nrow` | Find the number of rows in a matrix, dataframe or other rectangular data structure
 
 
 
@@ -58,7 +58,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # PROBABILITY
 
-## Basic Concepts of Probability
+## Basic concepts of probability
 
 In this code:
 
@@ -171,7 +171,7 @@ Instead of using the numbers 1 through 10, the default, it uses what we provided
 
 ### Find all combinations and the number of all combinations
 
-How about if the order doesn't matter? For example, in Blackjack if you get an Ace and a face card in the first draw, it is called a *Natural 21* and you win automatically. If we wanted to compute the probability of this happening, we would enumerate the *combinations*, not the permutations, since the order of drawn cards does not matter.
+How about if the order doesn't matter? For example, in Blackjack if you get an Ace and a face card in the first draw, it is called a *Natural 21* and you win automatically. If we wanted to compute the probability of this happening, we would enumerate the *combinations*, not the permutations, since the order of drawn cards    does not matter.
 
 ```{r}
 combinations(3,2)

@@ -5,22 +5,23 @@ author: Jieun Park
 | `r`-function                 | Description                                                                                                                                                                           |
 |:-------------------|----------------------------------------------------|
 | `data('dataset_name')`       | Load a R built-in dataset named by 'dataset_name'                                                                                                                                     |
-| `names(x)`                   | retrieve or set the names of elements in `x`                                                                                                                                          |
-| `attach(df)`                 | add a data frame `df` to the search path, which allows you to access the variables within the data frame `df` directly by their names instead of using a normal way such as `df$var`. |
+| `names(x)`                   | Retrieve or set the names of elements in `x`                                                                                                                                          |
+| `attach(df)`                 | Add a data frame `df` to the search path, which allows you to access the variables within the data frame `df` directly by their names instead of using a normal way such as `df$var`. |
 | `cor(x,y)`                   | Find the correlation of two vectors `x` and `y`                                                                                                                                       |
-| `qplot(x,y,data)`            | create a quick plot data `(x,y)` in the dataframe `data`                                                                                                                              |
+| `qplot(x,y,data)`            | Create a quick plot data `(x,y)` in the dataframe `data`                                                                                                                              |
 | `geom_text(aes(x,y, label))` | Add a `label` at the coordinate `(x,y)` in the current plot.                                                                                                                          |
-| `lm(y~x, data)`              | perform the linear regression of `y~x`, where `y`,`x` are column names in the dataframe `data`.                                                                                       |
-| `summary(lm_model)`          | summarize the linear model `lm_model` obtained by the R-function `lm`.                                                                                                                |
+| `lm(y~x, data)`              | Perform the linear regression of `y~x`, where `y`,`x` are column names in the dataframe `data`.                                                                                       |
+| `summary(lm_model)`          | Summarize the linear model `lm_model` obtained by the R-function `lm`.                                                                                                                |
 
-# Correlation and Regression
+# CORRELATION AND REGRESSION
 
 ## Correlation
 
 We check if a linear correlation exists between two variables using `cor()` function.
 
 ```{r}
-# We can calculate the correlation coefficient between x and y with the following code.
+# We can calculate the correlation coefficient between x and y with the 
+# following code.
 # cor(x, y)
 ```
 
@@ -51,7 +52,7 @@ cor(drat, qsec)
 -   `wt` and `disp` have a negative correlation with r = `r round(cor(mpg, wt), 3)`.
 -   `wt` and `disp` does not have a significant correlation with r = `r round(cor(wt, qsec), 3)`.
 
-## Linear Regression
+## Linear regression
 
 Assume we have a data set `data` with `x` and `y` variables and we model their relationship by linear regression. We can find the slope and the intercept of the estimated regression line using the following code.
 

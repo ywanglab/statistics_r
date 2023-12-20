@@ -1,7 +1,7 @@
 ---
 author: "Yi Wang"
 ---
-# Quick Start to R Programming 
+# QUICK START TO R PROGRAMMING  
 
 
 ## 1-minture `R` Programming Introduction
@@ -38,11 +38,11 @@ my_sum <- function(arg1, arg2) {
 
 `Control Structures`: `R` supports typical control structures like `if`-`else` statements, `for` loops, `while` loops, etc.
 
-`Packages`: R's functionality can be extended through packages. You can install packages using the `install.packages("package_Name")` function and load them using the `library("package_name")` function.
+`Packages`: R's functionality can be extended through packages. You can install packages using the `install.packages("package_name")` function and load them using the `library("package_name")` function.
 
 `Data Manipulation and Analysis`: `R` provides powerful tools for data manipulation and analysis. Packages like `dplyr` and `ggplot2` are commonly used for data manipulation and visualization, respectively.
 
-`Help`: to access the help document, type in the R-console: `?function_name` or help(function_name). For example:, `?mean` or `help(mean)`. 
+`Help`: to access the help document, type in the R-console: `?function_name` or help(function_name). For example, `?mean` or `help(mean)`. 
 
 
 

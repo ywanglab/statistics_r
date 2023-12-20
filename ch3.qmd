@@ -4,24 +4,24 @@ editor: visual
 ---
 
 | `r`-function         | Description                                                                                                                                                                                                                                                              |
-|:---------------------|-------------------------------------------------|
+|:----------------------|-------------------------------------------------|
 | `mean(x)`            | Calculate the mean of vector `x`                                                                                                                                                                                                                                         |
 | `median(x)`          | Calculate the median of vector `x`                                                                                                                                                                                                                                       |
 | `Mode(x)`            | Calculate the mode of vector `x`. Need to install the package `DescTools`                                                                                                                                                                                                |
 | `max(x)`             | Calculate the maximum of vector `x`                                                                                                                                                                                                                                      |
 | `min(x)`             | Calculate the minimum of vector `x`                                                                                                                                                                                                                                      |
 | `range(x)`           | Calculate the range of vector `x`. `range(x)` returns a vector `c(min(x),max(x))`                                                                                                                                                                                        |
-| `sd`, `var`          | calculate the sample standard deviation, use denominator `n-1`. To remove a `NA` value, pass the argument `na.rm=TRUE`. To calculate a population variance $\sigma^2(x)$, use the formula $\sigma^2(x)= var(x)*(length(x)-1)/length(x)$, and $\sigma = \sqrt{\sigma^2}$. |
-| `scale(x)`           | convert data vector `x` into $z$-scores.                                                                                                                                                                                                                                 |
+| `sd`, `var`          | Calculate the sample standard deviation, use denominator `n-1`. To remove a `NA` value, pass the argument `na.rm=TRUE`. To calculate a population variance $\sigma^2(x)$, use the formula $\sigma^2(x)= var(x)*(length(x)-1)/length(x)$, and $\sigma = \sqrt{\sigma^2}$. |
+| `scale(x)`           | Convert data vector `x` into $z$-scores.                                                                                                                                                                                                                                 |
 | `quantile(x,probs)`  | Calculate the percentiles at the indicated probability values `probs`.                                                                                                                                                                                                   |
 | `summary(x)`         | Give a 5-number (min, Q1, median, mean, Q3, max) summary of the data vector `x`                                                                                                                                                                                          |
-| `boxplot(x)`         | Plot the boxplot of the data vector `x`  |                                                           
-`hist(x)` | plot histogram of the 1-D data `x`. Optional arguments: `main`: main title; `xlab`: x-label; `ylab`: y-label; `col`: color. Pass `freq=FALSE` for a relative frequency histogram. 
-| `rnorm(n,mean,sd)`   | generate `n` *random* values of standard normal distribution with the given `mean` and `sd`.                                                                                                                                                                             |
+| `boxplot(x)`         | Plot the boxplot of the data vector `x`                                                                                                                                                                                                                                  |
+| `hist(x)`            | Plot histogram of the 1-D data `x`. Optional arguments: `main`: main title; `xlab`: x-label; `ylab`: y-label; `col`: color. Pass `freq=FALSE` for a relative frequency histogram.                                                                                        |
+| `rnorm(n,mean,sd)`   | Generate `n` *random* values of standard normal distribution with the given `mean` and `sd`.                                                                                                                                                                             |
 | `runif(n, min, max)` | Generate `n` uniformly distributed *random* values between min (inclusive) and max (inclusive).                                                                                                                                                                          |
 | `rexp(n,r)`          | Generate `n` exponentially distributed *random* values with rate `r` at which events occurs on average                                                                                                                                                                   |
 
-# Describing, Exploring, and Comparing Data
+# DESCRIBING, EXPLORING, and COMPUTING DATA
 
 <!-- Section 3.1 -->
 
@@ -56,8 +56,8 @@ scores2 <- c(95, 90, 85, 85, 87, 74, 75, 64, 85, 84, 87, 15, 20, 75, 75, 90, 75,
 meanScore2 <- mean(scores2)
 
 # print out the answer
-cat("Mean test score is from original is: ", meanScore, ", while from scores2 is: ", 
-    meanScore2)
+cat("Mean test score is from original is: ", meanScore, ", while from scores2 
+    is: ",   meanScore2)
 
 ```
 
@@ -221,7 +221,8 @@ popSDScore2 <- sqrt(var(scores2) * (length(scores2) - 1) / length(scores2))
 samSDMPG <- sd(carsMPG)
 
 # Print out the answer
-cat("Population standard deviation for test scores from scores2 is: ", popSDScore2, "\n\n")
+cat("Population standard deviation for test scores from scores2 is: ", 
+    popSDScore2, "\n\n")
 cat("Sample standard deviation for MPG from carsMPG is: ", samSDMPG, " \n")
 
 ```
@@ -383,7 +384,8 @@ boxplot(uniformData, main = "Uniform Distribution", horizontal = TRUE)
 skewedRightData <- rexp(1000, 0.4)
 # Create histogram/boxplot of skewed right data
 hist(skewedRightData, main = "Distribution that is skewed right")
-boxplot(skewedRightData, main = "Distribution that is skewed right", horizontal = TRUE)
+boxplot(skewedRightData, main = "Distribution that is skewed right", 
+        horizontal = TRUE)
 
 
 # Sample of a distribution that is skewed left
@@ -433,8 +435,10 @@ Finally, let's create boxplots for both datasets and show them on the same plot 
 ```{r }
 
 # Generate boxplot for both
-boxplot(scores, main = "Boxplot of test scores #1", horizontal = TRUE, xlab = "Scores")
-boxplot(scores2, main = "Boxplot of test scores #2", horizontal = TRUE, xlab = "Scores")
+boxplot(scores, main = "Boxplot of test scores #1", horizontal = TRUE, 
+        xlab = "Scores")
+boxplot(scores2, main = "Boxplot of test scores #2", horizontal = TRUE, 
+        xlab = "Scores")
 
 
 ```

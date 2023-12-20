@@ -1,4 +1,4 @@
-# Preface {.unnumbered}
+# PREFACE {.unnumbered}
 
 This is an R-manual that accompanies the textbook @triola22 for the courses STAT 2670: Elementary Statistics offered at Auburn University at Montgomery.
 

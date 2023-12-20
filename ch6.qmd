@@ -25,7 +25,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 | `r`-function | Description |
 |:--------------------|--------------------------------------------------------|
-`rnorm(n,mean,sd)` | generate `n` random values of standard normal distribution with the given `mean` and `sd`. 
+`rnorm(n,mean,sd)` | Generate `n` random values of standard normal distribution with the given `mean` and `sd`. 
 `hist(x)` | Plot the histogram of the data vector `x`, pass `probability=TRUE` to use density estimate. Pass `breaks` argument to specify edges of bins. Eg.: `breaks = seq(0,1, by=0.1)`. `breaks="FD"` is a method based on data variability. 
 `seq(start, end, by=step)` | Generate a sequence. 
 `density(x)` | Estimate the density of the data vector `x`
@@ -40,7 +40,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 # NORMAL PROBABILITY DISTRIBUTION
-## THE standard normal distribution
+## The standard normal distribution
 ### Normal distribution graph (Optional)
 
 ```{r}
@@ -71,7 +71,7 @@ alpha <- 0.05
 qnorm(1-alpha, mean = 0, sd = 1) # find the critical Z score.
 ```
 
-## REAL application of normal distribution
+## Real application of normal distribution
 ### Convert an individual x value to a z-score
 
 ```{r}
@@ -112,7 +112,7 @@ x <- z * sigma + mu  # convert the z score to individual x value using formula
 cat("X =", x, "\n")  # print the individual x value
 ```
 
-## SAMPLING distributions and estimators (Optional)
+## Sampling distributions and estimators (Optional)
 ### General behavior of sampling distribution of sample proportions
 
 ```{r}
@@ -132,7 +132,7 @@ hist(sample_props, breaks = seq( 0, 1, by = 0.1 ), col = "lightblue",
      main = "Sampling Distribution of Sample Proportion")
 ```
 
-### general behavior of sampling distribution of sample means
+### General behavior of sampling distribution of sample means
 
 ```{r}
 #input the parameter values
@@ -144,10 +144,11 @@ sample_means <- replicate(10000, mean(rnorm(n, mu, sigma)))
 
 # Create a histogram of the sampling distribution of the sample mean
 hist(sample_means, breaks ="FD",  main = "Sampling Distribution of Sample Mean", 
-     xlab = "Sample Mean", ylab = "Frequency", col = "lightblue", border = "black")
+     xlab = "Sample Mean", ylab = "Frequency", col = "lightblue", 
+     border = "black")
 ```
 
-### general behavior of sampling distribution of sample variances
+### General behavior of sampling distribution of sample variances
 
 ```{r}
 mu <- 4    # True population mean
@@ -168,10 +169,11 @@ sample_variances <- replicate(num_samples, sample_variance(rnorm(sample_size,
 # Create a histogram of the sampling distribution of sample variance
 hist(sample_variances, breaks = "FD", freq = FALSE, 
      main = "Sampling Distribution of Sample Variance",
-     xlab = "Sample Variance", ylab = "Frequency", col = "lightblue", border = "black")
+     xlab = "Sample Variance", ylab = "Frequency", col = "lightblue", 
+     border = "black")
 ```
 
-## THE central limit theorem
+## The central limit theorem
 ### Find the probability when individual value is used (Page 292 Ejection Seat Question)
 
 ```{r}

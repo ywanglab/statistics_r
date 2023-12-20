@@ -13,22 +13,22 @@ editor: visual
 ---
 
 | `r`-function               | Description                                                                                                                                                                                                                              |
-|:-------------------|----------------------------------------------------|
-| `mean`                       | calculate the mean                                                                                                                                                                                                                       |
-| `sd`, `var`                | calculate the sample standard deviation, use denominator `n-1`. To remove a `NA` value, pass the argument `na.rm=TRUE`.                                                                                                                    |
-| `weighted.mean(x,wt)`        | Calculate a weighted mean (expectation)                                                                                                                                                                                                  |
-| `median(x)`                  | calculate the median                                                                                                                                                                                                                     |
-| `rbinom(s,size=n, prob=p)` | Generate `s` random binomial-distributed *random* values with `n` trials and success probability `p`                                                                                                                                              |
+|:--------------------|---------------------------------------------------|
+| `mean`                     | Calculate the mean                                                                                                                                                                                                                       |
+| `sd`, `var`                | Calculate the sample standard deviation, use denominator `n-1`. To remove a `NA` value, pass the argument `na.rm=TRUE`.                                                                                                                  |
+| `weighted.mean(x,wt)`      | Calculate a weighted mean (expectation)                                                                                                                                                                                                  |
+| `median(x)`                | Calculate the median                                                                                                                                                                                                                     |
+| `rbinom(s,size=n, prob=p)` | Generate `s` random binomial-distributed *random* values with `n` trials and success probability `p`                                                                                                                                     |
 | `dbinom(x,size=n, prob=p)` | Calculate the density (probability) of a binomial distribution with `x` successes in `n` trials given the success probability `p`                                                                                                        |
 | `pbinom(q,size=n, prob=p)` | Calculate the cumulative probability of a binomial distribution less than or equal to `q` successes in `n` trials given the success probability `p`. To calculate the probability greater than `q`, pass an argument `lower.tail=FALSE`. |
-| `hist(x)`                    | plot histogram of the 1-D data x: arguments: `main`: main title; `xlab`: x-label; `ylab`: y-label; `col`: color. Pass `freq=FALSE` for a relative frequency histogram.                                                                   |
+| `hist(x)`                  | Plot histogram of the 1-D data x: arguments: `main`: main title; `xlab`: x-label; `ylab`: y-label; `col`: color. Pass `freq=FALSE` for a relative frequency histogram.                                                                   |
 | `rpois(n, lambda)`         | Generate `n` random Poisson-distributed values with mean rate of events `lambda`                                                                                                                                                         |
 | `dpois(x, lambda)`         | Calculate the density (probability) of getting exactly `x` events given a Poisson-distribution with mean rate of events `lambda`                                                                                                         |
 | `ppois(x, lambda)`         | Calculate the cumulative probability of less than or equal to `x` given a Poisson-distribution with mean rate of events `lambda`                                                                                                         |
 
-# Discrete Probability Distribution
+# DISCRETE PROBABILITY DISTRIBUTION
 
-## Probability Distribution
+## Probability distribution
 
 ### Calculate sample mean, standard deviation and variance with equal probability
 
@@ -210,13 +210,13 @@ print(poisson_data)
 hist(poisson_data, main = "Poisson Distribution", xlab = "Number of Events", 
      ylab = "Frequency", col = "lightblue", border = "black")
 
+#Theoretical mean = lambda
 # Sample mean
 mean(poisson_data)
-#Theoretical mean = lambda
 
+#Theoretical variance = lambda
 # Sample Variance
 var(poisson_data)
-#Theoretical variance = lambda
 ```
 
 To calculate the probability of a specific value occurring in a Poisson distribution in R, you can use the `dpois()` function. This function calculates the *probability mass function* (PMF) of the Poisson distribution. Here's how to use it.

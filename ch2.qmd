@@ -28,28 +28,28 @@ knitr::opts_chunk$set(echo = TRUE)
 | `r`-function | Description |
 |:--------------------|--------------------------------------------------------|
 `data('dataset_name')` | Load a R built-in dataset named by `dataset_name`
-`table(x)` | generate a frequency table for `x`
-`length(x)`| return the length of the vector `x`
-`cat` | concatenate strings and variable values for formatted print
+`table(x)` | Generate a frequency table for `x`
+`length(x)`| Return the length of the vector `x`
+`cat` | Concatenate strings and variable values for formatted print
 `round (x, digits=2)` | round x element-wise with 2 decimal digits 
-`hist(x)` | plot histogram of the 1-D data `x`. Optional arguments: `main`: main title; `xlab`: x-label; `ylab`: y-label; `col`: color. Pass `freq=FALSE` for a relative frequency histogram. 
-`rnorm(n,mean,sd)` | generate `n` *random* values of standard normal distribution with the given `mean` and `sd`. 
+`hist(x)` | Plot histogram of the 1-D data `x`. Optional arguments: `main`: main title; `xlab`: x-label; `ylab`: y-label; `col`: color. Pass `freq=FALSE` for a relative frequency histogram. 
+`rnorm(n,mean,sd)` | Generate `n` *random* values of standard normal distribution with the given `mean` and `sd`. 
 `runif(n, min, max)` | Generate `n` uniformly distributed *random* values between `min` (inclusive) and `max` (inclusive). 
 `rexp(n,r)` | Generate `n` exponentially distributed values with rate `r` at which events occurs on average
-`qqnorm(x)` | plot a Q-Q plot of `x` against a standard normal distribution
+`qqnorm(x)` | Plot a Q-Q plot of `x` against a standard normal distribution
 `qqline(x)`| add a reference line to a Q-Q plot created by `qqnorm()` to indicate the theoretical Q-Q plot of a  normal distribution. 
-`dotchart(x)`| create a dotplot for the 1-D data `x`
-`stem(x)` | create a stem plot for the 1-D data `x`
-`plot(x,y, type='p')` | plot the scatter plot of data sets (x,y). If `x` is a dataframe, and no `y` is provided, then plot each column of `x` against the dataframe index. type: `'p'` for points, `'l'` for line, and `'b'` for both. 
-`ts.plot(x)`| plot the time series x. 
-`pie(x, labels)`| plot the pie chart of `x` using `labels`
+`dotchart(x)`| Create a dotplot for the 1-D data `x`
+`stem(x)` | Create a stem plot for the 1-D data `x`
+`plot(x,y, type='p')` | Plot the scatter plot of data sets (x,y). If `x` is a dataframe, and no `y` is provided, then plot each column of `x` against the dataframe index. type: `'p'` for points, `'l'` for line, and `'b'` for both. 
+`ts.plot(x)`| Plot the time series x. 
+`pie(x, labels)`| Plot the pie chart of `x` using `labels`
 `pareto.chart(x)`| Create Pareto chart of the 1-D data `x` using package `qcc`
-`cor.test(x,y)`| perform the correlation test between `x` and `y`. The function returns an object that contains three attributes:  `estimate`:  which is the correlation `r` value depending on a  `method`: "pearson"(default),"kendall", or "spearman"; `p.value`: which is the test statistics `p`-value; `conf.int`: which is the confidence interval for the default `conf.level`  0.95. The `alternative` hypothesis is "two.sided" (default), "less", "greater". 
-`lm(y~x, data)` | perform the linear regression of `y~x`, where `y`,`x` are column names in the dataframe `data`. 
-`abline(reg_model, col="red")`| add a regression line from the `reg_model` in `red`.
-`abline(a,b)`| add a line with intercept `a` and slope `b`
-`abline(h=y_value)`| add a horizontal line at `y=y_value`
-`abline(v=x_value)`| add a vertical line at `x=x_value`
+`cor.test(x,y)`| Perform the correlation test between `x` and `y`. The function returns an object that contains three attributes:  `estimate`:  which is the correlation `r` value depending on a  `method`: "pearson"(default),"kendall", or "spearman"; `p.value`: which is the test statistics `p`-value; `conf.int`: which is the confidence interval for the default `conf.level`  0.95. The `alternative` hypothesis is "two.sided" (default), "less", "greater". 
+`lm(y~x, data)` | Perform the linear regression of `y~x`, where `y`,`x` are column names in the dataframe `data`. 
+`abline(reg_model, col="red")`| Add a regression line from the `reg_model` in `red`.
+`abline(a,b)`| Add a line with intercept `a` and slope `b`
+`abline(h=y_value)`| Add a horizontal line at `y=y_value`
+`abline(v=x_value)`| Add a vertical line at `x=x_value`
 
 
 
@@ -58,17 +58,18 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 <!-- Chapter 2 -->
-# Exploring Data with Tables and Graphs
+# EXPLORING DATA WITH TABLES AND GRAPHS
 
 <!-- Section 2.1 -->
-## Frequency distribution shows the count or frequency of each unique value or category in a dataset, providing a clear picture of how data is distributed across different values or groups.
+## Frequency Distributions
+Frequency distribution shows the count or frequency of each unique value or category in a dataset, providing a clear picture of how data is distributed across different values or groups.
 
 ### Frequency distributions
 The R command `table()` will generate a frequency distribution for any data set. Let's analyze example test scores from a fictional math class.  Notice the first row of the output is the data name, the second row is the actual data, and the third row contains the number of times each data value appears.
 
 ```{r }
 # Load test data into a variable names scores
-scores = c(95, 90, 85, 85, 87, 74, 75, 64, 85, 84, 87, 15, 20, 75, 75, 90, 75)
+scores <- c(95, 90, 85, 85, 87, 74, 75, 64, 85, 84, 87, 15, 20, 75, 75, 90, 75)
 
 # Create a frequency table for the scores data
 table(scores)
@@ -350,7 +351,7 @@ install.packages('qcc')
 
 Now, let's create Pareto charts for the 1940 and 1960 expenditure data.  
 
-```{r warning=FALSE}
+```{r warning=FALSE, message=FALSE}
 
 # Load 'qcc' package
 library(qcc)
@@ -419,8 +420,8 @@ Now, let's use a scatter plot to visualize the relationship.
 ```{r }
 
 # Create a scatter plot to visualize the relationship
-plot(mtcars$mpg, mtcars$hp, xlab = "Miles per Gallon (MPG)", ylab = "Horsepower (HP)", 
-     main = "Plot of MPG vs. HP")
+plot(mtcars$mpg, mtcars$hp, xlab = "Miles per Gallon (MPG)", ylab = 
+       "Horsepower (HP)",    main = "Plot of MPG vs. HP")
 
 ```
 
@@ -468,7 +469,8 @@ wtvshp
 # Let's view the r- and P-values and critical r-value range
 cat("r:", wtvshp$estimate, "\n")
 cat("P-value:", wtvshp$p.value, "\n")
-cat("Confidence interval for r: (", wtvshp$conf.int[1], ", ", wtvshp$conf.int[2], ")")
+cat("Confidence interval for r: (", wtvshp$conf.int[1], ", ", 
+    wtvshp$conf.int[2], ")")
 
 ```
 

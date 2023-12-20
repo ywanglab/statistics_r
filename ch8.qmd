@@ -30,15 +30,15 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
 | `t.test(x, conf.level=0.95)`                | Perform a $t$-test for a population mean. Accepts an additional `alternative` argument for $H_1$. The default hypothesized mean is `mu=0`. Otherwise, pass a hypothesized mean value.                                                                                                                                                                                                                                                                                              |
 | `z.test(x, sigma.x=sigma, conf.level=0.95)` | Perform a $z$-test for a population mean with known `sigma.x=sigma`. Accepts an additional `alternative` argument for $H_1$. The default hypothesized mean is `mu=0`. Otherwise, pass a hypothesized mean value.                                                                                                                                                                                                                                                                   |
 | `qnorm(p, mean=0, sd=1)`                    | Calculate the quantile of the normal distribution corresponding to the probability `p` (from left-tail).                                                                                                                                                                                                                                                                                                                                                                           |
-| `qt(p, df)`                                 | calculate the quantile for the probability `p` of $t$-distribution with degree of freedom equal to `df`                                                                                                                                                                                                                                                                                                                                                                            |
-| `qchisq(p, df)`                             | calculate the quantile for the probability `p` of $\chi^2$-distribution with degree of freedom equal to `df`|          
+| `qt(p, df)`                                 | Calculate the quantile for the probability `p` of $t$-distribution with degree of freedom equal to `df`                                                                                                                                                                                                                                                                                                                                                                            |
+| `qchisq(p, df)`                             | Calculate the quantile for the probability `p` of $\chi^2$-distribution with degree of freedom equal to `df`|          
 | `attach(df)` | add a data frame `df` to the search path, which allows you to access the variables within the data frame `df` directly by their names instead of using a normal way such as `df$var`. |
 | `table` | tabulate the frequency counts of distinct values. |
-| `prop.table(table)` | compute the proportions of a table or data. Pass an argument `margin` for the direction: `1` for rows, `2` for columns, or `NULL` for the entire table (default). |
+| `prop.table(table)` | Compute the proportions of a table or data. Pass an argument `margin` for the direction: `1` for rows, `2` for columns, or `NULL` for the entire table (default). |
 
-# Hypothesis Testing
+# HYPOTHESIS TESTING
 
-## Basic of Hypothesis Testing
+## Basic of hypothesis testing
 
 We will use the following functions to perform hypothesis tests.
 
@@ -68,7 +68,7 @@ qnorm(0.95)
 qt(0.95, 5)
 ```
 
-## Testing a Claim About a Proportion
+## Testing a claim about a proportion
 
 `mtcars` dataset has data for 32 automobiles in 1973-1974 with 11 variables. Among these variable, we are interested to check if the proportion of V-shaped engine (`vs = 0`) is 0.5. That is, $H_0: p = 0.5$.
 
@@ -93,7 +93,8 @@ null_prob <- 0.5  # Hypothesized population proportion under the null hypothesis
 sample_proportion <- successes / trials
 
 # Perform the z-test
-z_stat <- (sample_proportion - null_prob) / sqrt(null_prob * (1 - null_prob) / trials)
+z_stat <- (sample_proportion - null_prob) / sqrt(null_prob * 
+                                  (1 - null_prob) / trials)
 
 # Calculate the p-value
 p_value <- 2 * (1 - pnorm(abs(z_stat)))
@@ -113,7 +114,7 @@ We are ready to make a decision using the following method:
 -   $p$-value method: The $p$-value `r p_value` is greater than the *significance level* $\alpha =0.05$, therefore we *fail* to reject the Null hypothesis $H_0: p=0.5$.
 -   **critical value** method: The test statistics `r z_stat` is not as extreme as the two critical values, therefore we *fail* to reject the Null Hypothesis.
 
-### Two-sided Proportion Test using the built-in function `prop.test`
+### Two-sided proportion test using the built-in function `prop.test`
 
 Next we will use the R built-in `prop.test()` function to perform one sample proportion test. The syntax is below.
 
@@ -139,8 +140,9 @@ res
 
 ```{r}
 cat("The p-value is given by ", res$p.value, "\n")
-cat("The $chi^2$ test statistic  is given by ", res$statistic, "\n")
-cat("The confidence interval is given by (", res$conf.int[1], "," ,res$conf.int[2], ")\n")
+cat("The chi^2 test statistic  is given by ", res$statistic, "\n")
+cat("The confidence interval is given by (", res$conf.int[1], ","
+    ,res$conf.int[2], ")\n")
 ```
 
 **Decision:**
@@ -155,7 +157,7 @@ c(qchisq(0.025, 1), qchisq(0.975,1))
 
 -   **Confidence Interval**: the claimed proportion 0.5 falls within the confidence interval of (`r round(res$conf.int[1],3)`, `r round(res$conf.int[2],3)`). Thus we fail to reject the null hypothesis.\
 
-### One-sided Proportion Test
+### One-sided proportion test
 
 $$H_0: p = 0.5 \quad \textrm{ vs }\quad H_1: p > 0.5$$
 
@@ -176,9 +178,9 @@ c(qchisq(0.05,1), qchisq(0.95,1))
 
 -   **Confidence Interval**: the claimed proportion 0.5 falls within the confidence interval of (`r round(res$conf.int[1],3)`, `r round(res$conf.int[2],3)`). Thus we fail to reject the null hypothesis.
 
-## Testing a Claim About a Mean
+## Testing a claim about a mean
 
-### Unknown $\sigma$ with Normality Assumption
+### Unknown $\sigma$ with Nnormality assumption
 
 We use one sample t-test with `t.test()` function when we assume normality for population or the sample size is large enough. The syntax is as below if we want to test with a sample vector (variable) `x` for $H_0: \mu = m$ with a given confidence level `conf.level`, for example, `conf.level=0.95`.
 
@@ -206,7 +208,8 @@ res
 ```{r}
 cat("The p-value is given by ", res$p.value, "\n")
 cat("The test statistic is given by ", res$statistic, "\n")
-cat("The confidence interval is given by (", res$conf.int[1], "," ,res$conf.int[2], ")\n")
+cat("The confidence interval is given by (", res$conf.int[1], ",",
+    res$conf.int[2], ")\n")
 ```
 
 **Decision:**
@@ -242,7 +245,7 @@ qt(0.05, df=31)
 
 -   **Confidence Interval**: the claimed mean $\mu=22$ does not fall within the confidence interval of ($-\infty$, `r round(res$conf.int[2],3)`). Thus we reject the null hypothesis.
 
-### Known $\sigma$ with Normality Assumption
+### Known $\sigma$ with normality assumption
 
 We use one sample z-test or normal test with `z.test()` function when we assume normality for population with known population standard deviation $\sigma$. The syntax is as below if we want to test with a sample vector (variable) `x` for $H_0: \mu = m$ with $\alpha = 0.05$ and a known `sigma`.
 
@@ -273,7 +276,8 @@ res
 ```{r}
 cat("The p-value is given by ", res$p.value, "\n")
 cat("The test statistic is given by ", res$statistic, "\n")
-cat("The confidence interval is given by (", res$conf.int[1], "," ,res$conf.int[2], ")\n")
+cat("The confidence interval is given by (", res$conf.int[1], "," ,
+    res$conf.int[2], ")\n")
 ```
 
 **Decision:**
